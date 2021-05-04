@@ -14,9 +14,18 @@ class LoginForm extends Form {
         password: Joi.string().min(5).max(255).required().label("Password")
     };
 
-    doSubmit = () => {
-        // Call the server
-        console.log("Submitted");
+    doSubmit = async () => {
+        try {
+            const { data } = this.state;
+            await login(data.email, data.password);
+            
+        } catch (ex) {
+            if (ex.response && ex.response.status === 400){
+                const errors = {...this.state.errors};
+                errors.email = ex.response.data;
+                this.setState( { errors })
+            }
+        }
     }
 
     render(){
