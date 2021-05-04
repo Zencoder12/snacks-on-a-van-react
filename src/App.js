@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import NavBar from "./components/navBar";
+import Orders from "./components/orders";
+import Menu from "./components/menu";
+import Home from "./components/home";
+import LoginForm from "./components/loginForm";
+import NotFound from "./components/notFound";
+import { Redirect, Route, Switch } from "react-router-dom";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <NavBar />
+      <Switch>
+        <Route path="/menu" component={Menu} />
+        <Route path="/orders" component={Orders} />
+        <Route path="/login" component={LoginForm} />
+        <Route path="/not-found" component={NotFound} />
+        <Route path="/" exact component={Home} />
+        <Redirect to="/not-found" />
+      </Switch>
+    </React.Fragment>
   );
 }
 
