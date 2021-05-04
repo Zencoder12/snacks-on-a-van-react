@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import { getProducts } from '../services/productService';
+import MenuRow from './menuRow';
 
 class Menu extends Component {
-    state = { 
+    state = {
         products: []
      };
 
     async componentDidMount() {
-        const productsData = await getProducts();
-        console.log(productsData);
-
-        this.setState({ products : productsData  });
+        const { data } = await getProducts();
+        this.setState({ products : data });
+        console.log(data);
     }
 
     render() { 
-        return (  
-            <h1>Menu</h1>
+        const { products } = this.state;
+        return ( 
+            <React.Fragment>
+                <MenuRow category={'coffee'} products={products}/>
+                <MenuRow category={'dessert'} products={products}/>
+            </React.Fragment>
         );
     }
 }

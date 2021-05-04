@@ -64,3 +64,9 @@ svg {
   height: 210px;
   /* border-radius: 6px 6px 0px 0px; */
 }
+
+.login-box,
+.register-box {
+  background-color: var(--color-primary-bg);
+  padding: 50px;
+}

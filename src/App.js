@@ -6,7 +6,9 @@ import Orders from "./components/orders";
 import Menu from "./components/menu";
 import Home from "./components/home";
 import LoginForm from "./components/loginForm";
+import LoginRegister from "./components/loginRegister";
 import NotFound from "./components/notFound";
+import Logout from "./components/logout";
 import "./App.css";
 
 class App extends Component {
@@ -28,7 +30,8 @@ class App extends Component {
         <Switch>
           <Route path="/menu" component={Menu} />
           <Route path="/orders" component={Orders} />
-          <Route path="/login" component={LoginForm} />
+          <Route path="/login" component={LoginRegister} />
+          <Route path="/logout" component={Logout} />
           <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={Home} />
           <Redirect to="/not-found" />

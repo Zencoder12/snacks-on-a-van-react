@@ -16,11 +16,20 @@ const NavBar = ({ user }) => {
             <li className="nav-item">
               <NavLink id="nav-title" className="nav-link" to="/orders">ODERS</NavLink>
             </li>
-            <li className="nav-item">
+            {!user && <li className="nav-item">
               <NavLink id="nav-title" className="nav-link" to="/login">LOGIN/REGISTER</NavLink>
-            </li>
+            </li>}
+            {user && (
+            <React.Fragment>
+              <li className="nav-item">
+                <NavLink id="nav-title" className="nav-link" to="/login">{'HI! ' + user.firstName.toUpperCase()}</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink id="nav-title" className="nav-link" to="/logout">LOGOUT</NavLink>
+              </li>
+            </React.Fragment>)
+            }
           </ul>
-            <button id="nav-title" className="btn btn-outline-success" type="submit">LOGIN/REGISTER</button>
         </div>
       </div>
   </nav>
