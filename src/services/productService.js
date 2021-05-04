@@ -1,7 +1,6 @@
 import http from "./httpService";
-
-const backendEndPoint = "http://localhost:3000/products";
+import { customerApiUrl } from "../config.json";
 
 export function getProducts() {
-  return http.get(backendEndPoint);
+  return http.get(customerApiUrl + "/products");
 }
