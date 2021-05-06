@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+/* font-family: 'Open Sans', sans-serif;   font-family: 'Open Sans Condensed', sans-serif; */
+html {
+    background-color: var(--color-primary-bg);
+}
+
+/* navigation bar */
+    /* overall nav colors and texts */
+    nav {font-weight: bold;}
+    #nav_text {
+        font-family: 'Open Sans Condensed', sans-serif;
+        color: var(--menu-bar-text);
+    }
+    .navbar {background-color: var(--menu-bar-bg) !important;}
+    /* address text decorations */
+    #location {font-weight: 300;}
+    /* change color when hovering */
+    #nav_text:hover {color: var(--heading);}
+    /* change text color of current tab */
+    #top_nav .active {color: var(--heading);}
+    /* cancel undreline for 'hi, ' */
+    .navbar-text #nav_text {text-decoration: none;}
+
+    .nav-item {align-items: flex-end;}
+
+    /* settings for pc */
+    @media screen and (min-width: 768px) {
+        /* #phone_nav, .phone_nav {display: none;} */
+        /* gaps between tabs */
+        nav {padding: 0 5vw;}
+        nav li {padding-left: 6vw;}
+    }
+
+    /* change font sixe for different screens */
+    @media screen and (min-width: 768px) and (max-width: 1025px) {
+        #nav_text {font-size: 2vw;}
+    }
+    @media screen and (min-width: 1025px) {
+        #nav_text {font-size: 1.5vw;}
+    }
+
