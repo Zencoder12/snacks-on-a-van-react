@@ -4,8 +4,8 @@ import jwtDecode from "jwt-decode";
 import NavBar from "./components/navBar";
 import Orders from "./components/orders";
 import Menu from "./components/menu";
+import ProductDetails from "./components/productDetails";
 import Home from "./components/home";
-import LoginForm from "./components/loginForm";
 import LoginRegister from "./components/loginRegister";
 import NotFound from "./components/notFound";
 import Logout from "./components/logout";
@@ -28,6 +28,7 @@ class App extends Component {
       <React.Fragment>
         <NavBar user={this.state.user} />
         <Switch>
+          <Route path="/product/:id" component={ProductDetails} />
           <Route path="/menu" component={Menu} />
           <Route path="/orders" component={Orders} />
           <Route path="/login" component={LoginRegister} />

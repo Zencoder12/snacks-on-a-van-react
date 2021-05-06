@@ -37,16 +37,17 @@ p {
 }
 
 button {
-  color: var(--color-secondary-bg) !important;
-  background-color: var(--gray-4) !important;
-  border-color: var(--gray-4) !important;
+  color: var(--color-secondary-bg);
+  background-color: var(--gray-4);
+  border-color: var(--gray-4);
 }
 
 .inner {
   background-color: var(--color-primary-bg);
-  height: 360px;
   border-radius: 6px;
   box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+  height: 360px;
+  width: 220px;
 }
 
 #sed-bg {

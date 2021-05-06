@@ -51,7 +51,7 @@ class Form extends Component {
 
     renderButton(label) {
         return (
-            <button disabled={this.validate()} className="btn btn-block py-3 mt-5 btn-form">{label}
+            <button disabled={this.validate()} className="btn btn-primary btn-block py-3 mt-5 btn-form">{label}
             </button>
         );
     }
