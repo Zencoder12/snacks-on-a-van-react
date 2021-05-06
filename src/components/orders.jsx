@@ -5,11 +5,12 @@ class Orders extends Component {
     state = {  }
     
     render() { 
+        const cartItems = JSON.parse(localStorage.getItem('cart'));
         return (  
             <div className="container">
                 <div className="row">
                     <div className="col-9 border border-secondary">
-                        <OrderSumaryTable />
+                        <OrderSumaryTable cartItems={cartItems} />
                     </div>
                     <div className="col-3 border border-secondary">
                         <h2>Summary</h2>

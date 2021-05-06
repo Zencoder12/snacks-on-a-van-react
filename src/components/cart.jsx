@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = ({cartItems, onReset}) => {
+const Cart = ({cartItems, onReset, onCheckOut}) => {
 
     const totalPrice = cartItems.reduce((a, item) => a + item.price * item.qty,0);
 
@@ -32,7 +32,7 @@ const Cart = ({cartItems, onReset}) => {
             <hr></hr>
             <h3><strong>{`TOTAL PRICE $${totalPrice}`}</strong></h3>
             <button onClick={onReset} type="button" class="btn btn-warning btn-block">RESET</button>
-            <a href="/" type="button" class="btn btn-secondary btn-block">PROCEED TO CHECKOUT</a>
+            <button href="/orders" onClick={onCheckOut} type="button" class="btn btn-secondary btn-block">PROCEED TO CHECKOUT</button>
             </div>}
         </React.Fragment>
 )};

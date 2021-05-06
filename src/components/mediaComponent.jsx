@@ -1,15 +1,18 @@
 import React from 'react';
 
-const MediaComponent = () => {
+const MediaComponent = ({cartItem}) => {
+
     return (  
         <div className="container">
             <div className="d-flex flex-row">
                 <div>
-                    <img className="img img.fluid " src="https://i.pinimg.com/originals/08/01/ef/0801ef12c2b2a659d665659145a6296b.jpg" alt="" />
+                    <img className="media-img" 
+                    src={"https://i.pinimg.com/originals/"+cartItem.img} 
+                    alt={cartItem.productName} />
                 </div>
                 <div>
-                    <h3>HOT CHOCOLATE</h3>
-                    <p>Small</p>
+                    <h3 className="media-heading">{cartItem.productName}</h3>
+                    <p className="media-product-size">Small</p>
                     <button className="btn btn-secondary btn-sm">REMOVE</button>
                 </div>
             </div>

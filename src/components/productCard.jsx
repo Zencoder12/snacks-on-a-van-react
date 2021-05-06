@@ -25,10 +25,11 @@ class ProductCard extends Component {
               key={_id}
               selectedPrice={this.state.selectedPrice}
               prices={prices}
+              product={this.props.product}
               onChange={this.handleChange} 
               sizes={sizes} />
-              <button onClick={() => this.props.onAdd(productName, this.state.selectedPrice)} 
-              className="d-flex justify-content-center btn btn-secondary">ADD TO CART</button>
+              <button onClick={() => this.props.onAdd(productName, img, this.state.selectedPrice)} 
+              className="d-flex justify-content-center btn btn-secondary btn-block mt-4">ADD TO CART</button>
           </div>
         </div>
       </div>  

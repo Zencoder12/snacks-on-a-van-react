@@ -82,3 +82,20 @@ svg {
   margin-top: 70px;
   height: 200px;
 }
+
+/* MEDIA COMPONENT */
+
+.media-table td {
+  vertical-align: middle;
+}
+
+.media-img {
+  border-radius: 15px;
+  width: 120px;
+  height: 120px;
+  padding: 0.4rem;
+}
+
+.media-heading {
+  font-size: 1rem;
+}

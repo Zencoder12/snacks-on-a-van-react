@@ -14,7 +14,7 @@ class Menu extends Component {
         this.setState({ products : data });
     }
 
-    handleAdd = (productName, price) => {
+    handleAdd = (productName, img, price) => {
         console.log(productName);
         const orderItemId = productName + price
         const exist = this.state.cartItems.find((x) => x.id === orderItemId);
@@ -27,7 +27,8 @@ class Menu extends Component {
             this.setState({cartItems :
                 [...this.state.cartItems, 
                 {id: orderItemId, 
-                productName: productName, 
+                productName: productName,
+                img: img, 
                 price: price, qty: 1}]})
         }
     };
@@ -37,7 +38,6 @@ class Menu extends Component {
     }
 
     render() {
-        console.log(this.state.cartItems);
         
         const { products } = this.state;
         return ( 
@@ -49,7 +49,9 @@ class Menu extends Component {
                             <MenuRow onAdd={this.handleAdd} category={'dessert'} products={products}/>
                         </div>
                         <div className="col-sm-6 col-md-3">
-                            <Cart cartItems={this.state.cartItems} onReset={this.handleReset} />
+                            <Cart cartItems={this.state.cartItems} 
+                            onReset={this.handleReset} 
+                            onCheckOut={() => this.props.onCheckOut(this.state.cartItems)} />
                         </div>
                     </div>
                 </div>
