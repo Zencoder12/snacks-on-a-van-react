@@ -71,3 +71,14 @@ svg {
   background-color: var(--color-primary-bg);
   padding: 50px;
 }
+
+/* CART */
+
+.cart-container {
+  margin-top: 70px;
+}
+
+.empty-cart-container {
+  margin-top: 70px;
+  height: 200px;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MinusPlusButton from './minusPlusButton';
+import MinusPlusButton from './common/minusPlusButton';
 import MediaComponent from './mediaComponent';
 
 class OrderSummaryTable extends Component {

@@ -1,5 +1,4 @@
 import React from 'react';
-import RadioInput from './common/radioInput';
 
 const ProductDetailCard = ({product}) => {
 

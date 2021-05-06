@@ -1,13 +1,14 @@
 import React from 'react';
 
-const RadioInput = ({_id, prices, onChange, selectedPrice}) => {
+
+const RadioInput = ({prices, onChange, selectedPrice}) => {
 
     console.log(selectedPrice);
 
     return (
         <div>
-             {prices.map(price => 
-             <div className="radio" key={_id}>
+             {prices.map((price) => 
+             <div className="radio" key={price}>
              <input 
              className="mr-2" 
              type="radio" 
