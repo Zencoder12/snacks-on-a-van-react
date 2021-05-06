@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+@import "color.css";
 /* font-family: 'Open Sans', sans-serif;   font-family: 'Open Sans Condensed', sans-serif; */
 html {
     background-color: var(--color-primary-bg);
@@ -25,10 +26,27 @@ html {
 
     /* settings for pc */
     @media screen and (min-width: 768px) {
-        /* #phone_nav, .phone_nav {display: none;} */
+        #phone_nav, .phone_nav {display: none;}
         /* gaps between tabs */
         nav {padding: 0 5vw;}
         nav li {padding-left: 6vw;}
+    }
+
+    /* change font sixe for different screens */
+    @media screen and (min-width: 768px) and (max-width: 1025px) {
+        #nav_text {font-size: 2vw;}
+    }
+    @media screen and (min-width: 1025px) {
+        #nav_text {font-size: 1.5vw;}
+    }
+
+    @media not screen and (min-width: 768px) {
+        /* #pc_nav {display: none;} */
+        nav {padding: 0 3vw;}
+        .container-fluid {padding: 0;}
+        #nav_text {font-size: 20px;}
+        #fo_log .active {background-color: var(--heading);}
+        #fo_log a:hover {background-color: var(--hover-color);}
     }
 
     /* change font sixe for different screens */
