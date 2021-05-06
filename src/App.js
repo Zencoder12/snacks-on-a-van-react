@@ -25,9 +25,37 @@ class App extends Component {
     } catch (ex) {}
   }
 
+  handleAdd = (productName, img, price) => {
+    console.log(productName);
+    const orderItemId = productName + price;
+    const exist = this.state.cartItems.find((x) => x.id === orderItemId);
+    console.log("this", exist);
+    if (exist) {
+      const updatedCartItems = this.state.cartItems.filter(
+        (x) => x.id !== orderItemId
+      );
+      this.setState({
+        cartItems: [...updatedCartItems, { ...exist, qty: exist.qty + 1 }],
+      });
+    } else {
+      this.setState({
+        cartItems: [
+          ...this.state.cartItems,
+          {
+            id: orderItemId,
+            productName: productName,
+            img: img,
+            price: price,
+            qty: 1,
+          },
+        ],
+      });
+    }
+  };
+
   handleCheckOut = (cartItems) => {
     console.log("the current cart has", this.state.cartItems);
-    localStorage.setItem("cart", JSON.stringify(cartItems));
+    localStorage.setItem("cart", JSON.stringify(this.state.cartItems));
     window.location = "/orders";
   };
 
@@ -40,7 +68,12 @@ class App extends Component {
           <Route
             path="/menu"
             render={(props) => (
-              <Menu onCheckOut={this.handleCheckOut} {...props} />
+              <Menu
+                onAdd={this.handleAdd}
+                onCheckOut={this.handleCheckOut}
+                cartItems={this.state.cartItems}
+                {...props}
+              />
             )}
           />
           <Route
