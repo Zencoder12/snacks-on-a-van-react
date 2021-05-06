@@ -30,6 +30,11 @@ button{
     border-color: var(--gray-4) !important;
 }
 
+#nav_button{
+    background-color:var(--menu-bar-bg) !important;
+    border-color: var(--menu-bar-text)!important;
+}
+
 .inner{
     background-color:var(--color-primary-bg);
     height: 360px;
