@@ -36,95 +36,98 @@
             </div>
             </div>
         </nav>
+        
+    <!-- Order Summary -->
 
-        <!-- Order Summary -->  
-        <div class="pc summary container-fluid">   
-            <div class="col-12"></div><h1>ORDER SUMMARY</h1></div>
-            <div class="outer container-fluid">
-                <div class="row justify-content-md-center">
-                <div class="col">
-                <div class="inner col">
-                    <table class="title table align-middle">
-                        <thead>
+    <div class="pc summary container-fluid">   
+        <div class="col-12"></div><h1>ORDER SUMMARY</h1></div>
+        <div class="outer container-fluid">
+            <div class="row justify-content-md-center">
+            <div class="col">
+            <div class="inner col">
+                <table class="title table align-middle">
+                    <thead>
+                      <tr>
+                        <th scope="col-4"><h2 class="prod_detail">PRODUCT DETAILS</h2></th>
+                        <th scope="col"><h2>PRICE</h2></th>
+                        <th scope="col"><h2>QUANTITY</h2></th>
+                        <th scope="col"><h2>SUBTOTAL</h2></th>
+                      </tr>
+                    </thead>
+                    <tbody>
                         <tr>
-                            <th scope="col-4"><h2 class="prod_detail">PRODUCT DETAILS</h2></th>
-                            <th scope="col"><h2>PRICE</h2></th>
-                            <th scope="col"><h2>QUANTITY</h2></th>
-                            <th scope="col"><h2>SUBTOTAL</h2></th>
+                          <th scope="row" class="product">
+                            <div class="row">
+                                <div class="col"><img src="images/7.2.png" alt="cappuccino"></div>
+                                <div class="col">
+                                    <div class="prod_detail ">
+                                        <div><h3>Product name</h3></div>
+                                        <div><h4>size</h4></div>
+                                    </div>
+                                <div><button type="button" class="btn btn-outline-secondary col-xs-btn-outline-secondary">REMOVE</button></div>
+                
+                                
+                                
+                            </div>
+                          </th>
+                          <td><p>$4.5</p></td>
+                          <td><p>1</p></td>
+                          <td><p>$4.5</p></td>
                         </tr>
+                        
+                      </tbody>
+            </table>
+            </div>
+        </div>
+<!-- Summary List -->
+            <div class="col-lg-3">
+                <div class="inner row" id="prod-list">
+                    <div><h2>PRODUCT DETAILS</h2></div>
+                    <hr>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
-                            <th scope="row" class="product">
-                                <div class="row">
-                                    <div class="col"><img src="images/7.2.png" alt="cappuccino"></div>
-                                    <div class="col">
-                                        <div class="prod_detail ">
-                                            <div><h3>Product name</h3></div>
-                                            <div><h4>size</h4></div>
-                                        </div>
-                                    <div><button type="button" class="btn btn-outline-secondary">REMOVE</button></div>
-                                    
-                                </div>
-                            </th>
-                            <td><p>$4.5</p></td>
-                            <td><p>1</p></td>
-                            <td><p>$4.5</p></td>
+                                <th><h5>NO. OF ITEMS</h5></th>
+                                <th><h4 class="sum_detail">1 items</h4></th>
                             </tr>
-                            
+                            <tr>
+                                <th><h5>TOTAL</h5></th>
+                                <th><h4 class="sum_detail">price</h4></th>
+                            </tr>
                         </tbody>
-                </table>
-                </div>
-            </div>
-        <!-- Summary List -->
-                <div class="col-lg-3">
-                    <div class="inner row" id="prod-list">
-                        <div><h2>PRODUCT DETAILS</h2></div>
+                    </table>
+                    <table>
                         <hr>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th><h5>NO. OF ITEMS</h5></th>
-                                    <th><h4 class="sum_detail">1 items</h4></th>
-                                </tr>
-                                <tr>
-                                    <th><h5>TOTAL</h5></th>
-                                    <th><h4 class="sum_detail">price</h4></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table>
-                            <hr>
-                            <thead>
-                                <tr>
-                                    <th scope="col"><h5 class="text-uppercase">pickup vender</h5></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th><h6>866 Koelpin Pass, New Aidenmouth</h6></th>
-                                </tr>
-                                <tr>
-                                    <th><h6 class="text-capitalize text-decoration-underline" id="change_vender">change vender</h6></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <hr>
-                        <div class="row"><button type="button" class="btn btn-secondary text-uppercase">proceed to checkout</button></div>
-                        </div>
-                
-                    <div class="inner row">
-                        <button type="button" class="btn btn-secondary text-uppercase">continue shopping</button>
+                        <thead>
+                            <tr>
+                                <th scope="col"><h5 class="text-uppercase">pickup vender</h5></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th><h6>866 Koelpin Pass, New Aidenmouth</h6></th>
+                            </tr>
+                            <tr>
+                                <th><h6 class="text-capitalize text-decoration-underline" id="change_vender">change vender</h6></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <div class="row"><button type="button" class="btn_one btn btn-secondary  text-uppercase">proceed to checkout</button></div>
                     </div>
+            
+                <div class="inner row">
+                    <button type="button" class=" btn btn-secondary text-uppercase">continue shopping</button>
                 </div>
             </div>
-
         </div>
+
+    </div>
     </body>
 </html>
