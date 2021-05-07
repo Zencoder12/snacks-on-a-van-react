@@ -12,7 +12,7 @@ class Checkout extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="border border-secondary col-sm-12">
+          <div className="col-sm-12">
             <OrderSumaryTable onAdd={this.props.onAdd} cartItems={cartItems} />
           </div>
         </div>

@@ -17,7 +17,7 @@ const NavBar = ({ user }) => {
                 aria-current="page"
                 to="/"
               >
-                LOCATION:---
+                LOCATION: MELBOURNE UNIVERSITY
               </NavLink>
             </li>
             <li className="nav-item ">

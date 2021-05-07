@@ -19,13 +19,17 @@ class OrderSummaryTable extends Component {
     }
   };
 
+  handleReset = async () => {
+    window.location = "/menu";
+  };
+
   render() {
     const { cartItems, onAdd } = this.props;
 
     return (
       <React.Fragment>
         <div className="container">
-          <table className="table table-condensed summary-table">
+          <table className="table table-condensed table-summary">
             <thead>
               <tr>
                 <th>PRODUCT DETAILS</th>
@@ -37,17 +41,27 @@ class OrderSummaryTable extends Component {
             <tbody>
               {cartItems.map((cartItem) => (
                 <tr key={cartItem.id}>
-                  <MediaComponent cartItem={cartItem} />
+                  <td>
+                    <MediaComponent cartItem={cartItem} />
+                  </td>
                   <td className="mt-1">{cartItem.price}</td>
-                  <MinusPlusButton onAdd={onAdd} cartItem={cartItem} />
+                  <td>
+                    <MinusPlusButton onAdd={onAdd} cartItem={cartItem} />
+                  </td>
                   <td>${cartItem.price * cartItem.qty}</td>
                 </tr>
               ))}
             </tbody>
           </table>
           <button
+            onClick={this.handleReset}
+            className="btn btn-warning btn-block font-weight-bold p-3"
+          >
+            RESTART ORDER
+          </button>
+          <button
             onClick={this.handleSubmit}
-            className="btn btn-primary btn-block"
+            className="btn btn-danger btn-block font-weight-bold p-3"
           >
             CONFIRM ORDER
           </button>
