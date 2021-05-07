@@ -9,6 +9,8 @@ import Home from "./components/home";
 import LoginRegister from "./components/loginRegister";
 import NotFound from "./components/notFound";
 import Logout from "./components/logout";
+import ErrorPage from "./components/errorPage";
+import OrderConfirmationPage from "./components/orderConfirmationPage";
 import "./App.css";
 
 class App extends Component {
@@ -26,8 +28,10 @@ class App extends Component {
   }
 
   handleAdd = (productName, img, price) => {
+    console.log("cartItems before finding", this.state.cartItems);
     console.log(productName);
     const orderItemId = productName + price;
+    console.group("resulting id", orderItemId);
     const exist = this.state.cartItems.find((x) => x.id === orderItemId);
     console.log("this", exist);
     if (exist) {
@@ -51,12 +55,22 @@ class App extends Component {
         ],
       });
     }
+    console.log("cartItem before syncing", this.state.cartItems);
+    this.syncCart();
   };
 
   handleCheckOut = (cartItems) => {
     console.log("the current cart has", this.state.cartItems);
-    localStorage.setItem("cart", JSON.stringify(this.state.cartItems));
+    this.syncCart();
     window.location = "/orders";
+  };
+
+  handleReset = () => {
+    this.setState({ cartItems: [] });
+  };
+
+  syncCart = () => {
+    localStorage.setItem("cart", JSON.stringify(this.state.cartItems));
   };
 
   render() {
@@ -71,6 +85,7 @@ class App extends Component {
               <Menu
                 onAdd={this.handleAdd}
                 onCheckOut={this.handleCheckOut}
+                onReset={this.handleReset}
                 cartItems={this.state.cartItems}
                 {...props}
               />
@@ -79,11 +94,17 @@ class App extends Component {
           <Route
             path="/orders"
             render={(props) => (
-              <Orders cartItems={this.state.cartItems} {...props} />
+              <Orders
+                onAdd={this.handleAdd}
+                cartItems={this.state.cartItems}
+                {...props}
+              />
             )}
           />
           <Route path="/login" component={LoginRegister} />
           <Route path="/logout" component={Logout} />
+          <Route path="/error" component={ErrorPage} />
+          <Route path="/order-confirmation" component={OrderConfirmationPage} />
           <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={Home} />
           <Redirect to="/not-found" />

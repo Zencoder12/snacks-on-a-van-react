@@ -85,7 +85,12 @@ svg {
 
 /* MEDIA COMPONENT */
 
-.media-table td {
+.summary-table th {
+  text-align: center;
+}
+
+.summary-table td {
+  text-align: center;
   vertical-align: middle;
 }
 

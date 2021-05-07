@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
-import OrderSumaryTable from './orderSummaryTable';
+import React, { Component } from "react";
+import OrderSumaryTable from "./orderSummaryTable";
 
 class Orders extends Component {
-    state = {  }
-    
-    render() { 
-        const cartItems = JSON.parse(localStorage.getItem('cart'));
-        return (  
-            <div className="container">
-                <div className="row">
-                    <div className="col-9 border border-secondary">
-                        <OrderSumaryTable cartItems={cartItems} />
-                    </div>
-                    <div className="col-3 border border-secondary">
-                        <h2>Summary</h2>
-                    </div>
-                </div>
-            </div>
+  state = {};
 
-        );
-    }
+  render() {
+    const cartItems = JSON.parse(localStorage.getItem("cart"));
+
+    console.log(cartItems);
+
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="border border-secondary col-sm-12">
+            <OrderSumaryTable onAdd={this.props.onAdd} cartItems={cartItems} />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
- 
+
 export default Orders;

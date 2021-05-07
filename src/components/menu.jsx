@@ -13,10 +13,6 @@ class Menu extends Component {
         this.setState({ products : data });
     }
 
-    handleReset = () => {
-        this.setState({ cartItems: [] });
-    }
-
     render() {
         
         const { products } = this.state;
@@ -30,7 +26,7 @@ class Menu extends Component {
                         </div>
                         <div className="col-sm-6 col-md-3">
                             <Cart cartItems={this.props.cartItems} 
-                            onReset={this.handleReset} 
+                            onReset={this.props.onReset} 
                             onCheckOut={() => this.props.onCheckOut(this.state.cartItems)} />
                         </div>
                     </div>
