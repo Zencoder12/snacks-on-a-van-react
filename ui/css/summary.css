@@ -7,12 +7,14 @@ body{background-color: var(--color-primary-bg);}
 
 h1, h2, h3, h4, h5, h6{font-family:"Open Sans Condensed";}
 
+
 h1{
     color: var(--heading);
     font-size: 40px;
-    margin-top: 15px;
+    margin-left:6vw;
+    padding: 1vw;
     font-weight: bold;
-    margin-bottom: 15px;}
+    width: fit-content;}
 
 h2{
     font-size: 20px;
@@ -74,29 +76,7 @@ p{
 
 .product, .title{
     position: relative;
-    padding:10px;}
-/* 
-/* .xs-name_position {
-    position: absolute;
-    margin-top: -90px;
-    margin-left: 110px;
-}
-.xs-size_position {
-    position: absolute;
-    margin-top: -40px;
-    margin-left: 110px;
-
-}
-.lg-name_position {
-    position: absolute;
-    margin-top:10px;
-    margin-left: -120px;
-
-}
-.lg-size_position {
-    position: absolute;
-    margin-top:40px;
-    margin-left: -120px; */
+    padding:2vw;}
 
 
 button {
@@ -107,7 +87,7 @@ button {
     width: 70px;
     font-size: 12px;
     font-weight:600;
-    margin-left: -10px;
+    /* margin-left: -10px; */
 }
 
 
@@ -115,7 +95,6 @@ img{box-shadow: 0 3px 6px rgb(0 0 0 / 16%);}
 
 .btn-secondary{
     background-color:var(--heading) !important;
-    padding-left: 20px;
     font-weight: bold !important;}
 
 .btn_one {
@@ -129,8 +108,48 @@ img{box-shadow: 0 3px 6px rgb(0 0 0 / 16%);}
     
     font-size: 12px;
     font-weight:600;
-    margin-left: -10px;
+    /* margin-left: -10px; */
     width: 150px;
     font-weight: normal;
 }
+
+
+.phone-h0{
+    font-size: 30px;
+    padding:1vw;
+    margin-left:0px;}
+
+
+#phone-h1{
+    font-size:25px;
+    margin-left: 0px;}
+
+#phone-h2 {
+    font-size:16px;
+    font-weight: lighter;}
+
+#phone-h3, #phone-h4{
+    font-size: 16px;}
+
+
+#phone-btn{
+   align-items: center;}
+
+
+#btn-outline-nd{    width: 100% ;}
+
+.edit-btn{
+    color:var(--menu-bar-bg) !important;
+    background-color: var(--menu-bar-bg) !important;
+}
+
+@media screen and (min-width:768px){
+    #table-phone{display:none !important;}
+   }
+
+@media not screen and (min-width:768px){
+    #table-pc{display:none !important;}
+}
+
+
 
