@@ -27,9 +27,9 @@ class Orders extends Component {
               <dt class="col-sm-4 text-start">Outstanding/Fulfilled</dt>
             </dl>
             <table class="table table-sm" id="orders_tab">
-              {orders.map((order) => (
+              {/* {orders.map((order) => (
                 <OrderDetails order={order} />
-              ))}
+              ))} */}
             </table>
             <dl class="row" id="total">
               <dt class="col-sm-6">

@@ -8,7 +8,7 @@ class OrderSummaryTable extends Component {
 
   handleSubmit = async () => {
     try {
-      const vendorId = "607fc27e0321d9f7f3c2294f";
+      const vendorId = "608018b9f388c7314bdb0484";
       const orderItems = JSON.parse(localStorage.getItem("cart"));
       await createOrder(vendorId, orderItems);
       window.location = "/order-confirmation";
@@ -44,7 +44,7 @@ class OrderSummaryTable extends Component {
                   <td>
                     <MediaComponent cartItem={cartItem} />
                   </td>
-                  <td className="mt-1">{cartItem.price}</td>
+                  <td className="mt-1">${cartItem.price}</td>
                   <td>
                     <MinusPlusButton onAdd={onAdd} cartItem={cartItem} />
                   </td>
