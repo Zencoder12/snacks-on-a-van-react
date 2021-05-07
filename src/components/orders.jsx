@@ -1,23 +1,17 @@
 import React, { Component } from "react";
-import OrderSumaryTable from "./orderSummaryTable";
+import { getOrders } from "../services/orderService";
 
 class Orders extends Component {
-  state = {};
+  state = { orders: [] };
+
+  async componentDidMount() {
+    const { data } = await getOrders();
+    this.setState({ orders: data });
+  }
 
   render() {
-    const cartItems = JSON.parse(localStorage.getItem("cart"));
-
-    console.log(cartItems);
-
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="border border-secondary col-sm-12">
-            <OrderSumaryTable onAdd={this.props.onAdd} cartItems={cartItems} />
-          </div>
-        </div>
-      </div>
-    );
+    console.log(this.state.orders);
+    return <h1>OUTSTADING ORDERS</h1>;
   }
 }
 
