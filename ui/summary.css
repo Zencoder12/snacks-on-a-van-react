@@ -1,0 +1,87 @@
+@import "color.css";
+@import "nav bar.css";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+
+body{background-color: var(--color-primary-bg);}
+
+h1, h2, h3, h4, h5, h6{font-family:"Open Sans Condensed";}
+
+h1{
+    color: var(--heading);
+    font-size: 40px;
+    margin-top: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;}
+
+h2{
+    font-size: 20px;
+    color:var(--heading);
+    font-weight: bold;
+    text-align: center;}
+
+h3{
+    font-size: 18px;
+    font-weight: bold;
+    color:var(--menu-bar-bg);}
+
+h4{
+    font-size: 18px;
+    font-weight: lighter;
+    color:var(--gray-6);}
+
+h5{
+    font-size: 18px;
+    color:var(--gray-6);
+    font-weight: bold;}
+
+h6{
+    font-size: 16px;
+    color:var(--menu-bar-bg);}
+
+#change_vender{
+    font-size: 10px;
+    color:var(--gray-6);}
+
+p{
+    color:var(--gray-6);
+    text-align: center;}
+
+.prod_detail{
+    text-align: left;}
+
+.sum_detail{text-align: right;}
+
+.summary, .outer{margin: 0vh 6vw;}
+
+.inner{
+    background-color:var(--color-primary-bg);
+    height: auto;
+    margin: 15px;
+    padding:20px;
+    position:relative;
+    top: 0px;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);}
+
+.outer{
+    background-color: var(--color-secondary-bg);
+    position:center;
+    border-radius: 6px;
+    height: auto;
+    width:88vw}
+
+
+.product, .title{padding:10px;}
+
+button {
+    border-color: var(--gray-4) !important;
+    font-family: "Open Sans Condensed" !important;}
+
+
+img{box-shadow: 0 3px 6px rgb(0 0 0 / 16%);}
+
+.btn-secondary{
+    background-color:var(--heading) !important;
+    font-weight: bold !important;}
+
