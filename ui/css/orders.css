@@ -1,0 +1,41 @@
+/* background settings */
+#content {
+    padding: 3vh 5vw;
+    background-color: var(--color-primary-bg);
+}
+.bg {
+    border-radius: 5px;
+    padding: 1vw;
+}
+#bg2 {background-color: var(--color-secondary-bg);}
+#orderbg {background-color: var(--color-primary-bg);}
+
+#content h1 {    
+    color: var(--heading);
+    font-weight: bold;
+}
+/* table settings */
+#orders_tab img {width: 10vw;}
+#orders_tab thead, #order_info, #total {
+    color: var(--heading);
+    font-weight: bold;
+}
+#orders_tab tbody {
+    color: var(--menu-bar-bg);
+    font-weight: bold;
+}
+#orders_tab th span {
+    padding-left: 2vw;
+}
+
+@media not screen and (min-width: 768px) {
+    #order_info .text-end {display: none;}
+    #orders_tab thead, #total {font-size: 2vw;}
+    #orders_tab tbody, #order_info {font-size: 1.5vw;}
+}
+@media screen and (min-width: 1024px) {
+    #order_info .text-start {display: none;}
+    #orders_tab thead, #total {font-size: 25px;}
+    #orders_tab tbody, #order_info {font-size: 20px;}
+    #orders_tab img {width: 5vw;}
+}
