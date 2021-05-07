@@ -107,7 +107,7 @@ class App extends Component {
           <Route path="/error" component={ErrorPage} />
           <Route path="/order-confirmation" component={OrderConfirmationPage} />
           <Route path="/not-found" component={NotFound} />
-          <Route path="/" exact component={Menu} />
+          <Route path="/" exact component={LoginRegister} />
           <Redirect to="/not-found" />
         </Switch>
       </React.Fragment>
