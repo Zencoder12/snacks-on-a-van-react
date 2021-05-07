@@ -16,10 +16,10 @@
         <!-- Navigation Bar for pcs and tablets -->
         <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example">
             <div class="container-fluid">
-            <a class="navbar-brand text-uppercase" href="#Location" id="nav_text">Location: <u id="location">address example</u></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#top_nav" aria-controls="top_nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <a class="navbar-brand text-uppercase" href="#Location" id="nav_text">Location: <u id="location">address example</u></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#top_nav" aria-controls="top_nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
         
             <div class="collapse navbar-collapse" id="top_nav">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
@@ -39,37 +39,42 @@
         
     <!-- Order Summary -->
 
-    <div class="pc summary container-fluid">   
-        <div class="col-12"></div><h1>ORDER SUMMARY</h1></div>
+    <div class="container-fluid">   
+        
+        <!-- title for pc -->
+        <div class="col-12"><h1 id="table-pc">ORDER SUMMARY</h1></div>
+        <!-- title for phone -->
+        <div class="col-12 d-flex justify-content-center"><h1 class="phone-h0" id="table-phone">ORDER SUMMARY</h1></div>
+
+
         <div class="outer container-fluid">
             <div class="row justify-content-md-center">
-            <div class="col">
-            <div class="inner col">
-                <table class="title table align-middle">
-                    <thead>
-                      <tr>
-                        <th scope="col-4"><h2 class="prod_detail">PRODUCT DETAILS</h2></th>
-                        <th scope="col"><h2>PRICE</h2></th>
-                        <th scope="col"><h2>QUANTITY</h2></th>
-                        <th scope="col"><h2>SUBTOTAL</h2></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                          <th scope="row" class="product">
-                            <div class="row">
-                                <div class="col"><img src="images/7.2.png" alt="cappuccino"></div>
-                                <div class="col">
-                                    <div class="prod_detail ">
-                                        <div><h3>Product name</h3></div>
-                                        <div><h4>size</h4></div>
-                                    </div>
-                                <div><button type="button" class="btn btn-outline-secondary col-xs-btn-outline-secondary">REMOVE</button></div>
-                
-                                
-                                
-                            </div>
-                          </th>
+                <div class="col">
+                    <div class="inner col">
+
+                    <!-- table for pc & tablet -->
+                        <table class="title table align-middle" id="table-pc">
+                            <thead>
+                               <tr>
+                                 <th scope="col-4"><h2 class="prod_detail">PRODUCT DETAILS</h2></th>
+                                 <th scope="col"><h2>PRICE</h2></th>
+                                 <th scope="col"><h2>QUANTITY</h2></th>
+                                 <th scope="col"><h2>SUBTOTAL</h2></th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="product">
+                                        <div class="row">
+                                            <div class="col"><img src="images/7.2.png" alt="cappuccino"></div>
+                                            <div class="col">
+                                                <div class="prod_detail ">
+                                                    <div><h3>Product name</h3></div>
+                                                    <div><h4>size</h4></div>
+                                                </div>
+                                            <div><button type="button" class="btn btn-outline-secondary col-xs-btn-outline-secondary">REMOVE</button></div>
+                                        </div>
+                                    </th>
                           <td><p>$4.5</p></td>
                           <td><p>1</p></td>
                           <td><p>$4.5</p></td>
@@ -77,12 +82,51 @@
                         
                       </tbody>
             </table>
+            
+            <!-- table for phone -->
+            <div id="table-phone">
+                <h1 class="text-capitalize" id="phone-h1">order details</h1>
+                <hr>
+                <div>
+            <table class="table align-middle" >
+                <thead>
+                    <tr>
+                        <th scope="col-8"><h2 class="prod_detail" id="phone-h2">PRODUCT</h2></th>
+                        <th scope="col"><h2 id="phone-h2">QTY</h2></th>
+                        <th scope="col"><h2 id="phone-h2">SUB</h2></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">
+                            <div class="row">
+                                <div class="col"><img id="phone-img" src="images/7.png" alt="cappuccino"></div>
+                                <div class="col">
+                                    <div class="prod_phone">
+                                        <div><h3 id="phone-h3">Product name</h3></div>
+                                        <div><h4 id="phone-h4">size</h4></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                        <th><p>1</p></th>
+                        <th><p>$4.5</p></th>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row" id="phone-btn">
+                <div class="col d-flex justify-content-center"><button type="button" class="btn btn-outline-secondary" id="btn-outline-nd">REMOVE</button></div>
+                <div class="col d-flex justify-content-center"><button type="button" class="btn btn-outline-secondary" id="btn-outline-nd">EDIT</button></div>
+            </div>
+            </div>
+            </div>
             </div>
         </div>
+
 <!-- Summary List -->
             <div class="col-lg-3">
                 <div class="inner row" id="prod-list">
-                    <div><h2>PRODUCT DETAILS</h2></div>
+                    <div><h2>ORDER SUMMARY</h2></div>
                     <hr>
                     <table>
                         <thead>
