@@ -4,7 +4,7 @@ const ErrorPage = () => {
   return (
     <div className="container">
       <h1>Ops. Something went wrong :(</h1>
-      <p>Please reload and try again</p>
+      <p>Please reload login and try again</p>
     </div>
   );
 };

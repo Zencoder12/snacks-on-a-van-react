@@ -5,7 +5,6 @@ import NavBar from "./components/navBar";
 import Checkout from "./components/checkout";
 import Menu from "./components/menu";
 import ProductDetails from "./components/productDetails";
-import Home from "./components/home";
 import LoginRegister from "./components/loginRegister";
 import NotFound from "./components/notFound";
 import Logout from "./components/logout";
@@ -108,7 +107,7 @@ class App extends Component {
           <Route path="/error" component={ErrorPage} />
           <Route path="/order-confirmation" component={OrderConfirmationPage} />
           <Route path="/not-found" component={NotFound} />
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={Menu} />
           <Redirect to="/not-found" />
         </Switch>
       </React.Fragment>
