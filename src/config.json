@@ -1,3 +1,4 @@
 {
-  "customerApiUrl": "https://the-bald-figthers.herokuapp.com/customers"
+  "customerApiUrl": "https://the-bald-figthers.herokuapp.com/customers",
+  "localHostApi" : "http://localhost:3000/customers"
 }

@@ -8,10 +8,13 @@ class OrderSummaryTable extends Component {
 
   handleSubmit = async () => {
     try {
-      const vendorId = "608018b9f388c7314bdb0484";
+      /*
+      const vendorId = "608018b9f388c7314bdb0484"; -> vendor registered in Heroku
+      */
+      const vendorId = "607fc27e0321d9f7f3c2294f";
       const orderItems = JSON.parse(localStorage.getItem("cart"));
       await createOrder(vendorId, orderItems);
-      window.location = "/order-confirmation";
+      window.location = "/customer/order-confirmation";
     } catch (ex) {
       if (ex) {
         window.location = "/error";
@@ -20,7 +23,7 @@ class OrderSummaryTable extends Component {
   };
 
   handleReset = async () => {
-    window.location = "/menu";
+    window.location = "/customer/menu";
   };
 
   render() {

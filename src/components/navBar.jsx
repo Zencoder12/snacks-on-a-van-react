@@ -21,18 +21,26 @@ const NavBar = ({ user }) => {
               </NavLink>
             </li>
             <li className="nav-item ">
-              <NavLink id="nav-title" className="nav-link" to="/menu">
+              <NavLink id="nav-title" className="nav-link" to="/customer/menu">
                 MENU
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink id="nav-title" className="nav-link" to="/orders">
+              <NavLink
+                id="nav-title"
+                className="nav-link"
+                to="/customer/orders"
+              >
                 ORDERS
               </NavLink>
             </li>
             {!user && (
               <li className="nav-item">
-                <NavLink id="nav-title" className="nav-link" to="/login">
+                <NavLink
+                  id="nav-title"
+                  className="nav-link"
+                  to="/customer/login"
+                >
                   LOGIN/REGISTER
                 </NavLink>
               </li>
@@ -40,12 +48,20 @@ const NavBar = ({ user }) => {
             {user && (
               <React.Fragment>
                 <li className="nav-item">
-                  <NavLink id="nav-title" className="nav-link" to="/login">
+                  <NavLink
+                    id="nav-title"
+                    className="nav-link"
+                    to="/customer/login"
+                  >
                     {"HI! " + user.firstName.toUpperCase()}
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink id="nav-title" className="nav-link" to="/logout">
+                  <NavLink
+                    id="nav-title"
+                    className="nav-link"
+                    to="/customer/logout"
+                  >
                     LOGOUT
                   </NavLink>
                 </li>

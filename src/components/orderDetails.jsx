@@ -1,6 +1,8 @@
 import React from "react";
 
 const OrderDetails = ({ order }) => {
+  console.log("order details are:", order);
+
   return (
     <React.Fragment>
       <thead>
@@ -16,7 +18,7 @@ const OrderDetails = ({ order }) => {
         </tr>
       </thead>
       <tbody>
-        {/* {order.map((orderItem) => (
+        {order.map((orderItem) => (
           <tr>
             <th scope="row">
               <img
@@ -30,7 +32,7 @@ const OrderDetails = ({ order }) => {
             <td class="text-center">x1</td>
             <td class="text-end">$ 4.5</td>
           </tr>
-        ))} */}
+        ))}
       </tbody>
     </React.Fragment>
   );

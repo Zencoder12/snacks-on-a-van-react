@@ -1,12 +1,11 @@
 import http from "./httpService";
-import { customerApiUrl } from "../config.json";
+import { customerApiUrl, localHostApi } from "../config.json";
 
-// const apiEndpoint = "http://localhost:3000/customers";
 const token = localStorage.getItem("token");
 
 export function createOrder(vendor, orderItems) {
   return http.post(
-    customerApiUrl + "/new-order/",
+    localHostApi + "/new-order/",
     { vendor, orderItems },
     {
       headers: {
@@ -17,7 +16,7 @@ export function createOrder(vendor, orderItems) {
 }
 
 export function getOrders() {
-  return http.get(customerApiUrl + "/orders/", {
+  return http.get(localHostApi + "/orders/", {
     headers: {
       "x-auth-token": token,
     },

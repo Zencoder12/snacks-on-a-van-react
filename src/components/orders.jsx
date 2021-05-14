@@ -10,10 +10,20 @@ class Orders extends Component {
     this.setState({ orders: data });
   }
 
-  render() {
-    console.log("state", this.state.orders);
+  flattenObject = (arr) => {
+    const flatObject = {};
+    for (let i = 0; i < arr.length; i++) {
+      for (const property in arr[i]) {
+        flatObject[`${property}_${i}`] = arr[i][property];
+      }
+    }
+    return flatObject;
+  };
 
-    const { orders } = this.state;
+  render() {
+    console.log("loaded data from Server", this.state.orders);
+    const orders = this.flattenObject(this.state.orders);
+    console.log("orders after flattening", orders);
 
     return (
       <div id="content">
@@ -27,9 +37,9 @@ class Orders extends Component {
               <dt class="col-sm-4 text-start">Outstanding/Fulfilled</dt>
             </dl>
             <table class="table table-sm" id="orders_tab">
-              {/* {orders.map((order) => (
+              {orders.map((order) => (
                 <OrderDetails order={order} />
-              ))} */}
+              ))}
             </table>
             <dl class="row" id="total">
               <dt class="col-sm-6">

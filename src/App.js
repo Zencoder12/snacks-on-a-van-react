@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import jwtDecode from "jwt-decode";
 import NavBar from "./components/navBar";
 import Checkout from "./components/checkout";
 import Menu from "./components/menu";
@@ -11,6 +10,7 @@ import Logout from "./components/logout";
 import ErrorPage from "./components/errorPage";
 import OrderConfirmationPage from "./components/orderConfirmationPage";
 import Orders from "./components/orders";
+import auth from "./services/authService";
 import "./App.css";
 
 class App extends Component {
@@ -20,20 +20,13 @@ class App extends Component {
 
   /* get user from jwt stored in the local storage */
   componentDidMount() {
-    try {
-      const jwt = localStorage.getItem("token");
-      const user = jwtDecode(jwt);
-      this.setState({ user });
-    } catch (ex) {}
+    const user = auth.getCurrentUser();
+    this.setState({ user });
   }
 
   handleAdd = (productName, img, price) => {
-    console.log("cartItems before finding", this.state.cartItems);
-    console.log(productName);
     const orderItemId = productName + price;
-    console.group("resulting id", orderItemId);
     const exist = this.state.cartItems.find((x) => x.id === orderItemId);
-    console.log("this", exist);
     if (exist) {
       const updatedCartItems = this.state.cartItems.filter(
         (x) => x.id !== orderItemId
@@ -55,14 +48,13 @@ class App extends Component {
         ],
       });
     }
-    console.log("cartItem before syncing", this.state.cartItems);
     this.syncCart();
   };
 
   handleCheckOut = (cartItems) => {
     console.log("the current cart has", this.state.cartItems);
     this.syncCart();
-    window.location = "/checkout";
+    window.location = "/customer/checkout";
   };
 
   handleReset = () => {
@@ -80,7 +72,7 @@ class App extends Component {
         <Switch>
           <Route path="/product/:id" component={ProductDetails} />
           <Route
-            path="/menu"
+            path="/customer/menu"
             render={(props) => (
               <Menu
                 onAdd={this.handleAdd}
@@ -92,7 +84,7 @@ class App extends Component {
             )}
           />
           <Route
-            path="/checkout"
+            path="/customer/checkout"
             render={(props) => (
               <Checkout
                 onAdd={this.handleAdd}
@@ -101,11 +93,14 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/orders" component={Orders} />
-          <Route path="/login" component={LoginRegister} />
-          <Route path="/logout" component={Logout} />
+          <Route path="/customer/orders" component={Orders} />
+          <Route path="/customer/login" component={LoginRegister} />
+          <Route path="/customer/logout" component={Logout} />
           <Route path="/error" component={ErrorPage} />
-          <Route path="/order-confirmation" component={OrderConfirmationPage} />
+          <Route
+            path="/customer/order-confirmation"
+            component={OrderConfirmationPage}
+          />
           <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={LoginRegister} />
           <Redirect to="/not-found" />
