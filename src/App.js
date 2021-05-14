@@ -4,6 +4,7 @@ import NavBar from "./components/navBar";
 import Checkout from "./components/checkout";
 import Menu from "./components/menu";
 import ProductDetails from "./components/productDetails";
+import ProtectedRoute from "./components/protectedRoute";
 import LoginRegister from "./components/loginRegister";
 import NotFound from "./components/notFound";
 import Logout from "./components/logout";
@@ -83,7 +84,7 @@ class App extends Component {
               />
             )}
           />
-          <Route
+          <ProtectedRoute
             path="/customer/checkout"
             render={(props) => (
               <Checkout

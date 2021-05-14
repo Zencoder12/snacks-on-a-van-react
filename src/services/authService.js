@@ -2,6 +2,9 @@ import http from "./httpService";
 import jwtDecode from "jwt-decode";
 import { customerApiUrl, localHostApi } from "../config.json";
 
+// method to send jwt to http service (axios service module)
+http.setJwt(getJwt());
+
 export async function login(email, password) {
   const { data: jwt } = await http.post(localHostApi + "/auth", {
     email,
@@ -35,6 +38,10 @@ export function getCurrentUser() {
   } catch (ex) {
     return null;
   }
+}
+
+export function getJwt() {
+  return localStorage.getItem("token");
 }
 
 export default { login, signUp, logout, getCurrentUser, loginWithJwt };
