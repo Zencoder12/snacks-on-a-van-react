@@ -1,36 +1,36 @@
 import React from "react";
 
-const OrderDetails = ({ order }) => {
-  console.log("order details are:", order);
-
+const OrderDetails = ({ orderItem }) => {
   return (
     <React.Fragment>
       <thead>
         <tr>
-          <th scope="col">Product Details</th>
+          <th scope="col">Order Details</th>
           <th scope="col">Price</th>
-          <th scope="col" class="text-center">
+          <th scope="col" className="text-center">
             Quantity
           </th>
-          <th scope="col" class="text-end">
+          <th scope="col" className="text-end">
             Subtotal
           </th>
         </tr>
       </thead>
       <tbody>
-        {order.map((orderItem) => (
+        {orderItem.map((orderItem) => (
           <tr>
             <th scope="row">
-              <img
-                src="./images/7.jpeg"
-                class="rounded float-start"
-                alt="Hot Chocolate"
-              />
+              <div className="order-details-img-box">
+                <img
+                  src={"https://i.pinimg.com/originals/" + orderItem.img}
+                  className="order-details-img rounded float-start"
+                  alt={orderItem.productName}
+                />
+              </div>
               <span>{orderItem.productName}</span>
             </th>
             <td>${orderItem.price}</td>
-            <td class="text-center">x1</td>
-            <td class="text-end">$ 4.5</td>
+            <td className="text-center">x{orderItem.qty}</td>
+            <td className="text-end">${orderItem.price * orderItem.qty}</td>
           </tr>
         ))}
       </tbody>

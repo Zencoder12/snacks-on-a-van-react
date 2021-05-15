@@ -1,5 +1,4 @@
 import http from "./httpService";
-import auth from "./authService";
 import { customerApiUrl, localHostApi } from "../config.json";
 
 export function createOrder(vendor, orderItems) {
