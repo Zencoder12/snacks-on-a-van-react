@@ -55,4 +55,4 @@ input[type=radio]:focus, .btn:focus {box-shadow: none !important;}
     background-color: var(--btn-bg) !important;
     border-color: var(--btn-bg) !important;
 }
-.btn-primary:hover {background-color: var(--btn-h) !important;}
+.btn-primary:hover, #btn-log {background-color: var(--btn-h) !important;}
