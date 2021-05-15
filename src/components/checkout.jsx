@@ -7,8 +7,6 @@ class Checkout extends Component {
   render() {
     const cartItems = JSON.parse(localStorage.getItem("cart"));
 
-    console.log(cartItems);
-
     return (
       <div className="container">
         <div className="row">

@@ -263,3 +263,36 @@ nav {
     height: 10vw;
   }
 }
+
+/* PRODUCT CARD */
+.product-card hr {
+  background-color: var(--menu-bar-bg);
+  border: none;
+  height: 3px;
+  margin-top: 0;
+  margin-bottom: 24px;
+  width: 90%;
+}
+
+/* RADIO INPUT */
+.radio-group .radio,
+.size-box {
+  border: 1px solid var(--gray-4);
+}
+
+.radio-group .radio {
+  border-right: 0;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.size-box {
+  border-left: 0;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: right;
+}
+
+.radio-group .radio {
+  color: var(--gray-6);
+}

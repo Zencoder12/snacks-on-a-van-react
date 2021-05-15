@@ -6,7 +6,10 @@ class Orders extends Component {
   state = { orders: [] };
 
   async componentDidMount() {
-    const { data } = await getOrders();
+    const response = await getOrders();
+    console.log("request sent");
+    console.log(response);
+    const { data } = response;
     this.setState({ orders: data });
   }
 

@@ -15,7 +15,7 @@ class ProductCard extends Component {
 
     return (
       <React.Fragment>
-        <div className="col-sm-12 col-md-3 mt-4 mb-4">
+        <div className="product-card col-sm-12 col-md-3 mt-4 mb-4">
           <div className="card" style={{ width: "240px" }}>
             <img
               className="card-img-top"
@@ -23,9 +23,10 @@ class ProductCard extends Component {
               alt={productName}
             />
             <div className="card-body ">
-              <h5 className="d-flex justify-content-center mb-3">
+              <h5 className="d-flex justify-content-center mb-1">
                 {productName}
               </h5>
+              <hr></hr>
               <RadioInput
                 key={_id}
                 selectedPrice={this.state.selectedPrice}

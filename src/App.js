@@ -53,7 +53,7 @@ class App extends Component {
   };
 
   handleCheckOut = (cartItems) => {
-    console.log("the current cart has", this.state.cartItems);
+    if (!this.state.user) alert("You are not logged in.");
     this.syncCart();
     window.location = "/customer/checkout";
   };

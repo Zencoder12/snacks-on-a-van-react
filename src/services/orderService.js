@@ -1,24 +1,11 @@
 import http from "./httpService";
+import auth from "./authService";
 import { customerApiUrl, localHostApi } from "../config.json";
 
-const token = localStorage.getItem("token");
-
 export function createOrder(vendor, orderItems) {
-  return http.post(
-    localHostApi + "/new-order/",
-    { vendor, orderItems },
-    {
-      headers: {
-        "x-auth-token": token,
-      },
-    }
-  );
+  return http.post(localHostApi + "/new-order/", { vendor, orderItems });
 }
 
 export function getOrders() {
-  return http.get(localHostApi + "/orders/", {
-    headers: {
-      "x-auth-token": token,
-    },
-  });
+  return http.get(localHostApi + "/orders/");
 }
