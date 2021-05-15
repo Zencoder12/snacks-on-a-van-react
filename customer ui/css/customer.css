@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+/* color palette */
+:root{
+    /* --color-login-bg:#EBE6E2;
+    --color-primary-bg:#F4F1F0;
+    --color-secondary-bg:#EAE6E3;
+
+    --menu-bar-bg:#C19780;
+    --menu-bar-text:#F2EAE7;
+    --heading:#9A4F32;
+    --hover-color:#AD7259;
+
+    --gray-8:#545556;
+    --gray-6:#7F7F7F;
+    --gray-4:#AAAAAA; */
+
+    --nav-bg: #C19780;
+    --nav-t: #F2EAE7;
+    --nav-h: #9A4F32;
+
+    --body-bg1: #F4F1F0;
+    --body-bg2: #EAE6E3;
+    --card-bg: #F4F1F0;
+    --active-bg: #9A4F32;
+    --btn-bg: #C19780;
+    
+    --h1: #9A4F32;
+    --btn-t: #F2EAE7;
+    --btn-h: #9A4F32;
+}
+
+* {font-family: 'Open Sans Condensed', sans-serif;}
+
+/* navigation bar */
+header {background-color: var(--nav-bg);}
+header a {color: var(--nav-t);}
+header a:hover, .current {color: var(--nav-h);}
+.dropdown-item:focus, .dropdown-item:hover {background-color: var(--nav-bg) !important;}
+
+/* page content */
+html, main {background-color: var(--body-bg1);}
+.container {background-color: var(--body-bg2);}
+h1 {color: var(--h1);}
+
+/* radio */
+input[type=radio]:checked {
+    border-color: var(--active-bg);
+    background-color: var(--active-bg);
+}
+input[type=radio]:focus, .btn:focus {box-shadow: none !important;}
+
+/* buttons */
+.btn-primary {
+    color: var(--btn-t) !important;
+    background-color: var(--btn-bg) !important;
+    border-color: var(--btn-bg) !important;
+}
+.btn-primary:hover {background-color: var(--btn-h) !important;}
