@@ -40,7 +40,7 @@ header a:hover, .current {color: var(--nav-h);}
 /* page content */
 html, main {background-color: var(--body-bg1);}
 .container {background-color: var(--body-bg2);}
-h1 {color: var(--h1);}
+h1, h2 {color: var(--h1);}
 
 /* radio */
 input[type=radio]:checked {

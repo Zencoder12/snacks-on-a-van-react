@@ -39,11 +39,79 @@
         </div>
     </header>
     
-    <main class="mb-5 px-2 px-md-5 row g-3">
-        <h1 class="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">Login/register</h1>
-        <h1 class="pt-3 pb-1 text-uppercase fw-bold text-center d-lg-none">login</h1>
-        
+    <main class="mb-5 px-2 px-md-5">
+      <h1 class="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">Login/register</h1>
+      <h1 class="pt-3 pb-1 text-uppercase fw-bold text-center d-lg-none">login</h1>
+      <div class="px-2 row g-3">
+        <div class="container p-3 rounded">
+            <div class="row row-cols-1 row-cols-lg-2 g-3">
+                <div class="col-lg-4">
+                    <div class="p-3 card shadow-sm">
+                        <h2 class="py-3 text-center text-uppercase fw-bold d-none d-md-block">existing customer</h2>
+                        <h2 class="pb-3 text-center text-uppercase fw-bold d-none d-lg-block">login</h2>
+                        <div class="mb-3">
+                          <label for="login-email" class="form-label fs-4">Email Address</label>
+                          <input type="email" class="form-control fs-5" id="log-email" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                          <label for="login-psw" class="form-label fs-4">Password</label>
+                          <input type="password" class="form-control fs-5" id="log-psw">
+                        </div>
+                        <a href="#" class="w-100 btn btn-primary my-3 text-uppercase fs-5 fw-bold">
+                          login
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8 d-none d-lg-block">
+                    <div class="p-3 px-5 card shadow-sm">
+                        <h2 class="py-3 text-center text-uppercase fw-bold">new customer</h2>
+                        <h2 class="pb-3 text-center text-uppercase fw-bold">register</h2>
+                        
+                        <div class="mb-3 row">
+                          <label for="reg-first-name" class="col-4 col-xl-3 col-form-label fs-4">First Name: </label>
+                          <div class="col-8 col-xl-9">
+                            <input type="text" class="form-control fs-5" id="reg-first-name" placeholder="first name">
+                          </div>
+                        </div>
+                        <div class="mb-3 row">
+                          <label for="reg-family-name" class="col-4 col-xl-3 col-form-label fs-4">Family Name: </label>
+                          <div class="col-8 col-xl-9">
+                            <input type="text" class="form-control fs-5" id="reg-family-name" placeholder="family name">
+                          </div>
+                        </div>
+                        <div class="mb-3 row">
+                          <label for="reg-email" class="col-4 col-xl-3 col-form-label fs-4">Email Address: </label>
+                          <div class="col-8 col-xl-9">
+                            <input type="email" class="form-control fs-5" id="reg-email" placeholder="name@example.com">
+                          </div>
+                        </div>
+                        <div class="mb-3 row">
+                          <label for="reg-psw" class="col-4 col-xl-3 col-form-label fs-4">Password: </label>
+                          <div class="col-8 col-xl-9">
+                            <input type="password" class="form-control fs-5" id="reg-psw" placeholder="password">
+                          </div>
+                        </div>
+                        <div class="mb-3 row">
+                          <label for="reg-psw2" class="col-4 col-xl-3 col-form-label fs-4">Confirm Password: </label>
+                          <div class="col-8 col-xl-9">
+                            <input type="password" class="form-control fs-5" id="reg-psw2" placeholder="confirm password">
+                          </div>
+                        </div>
+                        
+                        
+                        <a href="#" class="w-100 btn btn-primary my-3 text-uppercase fs-5 fw-bold">
+                          register
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>  
     </main>
+
+    <footer>
+      
+    </footer>
 
 </body>
 
