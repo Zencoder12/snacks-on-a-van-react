@@ -27,12 +27,13 @@
     --h1: #9A4F32;
     --btn-t: #F2EAE7;
     --btn-h: #9A4F32;
+    --btn-a: #AD7259;
 }
 
 * {font-family: 'Open Sans Condensed', sans-serif;}
 
 /* navigation bar */
-header {background-color: var(--nav-bg);}
+header, footer {background-color: var(--nav-bg);}
 header a {color: var(--nav-t);}
 header a:hover, .current {color: var(--nav-h);}
 .dropdown-item:focus, .dropdown-item:hover {background-color: var(--nav-bg) !important;}
@@ -56,3 +57,4 @@ input[type=radio]:focus, .btn:focus {box-shadow: none !important;}
     border-color: var(--btn-bg) !important;
 }
 .btn-primary:hover, #btn-log {background-color: var(--btn-h) !important;}
+.active {background-color: var(--btn-a) !important;}
