@@ -90,27 +90,37 @@ svg {
 
 /* MEDIA COMPONENT */
 
-.media-img {
+.media__body {
+  margin-left: 8px;
+  margin-top: 14px;
+}
+
+.media__img {
   border-radius: 15px;
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   object-fit: cover;
   padding: 0.4rem;
 }
 
-.media-heading {
+.media__heading {
   font-family: "Open Sans Condensed", sans-serif;
-  font-size: 1.8rem;
+  font-size: 1rem;
 }
 
-.media-btn {
+.media__size {
+  margin-top: 2px;
+  font-size: 0.8rem;
+}
+
+.media .btn {
   border: 2px solid var(--gray-4);
   background-color: transparent;
   border-radius: 6px;
   color: var(--gray-4);
-  font-size: 14px;
-  margin-top: 2px;
-  padding: 3px 12px 3px 12px;
+  font-size: 10px;
+  padding: 3px 8px 3px 8px;
+  margin-top: 12px;
 }
 
 .table-summary td {
@@ -128,42 +138,133 @@ svg {
 .count-label {
   border: 1px solid var(--gray-4);
   border-radius: 5px;
-  padding: 8px 24px 8px 24px;
+  padding: 0.2rem 1.2rem 0.2rem 1.2rem;
 }
 
 .minus-plus-container .btn {
   font-weight: 600;
 }
 
-/* SUM TABLE HEADER */
-
-.sum-table-header dl {
+/* SUMTABLE */
+.sumtable dl {
   margin-bottom: 0;
 }
 
-.sum-table-header hr {
+.sumtable hr {
   background-color: var(--gray-4);
   border: none;
-  height: 4px;
+  height: 3px;
+  margin-bottom: 2rem;
   margin-top: 0;
 }
 
-/* SUM TABLE BODY */
-
-.sum-table-body {
-  border: 2px solid lightgray;
+.sumtable__body,
+.sumtable__header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
 }
 
-.sum-table-cell {
-  align-items: center;
+.sumtable__header h2 {
+  color: var(--heading);
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.sumtable__body {
   border: 2px solid lightgray;
+}
+
+.media--sumtable {
+  flex-grow: 1;
+  margin-bottom: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.sumtable__data {
+  flex-grow: 1;
+  margin-top: 26px;
+}
+
+.sumtable__subtotal {
+  margin-top: 10px;
+}
+
+.sumtable__fields,
+.sumtable__subtotal,
+.sumtable__price,
+.sumtable__minusplus__btn {
+  align-items: center;
   display: flex;
   flex-direction: row;
+  flex-basis: 0;
   flex-grow: 1;
   justify-content: center;
+}
+
+.sumtable-header .sumtable__fields {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .sumtable {
+    max-width: 60vw;
+  }
+
+  .sumtable__fields__price {
+    box-sizing: content-box;
+    /* align the headings with the content boxes */
+    margin-left: 90px;
+  }
+
+  .sumtable__data {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 4;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+  }
+
+  .sumtable__media {
+    flex-grow: 1;
+  }
+
+  .sumtable__price {
+    margin-top: 9px;
+  }
+}
+
+/* CHECKOUT PAGE*/
+.checkout-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-summary-container {
+  border: 2px solid lightgreen;
+  height: 300px;
+  width: 200px;
+}
+
+@media screen and (min-width: 768px) {
+  .checkout-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .sumtable-container {
+    flex-grow: 3;
+    margin-left: 2rem;
+  }
+
+  .side-summary-container {
+    flex-grow: 1;
+    margin-right: 2rem;
+    margin-top: 5rem;
+  }
 }
 
 /* NAV BAR */

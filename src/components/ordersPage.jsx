@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { getOrders } from "../services/orderService";
-import OrderDetails from "./orderDetails";
 import OrderTable from "./orderTable";
 
-class Orders extends Component {
+class OrdersPage extends Component {
   state = { orders: [] };
 
   async componentDidMount() {
@@ -23,4 +22,4 @@ class Orders extends Component {
   }
 }
 
-export default Orders;
+export default OrdersPage;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import NavBar from "./components/navBar";
-import Checkout from "./components/checkout";
+import CheckoutPage from "./components/checkoutPage";
 import Menu from "./components/menu";
 import ProtectedRoute from "./components/protectedRoute";
 import LoginRegister from "./components/loginRegister";
@@ -9,7 +9,7 @@ import NotFound from "./components/notFound";
 import Logout from "./components/logout";
 import ErrorPage from "./components/errorPage";
 import OrderConfirmationPage from "./components/orderConfirmationPage";
-import Orders from "./components/orders";
+import OrdersPage from "./components/ordersPage";
 import Home from "./components/home";
 import auth from "./services/authService";
 import "./App.css";
@@ -86,14 +86,14 @@ class App extends Component {
           <ProtectedRoute
             path="/customer/checkout"
             render={(props) => (
-              <Checkout
+              <CheckoutPage
                 onAdd={this.handleAdd}
                 cartItems={this.state.cartItems}
                 {...props}
               />
             )}
           />
-          <Route path="/customer/orders" component={Orders} />
+          <Route path="/customer/orders" component={OrdersPage} />
           <Route path="/customer/login" component={LoginRegister} />
           <Route path="/customer/logout" component={Logout} />
           <Route path="/error" component={ErrorPage} />
