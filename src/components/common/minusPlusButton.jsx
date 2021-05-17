@@ -1,13 +1,18 @@
 import React from "react";
 
-const MinusPlusButton = ({ cartItem, onAdd }) => {
+const MinusPlusButton = () => {
+  // cartItem, onAdd
   return (
     <React.Fragment>
-      {/* <button className="btn btn-outline-secondary btn-sm border border-0">-</button> */}
-      <span className="control-label d-inline mx-2 px-4 py-1">
-        {cartItem.qty}
-      </span>
-      {/* <button onClick={() => onAdd(cartItem.productName, cartItem.img, cartItem.price)} className="btn btn-outline-secondary btn-sm border border-0">+</button> */}
+      <div className="minus-plus-container">
+        <button className="btn btn-outline-secondary btn-sm border border-0 mt-0">
+          -
+        </button>
+        <span className="count-label">2</span>
+        <button className="btn btn-outline-secondary btn-sm border border-0 mt-0">
+          +
+        </button>
+      </div>
     </React.Fragment>
   );
 };

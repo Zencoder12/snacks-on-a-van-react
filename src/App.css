@@ -1,3 +1,7 @@
+/* html {
+  font-size: 62.5%;
+} */
+
 :root {
   --color-login-bg: #ebe6e2;
   --color-primary-bg: #f4f1f0;
@@ -86,6 +90,29 @@ svg {
 
 /* MEDIA COMPONENT */
 
+.media-img {
+  border-radius: 15px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  padding: 0.4rem;
+}
+
+.media-heading {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 1.8rem;
+}
+
+.media-btn {
+  border: 2px solid var(--gray-4);
+  background-color: transparent;
+  border-radius: 6px;
+  color: var(--gray-4);
+  font-size: 14px;
+  margin-top: 2px;
+  padding: 3px 12px 3px 12px;
+}
+
 .table-summary td {
   text-align: center;
   vertical-align: middle !important;
@@ -97,15 +124,46 @@ svg {
   text-align: center;
 }
 
-.media-img {
-  border-radius: 15px;
-  width: 20vw;
-  height: 20vw;
-  padding: 0.4rem;
+/* MINUS PLUS BUTTON */
+.count-label {
+  border: 1px solid var(--gray-4);
+  border-radius: 5px;
+  padding: 8px 24px 8px 24px;
 }
 
-.media-heading {
-  font-size: 1rem;
+.minus-plus-container .btn {
+  font-weight: 600;
+}
+
+/* SUM TABLE HEADER */
+
+.sum-table-header dl {
+  margin-bottom: 0;
+}
+
+.sum-table-header hr {
+  background-color: var(--gray-4);
+  border: none;
+  height: 4px;
+  margin-top: 0;
+}
+
+/* SUM TABLE BODY */
+
+.sum-table-body {
+  border: 2px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sum-table-cell {
+  align-items: center;
+  border: 2px solid lightgray;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: center;
 }
 
 /* NAV BAR */
@@ -163,12 +221,12 @@ nav {
 /* change font sixe for different screens */
 @media screen and (min-width: 768px) and (max-width: 1025px) {
   #nav_text {
-    font-size: 2vw;
+    font-size: 3vw;
   }
 }
 @media screen and (min-width: 1025px) {
   #nav_text {
-    font-size: 1.5vw;
+    font-size: 3vw;
   }
 }
 
@@ -257,10 +315,6 @@ nav {
   }
   #orders_tab img {
     width: 5vw;
-  }
-  .media-img {
-    width: 10vw;
-    height: 10vw;
   }
 }
 

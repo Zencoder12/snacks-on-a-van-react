@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
+import MediaComponent from "../components/common/mediaComponent";
+import MinusPlusButton from "./common/minusPlusButton";
+import OrderSummaryTable from "./orderSummaryTable";
 
-const Home = props => {
-    return (  
-        <h1> THIS IS THE HOMEPAGE - HELLO WORLD! </h1>
-    );
-}
- 
+const Home = (props) => {
+  return <OrderSummaryTable />;
+};
+
 export default Home;

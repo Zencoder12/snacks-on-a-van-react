@@ -3,7 +3,6 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import NavBar from "./components/navBar";
 import Checkout from "./components/checkout";
 import Menu from "./components/menu";
-import ProductDetails from "./components/productDetails";
 import ProtectedRoute from "./components/protectedRoute";
 import LoginRegister from "./components/loginRegister";
 import NotFound from "./components/notFound";
@@ -11,6 +10,7 @@ import Logout from "./components/logout";
 import ErrorPage from "./components/errorPage";
 import OrderConfirmationPage from "./components/orderConfirmationPage";
 import Orders from "./components/orders";
+import Home from "./components/home";
 import auth from "./services/authService";
 import "./App.css";
 
@@ -71,7 +71,6 @@ class App extends Component {
       <React.Fragment>
         <NavBar user={this.state.user} />
         <Switch>
-          <Route path="/product/:id" component={ProductDetails} />
           <Route
             path="/customer/menu"
             render={(props) => (
@@ -103,7 +102,7 @@ class App extends Component {
             component={OrderConfirmationPage}
           />
           <Route path="/not-found" component={NotFound} />
-          <Route path="/" exact component={LoginRegister} />
+          <Route path="/" exact component={Home} />
           <Redirect to="/not-found" />
         </Switch>
       </React.Fragment>

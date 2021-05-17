@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { createOrder } from "../services/orderService";
 import MinusPlusButton from "./common/minusPlusButton";
-import MediaComponent from "./mediaComponent";
+import MediaComponent from "../components/common/mediaComponent";
 
 class OrderSummaryTable extends Component {
   state = {};
@@ -30,46 +30,31 @@ class OrderSummaryTable extends Component {
     const { cartItems, onAdd } = this.props;
 
     return (
-      <React.Fragment>
+      <div className="sum-table-header">
         <div className="container">
-          <table className="table table-condensed table-summary">
-            <thead>
-              <tr>
-                <th>PRODUCT DETAILS</th>
-                <th>PRICE</th>
-                <th>QUANTITY</th>
-                <th>SUBTOTAL</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cartItems.map((cartItem) => (
-                <tr key={cartItem.id}>
-                  <td>
-                    <MediaComponent cartItem={cartItem} />
-                  </td>
-                  <td className="mt-1">${cartItem.price}</td>
-                  <td>
-                    <MinusPlusButton onAdd={onAdd} cartItem={cartItem} />
-                  </td>
-                  <td>${cartItem.price * cartItem.qty}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <button
-            onClick={this.handleReset}
-            className="btn btn-warning btn-block font-weight-bold p-3"
-          >
-            RESTART ORDER
-          </button>
-          <button
-            onClick={this.handleSubmit}
-            className="btn btn-danger btn-block font-weight-bold p-3"
-          >
-            CONFIRM ORDER
-          </button>
+          <dl className="d-inline-flex">
+            <dd className="col-sm-9">PRODUCT DETAILS</dd>
+            <dd className="col-sm-9">PRICE</dd>
+            <dd className="col-sm-9">QUANTITY</dd>
+            <dd className="col-sm-9">SUBTOTAL</dd>
+          </dl>
         </div>
-      </React.Fragment>
+        <hr></hr>
+        <div className="container sum-table-body">
+          <div className="sum-table-cell">
+            <MediaComponent />
+          </div>
+          <div className="sum-table-cell">
+            <p>$ 4.5</p>
+          </div>
+          <div className="sum-table-cell">
+            <MinusPlusButton />
+          </div>
+          <div className="sum-table-cell">
+            <p>Subtotal</p>
+          </div>
+        </div>
+      </div>
     );
   }
 }
