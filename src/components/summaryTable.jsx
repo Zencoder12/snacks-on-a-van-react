@@ -30,40 +30,23 @@ class SummaryTable extends Component {
     const { cartItems, onAdd } = this.props;
 
     return (
-      <div className="container sumtable">
-        <div className="sumtable__header">
-          <div className="sumtable__fields">
-            <h2>PRODUCT DETAILS</h2>
-          </div>
-          <div className="sumtable__fields sumtable__fields__price">
-            <h2>PRICE</h2>
-          </div>
-          <div className="sumtable__fields">
-            <h2>QUANTITY</h2>
-          </div>
-          <div className="sumtable__fields">
-            <h2>SUBTOTAL</h2>
-          </div>
+      <div className="sumtable__body">
+        <div className="media--sumtable">
+          <MediaComponent />
         </div>
-        <hr></hr>
-        <div className="sumtable__body">
-          <div className="media--sumtable">
-            <MediaComponent />
+        <div className="sumtable__data">
+          <div className="sumtable__price">
+            <p>
+              <strong>$ 4.5</strong>
+            </p>
           </div>
-          <div className="sumtable__data">
-            <div className="sumtable__price">
-              <p>
-                <strong>$ 4.5</strong>
-              </p>
-            </div>
-            <div className="sumtable__minusplus__btn">
-              <MinusPlusButton />
-            </div>
-            <div className="sumtable__subtotal">
-              <p>
-                <strong>$ 9.0</strong>
-              </p>
-            </div>
+          <div className="sumtable__minusplus__btn">
+            <MinusPlusButton />
+          </div>
+          <div className="sumtable__subtotal">
+            <p>
+              <strong>$ 9.0</strong>
+            </p>
           </div>
         </div>
       </div>

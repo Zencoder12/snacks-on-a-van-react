@@ -8,7 +8,7 @@ const MinusPlusButton = () => {
         <button className="btn btn-outline-secondary btn-sm border border-0 mt-0">
           -
         </button>
-        <span className="count-label">2</span>
+        <span className="count__label">2</span>
         <button className="btn btn-outline-secondary btn-sm border border-0 mt-0">
           +
         </button>
