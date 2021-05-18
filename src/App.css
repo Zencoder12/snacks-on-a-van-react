@@ -77,7 +77,7 @@ svg {
   background-color: var(--gray-4);
   border: none;
   height: 3px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   margin-top: 0;
   width: 95%;
 }
@@ -86,7 +86,7 @@ svg {
   background-color: var(--gray-4);
   border: none;
   height: 1px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   margin-top: 0;
   width: 95%;
 }
@@ -114,7 +114,7 @@ svg {
 
 .header-right-line {
   margin-left: 0.6rem;
-  width: 60vw;
+  width: 54vw;
 }
 
 .page-header-heading {
@@ -135,7 +135,7 @@ svg {
   }
 
   .header-right-line {
-    width: 50vw;
+    width: 45vw;
   }
 }
 
@@ -189,6 +189,9 @@ svg {
 .count__label {
   border: 1px solid var(--gray-4);
   border-radius: 5px;
+  color: var(--gray-6);
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 700;
   padding: 0.2rem 1.2rem 0.2rem 1.2rem;
 }
 
@@ -383,7 +386,7 @@ svg {
 
   .side-summary-container {
     flex-grow: 1;
-    margin: 3rem 1.6rem 0 1.6rem;
+    margin: 1rem 1.6rem 0 1.6rem;
   }
 }
 

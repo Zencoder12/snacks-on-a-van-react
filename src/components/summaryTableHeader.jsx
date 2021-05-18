@@ -13,7 +13,7 @@ const SummaryTableHeader = () => {
         <div className="sumtable__fields sumtable__fields__qty">
           <h2 className="sumtable__fields__heading">QUANTITY</h2>
         </div>
-        <div className="sumtable__fields ">
+        <div className="sumtable__fields sumtable__fields__subtotal">
           <h2 className="sumtable__fields__heading">SUBTOTAL</h2>
         </div>
       </div>

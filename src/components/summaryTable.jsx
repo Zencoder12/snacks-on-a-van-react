@@ -29,6 +29,8 @@ class SummaryTable extends Component {
   render() {
     const { cartItems, onAdd } = this.props;
 
+    console.log("cart items are", cartItems);
+
     return (
       <div className="sumtable__body">
         <div className="media--sumtable">

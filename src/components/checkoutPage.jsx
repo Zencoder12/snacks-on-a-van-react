@@ -12,9 +12,10 @@ class CheckoutPage extends Component {
 
     return (
       <React.Fragment>
-        <PageHeader />
+        <PageHeader title={"ORDER SUMMARY"} />
         <div className="checkout-container">
           <div className="sumtable-container default-card-bg">
+            <SummaryTableHeader />
             <SummaryTable onAdd={this.props.onAdd} cartItems={cartItems} />
             <hr className="secondary-underline" />
             <SummaryTable onAdd={this.props.onAdd} cartItems={cartItems} />
