@@ -52,10 +52,10 @@ class App extends Component {
     this.syncCart();
   };
 
-  handleCheckOut = (cartItems) => {
+  handleCheckOut = (history) => {
     if (!this.state.user) alert("You are not logged in.");
     this.syncCart();
-    window.location = "/customer/checkout";
+    console.log(history);
   };
 
   handleReset = () => {

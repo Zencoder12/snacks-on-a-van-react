@@ -34,6 +34,7 @@ class Menu extends Component {
             <div className="col-sm-6 col-md-3">
               <Cart
                 cartItems={this.props.cartItems}
+                history={this.props.history}
                 onReset={this.props.onReset}
                 onCheckOut={() => this.props.onCheckOut(this.state.cartItems)}
               />

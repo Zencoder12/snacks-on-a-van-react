@@ -1,10 +1,12 @@
 import React from "react";
 
-const Cart = ({ cartItems, onReset, onCheckOut }) => {
+const Cart = ({ cartItems, onReset, onCheckOut, history }) => {
   const totalPrice = cartItems.reduce(
     (a, item) => a + item.price * item.qty,
     0
   );
+
+  console.log("cart history", history);
 
   return (
     <React.Fragment>
@@ -48,7 +50,7 @@ const Cart = ({ cartItems, onReset, onCheckOut }) => {
           </button>
           <button
             href="/orders"
-            onClick={onCheckOut}
+            onClick={() => onCheckOut(history)}
             type="button"
             class="btn btn-secondary btn-block font-weigth-bold"
           >

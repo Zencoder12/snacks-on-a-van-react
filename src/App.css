@@ -1,62 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+/* color palette */
 :root {
   --color-login-bg: #ebe6e2;
   --color-primary-bg: #f4f1f0;
   --color-secondary-bg: #eae6e3;
-
   --menu-bar-bg: #c19780;
   --menu-bar-text: #f2eae7;
   --heading: #9a4f32;
-
+  --hover-color: #ad7259;
   --gray-8: #545556;
   --gray-6: #7f7f7f;
   --gray-4: #aaaaaa;
+
+  --nav-bg: #c19780;
+  --nav-t: #f2eae7;
+  --nav-h: #9a4f32;
+
+  --body-bg1: #f4f1f0;
+  --body-bg2: #eae6e3;
+  --card-bg: #f4f1f0;
+  --active-bg: #9a4f32;
+  --btn-bg: #c19780;
+
+  --h1: #9a4f32;
+  --btn-t: #f2eae7;
+  --btn-h: #9a4f32;
+  --btn-a: #ad7259;
 }
 
-body {
-  background-color: var(--color-primary-bg) !important;
+* {
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
-nav {
-  background-color: var(--menu-bar-bg) !important;
+/* navigation bar */
+header,
+footer {
+  background-color: var(--nav-bg);
+}
+header a {
+  color: var(--nav-t);
+}
+header a:hover,
+.current {
+  color: var(--nav-h);
+}
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background-color: var(--nav-bg) !important;
 }
 
-#nav-title {
-  color: var(--menu-bar-text);
+/* page content */
+html,
+main {
+  background-color: var(--body-bg1);
+}
+.container {
+  background-color: var(--body-bg2);
+}
+h1,
+h2 {
+  color: var(--h1);
 }
 
-#heading {
-  color: var(--heading);
+/* radio */
+input[type="radio"]:checked {
+  border-color: var(--active-bg);
+  background-color: var(--active-bg);
+}
+input[type="radio"]:focus,
+.btn:focus {
+  box-shadow: none !important;
 }
 
-h5 {
-  color: var(--gray-6);
+/* buttons */
+.btn-primary {
+  color: var(--btn-t) !important;
+  background-color: var(--btn-bg) !important;
+  border-color: var(--btn-bg) !important;
+}
+.btn-primary:hover,
+#btn-log {
+  background-color: var(--btn-h) !important;
+}
+.active {
+  background-color: var(--btn-a) !important;
 }
 
-p {
-  color: var(--gray-6);
-}
-
-button {
-  color: var(--color-secondary-bg);
-  background-color: var(--gray-4);
-  border-color: var(--gray-4);
-}
-
-#sed-bg {
-  background-color: var(--color-secondary-bg);
-  /* margin-top: 15px;
-  margin-bottom: 15px; */
-  border-radius: 6px;
-  /* height: 380px; */
-}
-
-img,
-svg {
-  vertical-align: middle;
-  width: 260px;
-  height: 210px;
-  /* border-radius: 6px 6px 0px 0px; */
-}
+/* OLD CODE */
 
 .login-box,
 .register-box {
@@ -167,7 +197,9 @@ svg {
 }
 
 .media__heading {
+  color: var(--menu-bar-bg);
   font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 700;
   font-size: 1rem;
 }
 
@@ -387,89 +419,6 @@ svg {
   .side-summary-container {
     flex-grow: 1;
     margin: 1rem 1.6rem 0 1.6rem;
-  }
-}
-
-/* NAV BAR */
-
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
-
-/* navigation bar */
-/* overall nav colors and texts */
-nav {
-  font-weight: bold;
-}
-#nav_text {
-  font-family: "Open Sans Condensed", sans-serif;
-  color: var(--menu-bar-text);
-}
-.navbar {
-  background-color: var(--menu-bar-bg) !important;
-}
-/* address text decorations */
-#location {
-  font-weight: 300;
-}
-/* change color when hovering */
-#nav_text:hover {
-  color: var(--heading);
-}
-/* change text color of current tab */
-#top_nav .active {
-  color: var(--heading);
-}
-/* cancel undreline for 'hi, ' */
-.navbar-text #nav_text {
-  text-decoration: none;
-}
-
-.nav-item {
-  align-items: flex-end;
-}
-
-/* settings for pc */
-@media screen and (min-width: 768px) {
-  #phone_nav,
-  .phone_nav {
-    display: none;
-  }
-  /* gaps between tabs */
-  nav {
-    padding: 0 5vw;
-  }
-  nav li {
-    padding-left: 6vw;
-  }
-}
-
-/* change font sixe for different screens */
-@media screen and (min-width: 768px) and (max-width: 1025px) {
-  #nav_text {
-    font-size: 3vw;
-  }
-}
-@media screen and (min-width: 1025px) {
-  #nav_text {
-    font-size: 3vw;
-  }
-}
-
-@media not screen and (min-width: 768px) {
-  /* #pc_nav {display: none;} */
-  nav {
-    padding: 0 3vw;
-  }
-  .container-fluid {
-    padding: 0;
-  }
-  #nav_text {
-    font-size: 20px;
-  }
-  #fo_log .active {
-    background-color: var(--heading);
-  }
-  #fo_log a:hover {
-    background-color: var(--hover-color);
   }
 }
 

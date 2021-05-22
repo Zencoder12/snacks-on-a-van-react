@@ -16,9 +16,17 @@ class CheckoutPage extends Component {
         <div className="checkout-container">
           <div className="sumtable-container default-card-bg">
             <SummaryTableHeader />
-            <SummaryTable onAdd={this.props.onAdd} cartItems={cartItems} />
-            <hr className="secondary-underline" />
-            <SummaryTable onAdd={this.props.onAdd} cartItems={cartItems} />
+            {cartItems.map((cartItem) => (
+              <React.Fragment>
+                <SummaryTable
+                  onAdd={this.props.onAdd}
+                  history={this.props.history}
+                  key={cartItem.id}
+                  cartItem={cartItem}
+                />
+                <hr className="secondary-underline" />
+              </React.Fragment>
+            ))}
           </div>
           <div className="side-summary-container default-card-bg">
             <SideSumTable />

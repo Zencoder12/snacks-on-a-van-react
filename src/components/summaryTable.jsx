@@ -27,27 +27,25 @@ class SummaryTable extends Component {
   };
 
   render() {
-    const { cartItems, onAdd } = this.props;
-
-    console.log("cart items are", cartItems);
+    const { cartItem, onAdd } = this.props;
 
     return (
       <div className="sumtable__body">
         <div className="media--sumtable">
-          <MediaComponent />
+          <MediaComponent cartItem={cartItem} />
         </div>
         <div className="sumtable__data">
           <div className="sumtable__price">
             <p>
-              <strong>$ 4.5</strong>
+              <strong>${cartItem.price}</strong>
             </p>
           </div>
           <div className="sumtable__minusplus__btn">
-            <MinusPlusButton />
+            <MinusPlusButton cartItem={cartItem} onAdd={onAdd} />
           </div>
           <div className="sumtable__subtotal">
             <p>
-              <strong>$ 9.0</strong>
+              <strong>${cartItem.price * cartItem.qty}</strong>
             </p>
           </div>
         </div>
