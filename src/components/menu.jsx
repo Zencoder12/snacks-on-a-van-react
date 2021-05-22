@@ -15,6 +15,7 @@ class Menu extends Component {
 
   render() {
     const { products } = this.state;
+
     return (
       <React.Fragment>
         <div className="container-fluid">

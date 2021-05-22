@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import NavBar from "./components/navBar";
 import CheckoutPage from "./components/checkoutPage";
-import Menu from "./components/menu";
+import Menu2 from "./components/menu2";
 import ProtectedRoute from "./components/protectedRoute";
 import LoginRegister from "./components/loginRegister";
 import NotFound from "./components/notFound";
@@ -12,20 +12,31 @@ import OrderConfirmationPage from "./components/orderConfirmationPage";
 import OrdersPage from "./components/ordersPage";
 import Home from "./components/home";
 import auth from "./services/authService";
+import { getProducts } from "./services/productService";
 import "./App.css";
 
 class App extends Component {
   state = {
+    allProducts: [],
     cartItems: [],
   };
 
   /* get user from jwt stored in the local storage */
-  componentDidMount() {
+  async componentDidMount() {
     const user = auth.getCurrentUser();
     this.setState({ user });
+    const { data } = await getProducts();
+    this.setState({ allProducts: data });
   }
 
   handleAdd = (productName, img, price) => {
+    console.log("All products:", this.state.allProducts);
+    console.log(this.state.allProducts);
+    const selectedProduct = this.state.allProducts.filter(
+      (product) => productName === product.productName
+    );
+    console.log("Selected product is:", selectedProduct);
+
     const orderItemId = productName + price;
     const exist = this.state.cartItems.find((x) => x.id === orderItemId);
     if (exist) {
@@ -67,6 +78,8 @@ class App extends Component {
   };
 
   render() {
+    const { allProducts, cartItems } = this.state;
+
     return (
       <React.Fragment>
         <NavBar user={this.state.user} />
@@ -74,11 +87,12 @@ class App extends Component {
           <Route
             path="/customer/menu"
             render={(props) => (
-              <Menu
+              <Menu2
                 onAdd={this.handleAdd}
                 onCheckOut={this.handleCheckOut}
                 onReset={this.handleReset}
-                cartItems={this.state.cartItems}
+                cartItems={cartItems}
+                products={allProducts}
                 {...props}
               />
             )}

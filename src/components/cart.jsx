@@ -6,8 +6,6 @@ const Cart = ({ cartItems, onReset, onCheckOut, history }) => {
     0
   );
 
-  console.log("cart history", history);
-
   return (
     <React.Fragment>
       {cartItems.length === 0 && (
