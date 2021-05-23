@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+:root{
+  --nav-bg: #C19780;
+  --nav-t: #F2EAE7;
+  --nav-h: #9A4F32;
+
+  --body-bg1: #F4F1F0;
+  --body-bg2: #EAE6E3;
+  --card-bg: #F4F1F0;
+  --active-bg: #9A4F32;
+  --btn-bg: #C19780;
+  /* index card bg added */
+  --card-bg2:#FAF2EF;
+  
+  --h1: #9A4F32;
+  --btn-t: #F2EAE7;
+  --btn-h: #9A4F32;
+  --btn-a: #AD7259;
+}
+
+* {font-family: 'Open Sans Condensed', sans-serif;}
+
+/* index page */
+body {
+  background-image: url(../images/background_1.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: #F2EAE7;
+}
+.card-bg{
+  background-color: var(--card-bg2);
+}
+
+.vertical-center {
+  min-height: 100%;  
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* page content */
+h1{color: var(--h1);}
+
+/* button */
+.btn-primary {
+  color: var(--btn-t) !important;
+  background-color: var(--btn-bg) !important;
+  border-color: var(--btn-bg) !important;
+}
+.btn-primary:hover{background-color: var(--btn-h) !important;}
