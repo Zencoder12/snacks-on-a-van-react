@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import RadioGroup from "./common/radioGroup";
 
-const Menu2 = ({ products }) => {
+const Menu2 = ({ products, user }) => {
   return (
     <main className="mb-5 px-2 px-md-5 row g-3">
       <div className="col-lg-8">

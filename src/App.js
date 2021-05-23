@@ -93,6 +93,7 @@ class App extends Component {
                 onReset={this.handleReset}
                 cartItems={cartItems}
                 products={allProducts}
+                user={this.state.user}
                 {...props}
               />
             )}
