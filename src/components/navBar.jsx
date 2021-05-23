@@ -21,12 +21,16 @@ const NavBar = ({ user }) => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="./cart.html" className="nav-link px-4 fs-5">
+          <Link
+            to="/customer/shopping-cart-mobile"
+            className="nav-link px-4 fs-5"
+          >
             Cart
           </Link>
         </li>
         <li className="nav-item dropdown">
           <Link
+            to="/customer/orders"
             className="nav-link dropdown-toggle px-4 fs-5"
             role="button"
             data-bs-toggle="dropdown"
@@ -52,6 +56,7 @@ const NavBar = ({ user }) => {
       <div className="col-md-3 text-end">
         {!user && (
           <Link
+            to="/customer/profile"
             className="text-uppercase text-decoration-none dropdown-toggle fs-5"
             role="button"
             data-bs-toggle="dropdown"
@@ -62,6 +67,7 @@ const NavBar = ({ user }) => {
         )}
         {user && (
           <Link
+            to="/customer/profile"
             className="text-uppercase text-decoration-none dropdown-toggle fs-5"
             role="button"
             data-bs-toggle="dropdown"

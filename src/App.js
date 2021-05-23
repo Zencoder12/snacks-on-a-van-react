@@ -11,6 +11,7 @@ import ErrorPage from "./components/errorPage";
 import OrderConfirmationPage from "./components/orderConfirmationPage";
 import OrdersPage from "./components/ordersPage";
 import Home from "./components/home";
+import ShoppingCart from "./components/shoppingCart";
 import auth from "./services/authService";
 import { getProducts } from "./services/productService";
 import "./App.css";
@@ -21,23 +22,20 @@ class App extends Component {
     cartItems: [],
   };
 
-  /* get user from jwt stored in the local storage */
   async componentDidMount() {
+    /* get user from jwt stored in the local storage */
     const user = auth.getCurrentUser();
     this.setState({ user });
+
     const { data } = await getProducts();
     this.setState({ allProducts: data });
   }
 
   handleAdd = (productName, img, price) => {
-    console.log("All products:", this.state.allProducts);
-    console.log(this.state.allProducts);
-    const selectedProduct = this.state.allProducts.filter(
-      (product) => productName === product.productName
-    );
-    console.log("Selected product is:", selectedProduct);
+    const size = this.getSizeByValue(productName, price);
 
     const orderItemId = productName + price;
+
     const exist = this.state.cartItems.find((x) => x.id === orderItemId);
     if (exist) {
       const updatedCartItems = this.state.cartItems.filter(
@@ -53,6 +51,7 @@ class App extends Component {
           {
             id: orderItemId,
             productName: productName,
+            size: size,
             img: img,
             price: price,
             qty: 1,
@@ -61,6 +60,15 @@ class App extends Component {
       });
     }
     this.syncCart();
+  };
+
+  getSizeByValue = (productName, price) => {
+    const product = this.state.allProducts.filter(
+      (product) => product.productName === productName
+    );
+
+    const prices = product[0].prices;
+    return Object.keys(prices).find((key) => prices[key] == price);
   };
 
   handleCheckOut = (history) => {
@@ -112,6 +120,12 @@ class App extends Component {
           <Route path="/customer/orders" component={OrdersPage} />
           <Route path="/customer/login" component={LoginRegisterPage} />
           <Route path="/customer/logout" component={Logout} />
+          <Route
+            path="/customer/shopping-cart-mobile"
+            render={(props) => (
+              <ShoppingCart cartItems={this.state.cartItems} {...props} />
+            )}
+          />
           <Route path="/error" component={ErrorPage} />
           <Route
             path="/customer/order-confirmation"

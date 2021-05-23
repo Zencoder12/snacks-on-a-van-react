@@ -1,6 +1,6 @@
 import React from "react";
 
-const RadioItem = ({ size, price }) => {
+const RadioItem = ({ size, price, onChange }) => {
   return (
     <label className="btn border fs-5">
       <input
@@ -8,6 +8,7 @@ const RadioItem = ({ size, price }) => {
         type="radio"
         name="price"
         value={price}
+        onChange={(e) => onChange(e.currentTarget.value)}
       />
       <span>
         ${price} {size}
