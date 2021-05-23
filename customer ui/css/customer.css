@@ -23,6 +23,7 @@
     --card-bg: #F4F1F0;
     --active-bg: #9A4F32;
     --btn-bg: #C19780;
+    --card-bg2:#FAF2EF;
     
     --h1: #9A4F32;
     --btn-t: #F2EAE7;
@@ -74,4 +75,23 @@ input[type=radio]:focus, .btn:focus {box-shadow: none !important;}
 @media not screen and (min-width: 768px) {
     .cart-prd h4 {font-size: 18px;}
     .cart-prd h5{font-size: 16px;}
+}
+
+/* index page */
+#index-page {
+    background-image: url(../images/background_1.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: #F2EAE7;
+}
+
+.card-bg{
+background-color: var(--card-bg2) !important;
+}
+
+.vertical-center {
+min-height: 100%;  
+min-height: 100vh;
+display: flex;
+align-items: center;
 }
