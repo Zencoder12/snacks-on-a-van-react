@@ -41,6 +41,8 @@ header a {color: var(--nav-t) !important;}
 header a:hover, .current {color: var(--nav-h) !important;}
 .dropdown-item:focus, .dropdown-item:hover {background-color: var(--nav-bg) !important;}
 
+.dropdown-item {color: var(--nav-h) !important;}
+
 /* page content */
 html, main {background-color: var(--body-bg1);}
 .container {background-color: var(--body-bg2);}
