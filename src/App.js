@@ -4,7 +4,7 @@ import NavBar from "./components/navBar";
 import CheckoutPage from "./components/checkoutPage";
 import Menu2 from "./components/menu2";
 import ProtectedRoute from "./components/protectedRoute";
-import LoginRegister from "./components/loginRegister";
+import LoginRegisterPage from "./components/loginRegisterPage";
 import NotFound from "./components/notFound";
 import Logout from "./components/logout";
 import ErrorPage from "./components/errorPage";
@@ -67,6 +67,7 @@ class App extends Component {
     if (!this.state.user) alert("You are not logged in.");
     this.syncCart();
     console.log(history);
+    // go to checkout page
   };
 
   handleReset = () => {
@@ -109,7 +110,7 @@ class App extends Component {
             )}
           />
           <Route path="/customer/orders" component={OrdersPage} />
-          <Route path="/customer/login" component={LoginRegister} />
+          <Route path="/customer/login" component={LoginRegisterPage} />
           <Route path="/customer/logout" component={Logout} />
           <Route path="/error" component={ErrorPage} />
           <Route

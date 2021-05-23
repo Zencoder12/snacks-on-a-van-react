@@ -19,7 +19,6 @@ export function signUp(user) {
     lastName: user.lastName,
     email: user.email,
     password: user.password,
-    phone: user.phone,
   });
 }
 

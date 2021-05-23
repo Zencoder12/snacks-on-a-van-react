@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
   return (
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 px-md-5 fw-bold sticky-top">
       <Link
@@ -50,14 +50,26 @@ const NavBar = () => {
       </ul>
 
       <div className="col-md-3 text-end">
-        <Link
-          className="text-uppercase text-decoration-none dropdown-toggle fs-5"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Hi, <u>Customer</u>
-        </Link>
+        {!user && (
+          <Link
+            className="text-uppercase text-decoration-none dropdown-toggle fs-5"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Hi, <u>Customer</u>
+          </Link>
+        )}
+        {user && (
+          <Link
+            className="text-uppercase text-decoration-none dropdown-toggle fs-5"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Hi, <u>{user.firstName}</u>
+          </Link>
+        )}
         <ul className="dropdown-menu">
           <li>
             <Link className="dropdown-item fs-5" to="./profile.html">

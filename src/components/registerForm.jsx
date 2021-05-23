@@ -3,17 +3,16 @@ import Joi from "joi-browser";
 import Form from "./common/form";
 import auth from "../services/authService";
 
-class registerForm extends Form {
+class RegisterForm extends Form {
   state = {
-    data: { email: "", password: "", firstName: "", lastName: "", phone: "" },
+    data: { email: "", password: "", firstName: "", lastName: "" },
     errors: {},
   };
 
   schema = {
-    firstName: Joi.string().min(2).max(50).required(),
-    lastName: Joi.string().min(2).max(50).required(),
+    firstName: Joi.string().min(3).max(50).required(),
+    lastName: Joi.string().min(3).max(50).required(),
     email: Joi.string().min(5).max(255).required().email(),
-    phone: Joi.string().min(5).max(25).required(),
     password: Joi.string().min(5).max(1024).required(),
   };
 
@@ -34,19 +33,25 @@ class registerForm extends Form {
 
   render() {
     return (
-      <div className="container">
-        <h1>Register</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("firstName", "First Name:")}
-          {this.renderInput("lastName", "Last Name:")}
-          {this.renderInput("email", "Email:")}
-          {this.renderInput("phone", "Phone:")}
-          {this.renderInput("password", "Password:", "password")}
-          {this.renderButton("Create User")}
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        {this.renderInput("firstName", "First Name:", "text", "first name")}
+        {this.renderInput("lastName", "Last Name:", "text", "last name")}
+        {this.renderInput(
+          "email",
+          "Email address:",
+          "text",
+          "name@example.com"
+        )}
+        {this.renderInput(
+          "password",
+          "Password:",
+          "password",
+          "enter password"
+        )}
+        {this.renderButton("Register")}
+      </form>
     );
   }
 }
 
-export default registerForm;
+export default RegisterForm;

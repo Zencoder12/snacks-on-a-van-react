@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoginForm2 from "./loginForm2";
-import RegisterForm2 from "./registerForm2";
+import LoginForm from "./loginForm";
+import RegisterForm from "./registerForm";
 
 const LoginRegisterPage = () => {
   return (
@@ -24,7 +24,7 @@ const LoginRegisterPage = () => {
                   <h2 className="pb-5 text-center text-uppercase fw-bold d-none d-lg-block">
                     login
                   </h2>
-                  <LoginForm2 />
+                  <LoginForm />
                 </div>
               </div>
 
@@ -38,7 +38,7 @@ const LoginRegisterPage = () => {
                   <h2 className="pb-5 text-center text-uppercase fw-bold d-none d-lg-block">
                     register
                   </h2>
-                  <RegisterForm2 />
+                  <RegisterForm />
                 </div>
               </div>
             </div>

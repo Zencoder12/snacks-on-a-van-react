@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import RadioGroup from "./common/radioGroup";
+import LoginBanner from "./loginBanner";
+import ShoppingCart from "./shoppingCart";
 
 const Menu2 = ({ products, user }) => {
   return (
@@ -30,13 +31,19 @@ const Menu2 = ({ products, user }) => {
                           {product.productName}
                         </h3>
                         <RadioGroup prices={product.prices} />
-                        <Link
-                          to="#"
-                          className="w-100 btn btn-secondary mt-3 fs-5 fw-bold disabled"
-                          aria-disabled="true"
-                        >
-                          ADD TO CART
-                        </Link>
+                        {!user && (
+                          <button
+                            className="w-100 btn btn-secondary mt-3 fs-5 fw-bold disabled"
+                            aria-disabled="true"
+                          >
+                            ADD TO CART
+                          </button>
+                        )}
+                        {user && (
+                          <button className="w-100 btn btn-secondary mt-3 fs-5 fw-bold ">
+                            ADD TO CART
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -69,13 +76,19 @@ const Menu2 = ({ products, user }) => {
                           {product.productName}
                         </h3>
                         <RadioGroup prices={product.prices} />
-                        <Link
-                          to="#"
-                          className="w-100 btn btn-secondary mt-3 fs-5 fw-bold disabled"
-                          aria-disabled="true"
-                        >
-                          ADD TO CART
-                        </Link>
+                        {!user && (
+                          <button
+                            className="w-100 btn btn-secondary mt-3 fs-5 fw-bold disabled"
+                            aria-disabled="true"
+                          >
+                            ADD TO CART
+                          </button>
+                        )}
+                        {user && (
+                          <button className="w-100 btn btn-secondary mt-3 fs-5 fw-bold ">
+                            ADD TO CART
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -84,23 +97,8 @@ const Menu2 = ({ products, user }) => {
           </div>
         </div>
       </div>
-      <div className="col-md-4 d-none d-lg-block">
-        <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center">
-          order summary
-        </h1>
-        <div className="pt-3 table-responsive container rounded fs-5">
-          <h1 className="my-5 text-center display-4 text-uppercase fw-bold text-black-50">
-            login to begin order
-          </h1>
-          <Link
-            to="./login.html"
-            className="w-100 btn btn-primary my-3 text-uppercase fs-5 fw-bold"
-            id="btn-log"
-          >
-            Login / Register
-          </Link>
-        </div>
-      </div>
+      {!user && <LoginBanner />}
+      {user && <ShoppingCart />}
     </main>
   );
 };

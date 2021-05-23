@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
-import Input from "./input";
+import FormInput from "./formInput";
 
 class Form extends Component {
   state = {
@@ -9,17 +9,18 @@ class Form extends Component {
   };
 
   validate = () => {
-    const { error } = Joi.validate(this.state.data, this.schema, {
+    const result = Joi.validate(this.state.data, this.schema, {
       abortEarly: false,
     });
-    if (!error) return null;
+
+    if (!result.error) return null;
 
     const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;
-
+    for (let item of result.error.details) errors[item.path[0]] = item.message;
     return errors;
   };
 
+  // create an individual error object for individual input field
   validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
     const schema = { [name]: this.schema[name] };
@@ -37,7 +38,7 @@ class Form extends Component {
     this.doSubmit();
   };
 
-  /* function to render email & password input content */
+  // e.currentTarget => get the input field
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
@@ -53,24 +54,25 @@ class Form extends Component {
   renderButton(label) {
     return (
       <button
-        disabled={this.validate()}
-        className="btn btn-warning btn-block py-3 mt-5 btn-form text-dark"
+        className="w-100 btn btn-primary btn-lg 
+        my-3 my-md-5 text-uppercase fs-4 fw-bold"
       >
         {label}
       </button>
     );
   }
 
-  renderInput(name, label, type = "text") {
+  renderInput(name, label, type = "text", placeholder) {
     const { data, errors } = this.state;
 
     return (
-      <Input
+      <FormInput
         type={type}
         name={name}
         value={data[name]}
         label={label}
         onChange={this.handleChange}
+        placeholder={placeholder}
         error={errors[name]}
       />
     );

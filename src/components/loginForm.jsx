@@ -10,7 +10,7 @@ class LoginForm extends Form {
   };
 
   schema = {
-    email: Joi.string().email().min(5).max(255).required().label("email"),
+    email: Joi.string().email().min(5).max(255).required().label("Email"),
     password: Joi.string().min(5).max(255).required().label("Password"),
   };
 
@@ -30,14 +30,21 @@ class LoginForm extends Form {
 
   render() {
     return (
-      <div className="container">
-        <h1>Login</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("email", "Email")}
-          {this.renderInput("password", "Password", "password")}
-          {this.renderButton("Login")}
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        {this.renderInput(
+          "email",
+          "Email address:",
+          "text",
+          "name@example.com"
+        )}
+        {this.renderInput(
+          "password",
+          "Password:",
+          "password",
+          "enter password"
+        )}
+        {this.renderButton("Login")}
+      </form>
     );
   }
 }
