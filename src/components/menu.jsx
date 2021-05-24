@@ -62,11 +62,7 @@ class Menu extends Component {
                             <button
                               className="w-100 btn btn-primary mt-3 fs-5 fw-bold"
                               onClick={() =>
-                                onAdd(
-                                  product.productName,
-                                  product.img,
-                                  selectedPrice
-                                )
+                                onAdd(product.productName, selectedPrice)
                               }
                             >
                               ADD TO CART
@@ -121,11 +117,7 @@ class Menu extends Component {
                             <button
                               className="w-100 btn btn-primary mt-3 fs-5 fw-bold"
                               onClick={() =>
-                                onAdd(
-                                  product.productName,
-                                  product.img,
-                                  selectedPrice
-                                )
+                                onAdd(product.productName, selectedPrice)
                               }
                             >
                               ADD TO CART

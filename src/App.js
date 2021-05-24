@@ -9,8 +9,7 @@ import ErrorPage from "./components/errorPage";
 import OrderConfirmationPage from "./components/orderConfirmationPage";
 import OrdersPage from "./components/ordersPage";
 import Index from "./components/index";
-import SideCart from "./components/sideCart";
-import Cart2 from "./components/cart2";
+import ShoppingCart from "./components/shoppingCart";
 import auth from "./services/authService";
 import { getProducts } from "./services/productService";
 import "./App.css";
@@ -30,14 +29,12 @@ class App extends Component {
     this.setState({ allProducts: data });
   }
 
-  handleAdd = (productName, img, price) => {
+  handleAdd = (productName, price) => {
     const product = this.state.allProducts.filter(
       (product) => product.productName === productName
     );
 
-    console.log(product);
-
-    const size = this.getSizeByValue(productName, price);
+    const size = this.getSizeByValue(product, price);
 
     const orderItemId = productName + price;
 
@@ -68,11 +65,48 @@ class App extends Component {
     this.syncCart();
   };
 
-  getSizeByValue = (productName, price) => {
+  handleRemove = (productName, price) => {
     const product = this.state.allProducts.filter(
       (product) => product.productName === productName
     );
 
+    const size = this.getSizeByValue(product, price);
+
+    const orderItemId = productName + price;
+
+    const exist = this.state.cartItems.find((x) => x.id === orderItemId);
+    if (exist) {
+      const updatedCartItems = this.state.cartItems.filter(
+        (x) => x.id !== orderItemId
+      );
+      if (exist.qty === 1) {
+        this.setState({ cartItems: [...updatedCartItems] });
+      } else {
+        this.setState({
+          cartItems: [...updatedCartItems, { ...exist, qty: exist.qty - 1 }],
+        });
+      }
+    } else {
+      this.setState({
+        cartItems: [
+          ...this.state.cartItems,
+          {
+            id: orderItemId,
+            productName: productName,
+            size: size,
+            img100: product[0].img100,
+            img50: product[0].img50,
+            price: price,
+            qty: 1,
+          },
+        ],
+      });
+    }
+    this.state.cartItems.sort(this.compare);
+    this.syncCart();
+  };
+
+  getSizeByValue = (product, price) => {
     const prices = product[0].prices;
     return Object.keys(prices).find((key) => prices[key] == price);
   };
@@ -82,6 +116,16 @@ class App extends Component {
     this.syncCart();
     console.log(history);
     // go to checkout page
+  };
+
+  compare = (a, b) => {
+    if (a.id < b.id) {
+      return -1;
+    }
+    if (a.id > b.id) {
+      return 1;
+    }
+    return 0;
   };
 
   handleReset = () => {
@@ -115,7 +159,13 @@ class App extends Component {
           <ProtectedRoute
             path="/customer/checkout"
             render={(props) => (
-              <Cart2 user={this.state.user} cartItems={cartItems} {...props} />
+              <ShoppingCart
+                cartItems={cartItems}
+                onAdd={this.handleAdd}
+                onRemove={this.handleRemove}
+                user={this.state.user}
+                {...props}
+              />
             )}
           />
           <Route path="/customer/orders" component={OrdersPage} />
