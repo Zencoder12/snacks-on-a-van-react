@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RadioGroup from "./common/radioGroup";
 import LoginBanner from "./loginBanner";
+import NavBar from "./navBar";
 import ShoppingCart from "./shoppingCart";
 
 class Menu2 extends Component {
@@ -16,10 +17,9 @@ class Menu2 extends Component {
     const { products, user, onAdd, cartItems } = this.props;
     const { selectedPrice } = this.state;
 
-    console.log("cart items in menu2", cartItems);
-
     return (
       <main className="mb-5 px-2 px-md-5 row g-3">
+        <NavBar user={user} />
         <div className="col-lg-8">
           <div className="col-lg-12">
             <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">

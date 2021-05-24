@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import NavBar from "./components/navBar";
 import CheckoutPage from "./components/checkoutPage";
-import Menu2 from "./components/menu2";
+import Menu from "./components/menu";
 import ProtectedRoute from "./components/protectedRoute";
 import LoginRegisterPage from "./components/loginRegisterPage";
 import NotFound from "./components/notFound";
@@ -10,7 +9,7 @@ import Logout from "./components/logout";
 import ErrorPage from "./components/errorPage";
 import OrderConfirmationPage from "./components/orderConfirmationPage";
 import OrdersPage from "./components/ordersPage";
-import Home from "./components/home";
+import Index from "./components/index";
 import ShoppingCart from "./components/shoppingCart";
 import auth from "./services/authService";
 import { getProducts } from "./services/productService";
@@ -91,12 +90,11 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <NavBar user={this.state.user} />
         <Switch>
           <Route
             path="/customer/menu"
             render={(props) => (
-              <Menu2
+              <Menu
                 onAdd={this.handleAdd}
                 onCheckOut={this.handleCheckOut}
                 onReset={this.handleReset}
@@ -118,7 +116,12 @@ class App extends Component {
             )}
           />
           <Route path="/customer/orders" component={OrdersPage} />
-          <Route path="/customer/login" component={LoginRegisterPage} />
+          <Route
+            path="/customer/login"
+            render={(props) => (
+              <LoginRegisterPage user={this.state.user} {...props} />
+            )}
+          />
           <Route path="/customer/logout" component={Logout} />
           <Route
             path="/customer/shopping-cart-mobile"
@@ -132,7 +135,7 @@ class App extends Component {
             component={OrderConfirmationPage}
           />
           <Route path="/not-found" component={NotFound} />
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={Index} />
           <Redirect to="/not-found" />
         </Switch>
       </React.Fragment>
