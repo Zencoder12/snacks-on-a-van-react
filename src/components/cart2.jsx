@@ -47,29 +47,6 @@ class Cart2 extends Component {
                   {cartItems.map((item) => (
                     <CartRow item={item} />
                   ))}
-                  {/* <div class="row py-3 fs-4 cart-prd border-bottom">
-                    <div class="col-6 d-flex flex-row justify-content-start">
-                      <div>
-                        <img
-                          src="./images/sqr latte.jpg"
-                          class="img-fluid me-3 rounded d-none d-md-block"
-                          alt="Latte"
-                        />
-                        <img
-                          src="./images/sm sqr latte.png"
-                          class="img-fluid me-1 rounded d-md-none"
-                          alt="Latte"
-                        />
-                      </div>
-                      <div>
-                        <h4 class="highlight2 fw-bold text-uppercase">Latte</h4>
-                        <h5 class="text-capitalize fst-italic">Small</h5>
-                      </div>
-                    </div>
-                    <div class="col-2 d-none d-xl-block text-center">$4.0</div>
-                    <div class="col-3 col-xl-2 text-center">1</div>
-                    <div class="col-3 col-xl-2 text-end">$4.0</div>
-                  </div> */}
                 </div>
               </div>
               <div class="col-lg-4">
