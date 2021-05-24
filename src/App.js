@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import CheckoutPage from "./components/checkoutPage";
 import Menu from "./components/menu";
 import ProtectedRoute from "./components/protectedRoute";
 import LoginRegisterPage from "./components/loginRegisterPage";
@@ -10,7 +9,8 @@ import ErrorPage from "./components/errorPage";
 import OrderConfirmationPage from "./components/orderConfirmationPage";
 import OrdersPage from "./components/ordersPage";
 import Index from "./components/index";
-import ShoppingCart from "./components/shoppingCart";
+import SideCart from "./components/sideCart";
+import Cart2 from "./components/cart2";
 import auth from "./services/authService";
 import { getProducts } from "./services/productService";
 import "./App.css";
@@ -31,6 +31,12 @@ class App extends Component {
   }
 
   handleAdd = (productName, img, price) => {
+    const product = this.state.allProducts.filter(
+      (product) => product.productName === productName
+    );
+
+    console.log(product);
+
     const size = this.getSizeByValue(productName, price);
 
     const orderItemId = productName + price;
@@ -51,7 +57,8 @@ class App extends Component {
             id: orderItemId,
             productName: productName,
             size: size,
-            img: img,
+            img100: product[0].img100,
+            img50: product[0].img50,
             price: price,
             qty: 1,
           },
@@ -108,11 +115,7 @@ class App extends Component {
           <ProtectedRoute
             path="/customer/checkout"
             render={(props) => (
-              <CheckoutPage
-                onAdd={this.handleAdd}
-                cartItems={this.state.cartItems}
-                {...props}
-              />
+              <Cart2 user={this.state.user} cartItems={cartItems} {...props} />
             )}
           />
           <Route path="/customer/orders" component={OrdersPage} />
@@ -123,12 +126,6 @@ class App extends Component {
             )}
           />
           <Route path="/customer/logout" component={Logout} />
-          <Route
-            path="/customer/shopping-cart-mobile"
-            render={(props) => (
-              <ShoppingCart cartItems={this.state.cartItems} {...props} />
-            )}
-          />
           <Route path="/error" component={ErrorPage} />
           <Route
             path="/customer/order-confirmation"

@@ -1,7 +1,8 @@
 import React from "react";
-import CartRow from "./cartRow";
+import SideCartRow from "./sideCartRow";
+import { Link } from "react-router-dom";
 
-const ShoppingCart = ({ cartItems }) => {
+const SideCart = ({ cartItems }) => {
   const total = cartItems.reduce((a, item) => a + item.price * item.qty, 0);
 
   return (
@@ -27,7 +28,7 @@ const ShoppingCart = ({ cartItems }) => {
           </thead>
           <tbody>
             {cartItems.map((item) => (
-              <CartRow key={item.id} item={item} />
+              <SideCartRow key={item.id} item={item} />
             ))}
           </tbody>
           <tfoot className="fs-4">
@@ -37,15 +38,15 @@ const ShoppingCart = ({ cartItems }) => {
             </th>
           </tfoot>
         </table>
-        <a
-          href="./cart.html"
+        <Link
+          to="/customer/checkout"
           className="w-100 btn btn-primary my-3 text-uppercase fs-5 fw-bold"
         >
           proceed to checkout
-        </a>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default ShoppingCart;
+export default SideCart;

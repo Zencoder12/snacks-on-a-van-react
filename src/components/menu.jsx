@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import RadioGroup from "./common/radioGroup";
 import LoginBanner from "./loginBanner";
 import NavBar from "./navBar";
-import ShoppingCart from "./shoppingCart";
+import SideCart from "./sideCart";
 
-class Menu2 extends Component {
+class Menu extends Component {
   state = {
     selectedPrice: 0,
   };
@@ -36,7 +36,7 @@ class Menu2 extends Component {
                     <div className="col" key={product._id}>
                       <div className="card shadow-sm">
                         <img
-                          src={"https://i.ibb.co" + product.img}
+                          src={"https://i.ibb.co" + product.img674}
                           className="card-img-top"
                           alt="Latte"
                         />
@@ -95,7 +95,7 @@ class Menu2 extends Component {
                     <div className="col" key={product._id}>
                       <div className="card shadow-sm">
                         <img
-                          src={"https://i.ibb.co" + product.img}
+                          src={"https://i.ibb.co" + product.img674}
                           className="card-img-top"
                           alt="Latte"
                         />
@@ -103,7 +103,12 @@ class Menu2 extends Component {
                           <h3 className="card-title text-uppercase">
                             {product.productName}
                           </h3>
-                          <RadioGroup prices={product.prices} />
+                          <RadioGroup
+                            key={product._id}
+                            prices={product.prices}
+                            selectedPrice={this.state.selectedPrice}
+                            onChange={this.handleChange}
+                          />
                           {!user && (
                             <button
                               className="w-100 btn btn-secondary mt-3 fs-5 fw-bold disabled"
@@ -135,10 +140,10 @@ class Menu2 extends Component {
           </div>
         </div>
         {!user && <LoginBanner />}
-        {user && <ShoppingCart cartItems={cartItems} />}
+        {user && <SideCart cartItems={cartItems} />}
       </main>
     );
   }
 }
 
-export default Menu2;
+export default Menu;
