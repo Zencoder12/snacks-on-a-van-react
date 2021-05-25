@@ -9,12 +9,12 @@ const ShoppingCartRow = ({ item, onAdd, onRemove }) => {
           <img
             src={"https://i.ibb.co" + item.img100}
             className="rounded me-3 d-none d-md-block"
-            alt="Cappuccino"
+            alt={item.productName}
           />
           <img
             src={"https://i.ibb.co" + item.img50}
             className="rounded me-1 d-md-none"
-            alt="Cappuccino"
+            alt={item.productName}
           />
         </div>
         <div>

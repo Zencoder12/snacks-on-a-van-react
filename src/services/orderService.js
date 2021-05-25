@@ -5,6 +5,6 @@ export function createOrder(vendor, orderItems) {
   return http.post(localHostApi + "/new-order/", { vendor, orderItems });
 }
 
-export function getOrders() {
-  return http.get(localHostApi + "/orders/");
+export function getPastOrders() {
+  return http.get(localHostApi + "/past-orders/");
 }

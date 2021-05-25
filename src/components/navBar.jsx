@@ -40,7 +40,7 @@ const NavBar = ({ user }) => {
           </Link>
           <ul className="dropdown-menu">
             <li>
-              <Link className="dropdown-item fs-5" to="./upcoming orders.html">
+              <Link className="dropdown-item fs-5" to="/customer/past-orders">
                 Upcoming Orders
               </Link>
             </li>

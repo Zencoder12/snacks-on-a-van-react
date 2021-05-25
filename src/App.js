@@ -8,11 +8,12 @@ import NotFound from "./components/notFound";
 import Logout from "./components/logout";
 import ErrorPage from "./components/errorPage";
 import OrderConfirmationPage from "./components/orderConfirmationPage";
-import OrdersPage from "./components/ordersPage";
 import Index from "./components/index";
 import ShoppingCart from "./components/shoppingCart";
 import auth from "./services/authService";
 import { getProducts } from "./services/productService";
+import PastOrdersPage from "./components/pastOrdersPage";
+import ActiveOrdersPage from "./components/activeOrdersPage";
 import "./App.css";
 
 class App extends Component {
@@ -156,7 +157,6 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/customer/orders" component={OrdersPage} />
           <Route
             path="/customer/login"
             render={(props) => <LoginPage user={this.state.user} {...props} />}
@@ -172,6 +172,18 @@ class App extends Component {
           <Route
             path="/customer/order-confirmation"
             component={OrderConfirmationPage}
+          />
+          <ProtectedRoute
+            path="/customer/past-orders"
+            render={(props) => (
+              <PastOrdersPage user={this.state.user} {...props} />
+            )}
+          />
+          <ProtectedRoute
+            path="/customer/active-orders"
+            render={(props) => (
+              <ActiveOrdersPage user={this.state.user} {...props} />
+            )}
           />
           <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={Index} />
