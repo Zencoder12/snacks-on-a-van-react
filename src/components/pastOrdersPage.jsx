@@ -8,12 +8,12 @@ class PastOrdersPage extends Component {
 
   async componentDidMount() {
     const { data } = await getPastOrders();
+    console.log(data);
     this.setState({ orders: data });
   }
 
   render() {
     const { orders } = this.state;
-    console.log(this.state.orders);
     return (
       <main className="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
         <NavBar user={this.props.user} />
@@ -28,7 +28,9 @@ class PastOrdersPage extends Component {
             <div className="row">
               <div className="col">
                 {orders.map((order) => (
-                  <OrderDetailCard key={order._id} order={order} />
+                  <div className="col pt-3">
+                    <OrderDetailCard key={order._id} order={order} />
+                  </div>
                 ))}
               </div>
             </div>
