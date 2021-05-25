@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Menu from "./components/menu";
 import ProtectedRoute from "./components/protectedRoute";
-import LoginRegisterPage from "./components/loginRegisterPage";
+import LoginPage from "./components/loginPage";
+import RegisterPage from "./components/registerPage";
 import NotFound from "./components/notFound";
 import Logout from "./components/logout";
 import ErrorPage from "./components/errorPage";
@@ -158,8 +159,12 @@ class App extends Component {
           <Route path="/customer/orders" component={OrdersPage} />
           <Route
             path="/customer/login"
+            render={(props) => <LoginPage user={this.state.user} {...props} />}
+          />
+          <Route
+            path="/customer/register"
             render={(props) => (
-              <LoginRegisterPage user={this.state.user} {...props} />
+              <RegisterPage user={this.state.user} {...props} />
             )}
           />
           <Route path="/customer/logout" component={Logout} />

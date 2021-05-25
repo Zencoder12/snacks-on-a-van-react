@@ -4,7 +4,7 @@ import LoginForm from "./loginForm";
 import NavBar from "./navBar";
 import RegisterForm from "./registerForm";
 
-const LoginRegisterPage = ({ user }) => {
+const LoginPage = ({ user }) => {
   return (
     <React.Fragment>
       <main className="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
@@ -50,14 +50,14 @@ const LoginRegisterPage = ({ user }) => {
       <footer className="fixed-bottom p-2 px-md-5 d-lg-none">
         <div className="px-2 row g-3">
           <Link
-            to="./login.html"
+            to="#"
             className="col btn btn-primary me-1 text-uppercase fw-bold fs-4 active"
             type="button"
           >
             Login
           </Link>
           <Link
-            to="./register.html"
+            to="/customer/register"
             className="col btn btn-primary ms-1 text-uppercase fw-bold fs-4"
             type="button"
           >
@@ -69,4 +69,4 @@ const LoginRegisterPage = ({ user }) => {
   );
 };
 
-export default LoginRegisterPage;
+export default LoginPage;
