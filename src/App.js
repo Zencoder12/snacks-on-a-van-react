@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import Menu from "./components/menu";
 import ProtectedRoute from "./components/protectedRoute";
 import LoginPage from "./components/loginPage";
@@ -12,8 +13,10 @@ import Index from "./components/index";
 import ShoppingCart from "./components/shoppingCart";
 import auth from "./services/authService";
 import { getProducts } from "./services/productService";
-import PastOrdersPage from "./components/pastOrdersPage";
+import PreviousOrdersPage from "./components/previousOrdersPage";
 import ActiveOrdersPage from "./components/activeOrdersPage";
+import TrackOrderPage from "./components/trackOrderPage";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 class App extends Component {
@@ -32,6 +35,8 @@ class App extends Component {
   }
 
   handleAdd = (productName, price) => {
+    if (price === 0) return toast.warning("Please select a product.");
+
     const product = this.state.allProducts.filter(
       (product) => product.productName === productName
     );
@@ -131,6 +136,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
+        <ToastContainer autoClose={2000} />
         <Switch>
           <Route
             path="/customer/menu"
@@ -174,15 +180,21 @@ class App extends Component {
             component={OrderConfirmationPage}
           />
           <ProtectedRoute
-            path="/customer/past-orders"
+            path="/customer/previous-orders"
             render={(props) => (
-              <PastOrdersPage user={this.state.user} {...props} />
+              <PreviousOrdersPage user={this.state.user} {...props} />
             )}
           />
           <ProtectedRoute
             path="/customer/active-orders"
             render={(props) => (
               <ActiveOrdersPage user={this.state.user} {...props} />
+            )}
+          />
+          <ProtectedRoute
+            path="/customer/tracking-order"
+            render={(props) => (
+              <TrackOrderPage user={this.state.user} {...props} />
             )}
           />
           <Route path="/not-found" component={NotFound} />

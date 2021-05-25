@@ -3,7 +3,7 @@ import NavBar from "./navBar";
 import { getPastOrders } from "../services/orderService";
 import OrderDetailCard from "./common/orderDetailCard";
 
-class PastOrdersPage extends Component {
+class PreviousOrdersPage extends Component {
   state = { orders: [] };
 
   async componentDidMount() {
@@ -41,4 +41,4 @@ class PastOrdersPage extends Component {
   }
 }
 
-export default PastOrdersPage;
+export default PreviousOrdersPage;

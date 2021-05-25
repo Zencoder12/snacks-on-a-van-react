@@ -1,10 +1,24 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { createOrder } from "../services/orderService";
 import NavBar from "./navBar";
 import ShoppingCartRow from "./shoppingCartRow";
-import { Link } from "react-router-dom";
 
 class ShoppingCart extends Component {
   state = {};
+
+  handleSubmitOrder = async () => {
+    try {
+      const vendorId = "607fc27e0321d9f7f3c2294f";
+      const orderItems = JSON.parse(localStorage.getItem("cart"));
+      await createOrder(vendorId, orderItems);
+      window.location = "/customer/order-confirmation";
+    } catch (ex) {
+      if (ex) {
+        window.location = "/error";
+      }
+    }
+  };
 
   render() {
     const { onAdd, onRemove, user } = this.props;
@@ -52,6 +66,7 @@ class ShoppingCart extends Component {
                   </div>
                   {sortedCart.map((item) => (
                     <ShoppingCartRow
+                      key={item.id}
                       item={item}
                       onAdd={onAdd}
                       onRemove={onRemove}
@@ -89,16 +104,16 @@ class ShoppingCart extends Component {
                   >
                     change vendor
                   </Link>
-                  <Link
-                    to="./cart.html"
+                  <button
                     className="w-100 btn btn-primary mt-3 py-3 text-uppercase fs-4 fw-bold"
+                    onClick={this.handleSubmitOrder}
                   >
-                    proceed to checkout
-                  </Link>
+                    finalize order
+                  </button>
                 </div>
                 <div className="mt-3 p-3 card shadow-sm text-center">
                   <Link
-                    to="./menu.html"
+                    to="/customer/menu"
                     className="text-uppercase fw-bold fs-4 text-decoration-none highlight2"
                   >
                     <i className="fas fa-chevron-left pe-3"></i>continue

@@ -42,7 +42,7 @@ const SideCart = ({ cartItems }) => {
           to="/customer/checkout"
           className="w-100 btn btn-primary my-3 text-uppercase fs-5 fw-bold"
         >
-          proceed to checkout
+          view order details
         </Link>
       </div>
     </div>
