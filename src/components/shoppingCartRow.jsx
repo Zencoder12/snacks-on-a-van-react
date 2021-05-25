@@ -28,7 +28,7 @@ const ShoppingCartRow = ({ item, onAdd, onRemove }) => {
       <div className="col-3 col-xl-2 text-center p-0">
         <MinusPlusButton item={item} onAdd={onAdd} onRemove={onRemove} />
       </div>
-      <div className="col-3 col-xl-2 text-center">${item.price * item.qty}</div>
+      <div className="col-3 col-xl-2 text-end">${item.price * item.qty}</div>
     </div>
   );
 };

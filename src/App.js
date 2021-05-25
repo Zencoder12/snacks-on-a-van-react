@@ -62,7 +62,6 @@ class App extends Component {
         ],
       });
     }
-    this.syncCart();
   };
 
   handleRemove = (productName, price) => {
@@ -102,8 +101,6 @@ class App extends Component {
         ],
       });
     }
-    this.state.cartItems.sort(this.compare);
-    this.syncCart();
   };
 
   getSizeByValue = (product, price) => {
@@ -118,16 +115,6 @@ class App extends Component {
     // go to checkout page
   };
 
-  compare = (a, b) => {
-    if (a.id < b.id) {
-      return -1;
-    }
-    if (a.id > b.id) {
-      return 1;
-    }
-    return 0;
-  };
-
   handleReset = () => {
     this.setState({ cartItems: [] });
   };
@@ -137,6 +124,7 @@ class App extends Component {
   };
 
   render() {
+    this.syncCart();
     const { allProducts, cartItems } = this.state;
 
     return (
@@ -160,7 +148,6 @@ class App extends Component {
             path="/customer/checkout"
             render={(props) => (
               <ShoppingCart
-                cartItems={cartItems}
                 onAdd={this.handleAdd}
                 onRemove={this.handleRemove}
                 user={this.state.user}

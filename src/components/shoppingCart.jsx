@@ -7,7 +7,11 @@ class ShoppingCart extends Component {
   state = {};
 
   render() {
-    const { cartItems, onAdd, onRemove, user } = this.props;
+    const { onAdd, onRemove, user } = this.props;
+
+    const cartItems = JSON.parse(localStorage.getItem("cart"));
+
+    const sortedCart = cartItems.sort((a, b) => (a.id > b.id ? 1 : -1));
 
     const totalQty = cartItems.reduce((a, item) => a + item.qty, 0);
 
@@ -36,7 +40,7 @@ class ShoppingCart extends Component {
                       price
                     </div>
                     <div className="col-3 col-xl-2 text-center">quantity</div>
-                    <div className="col-3 col-xl-2 text-end">subtotal</div>
+                    <div className="col-3 col-xl-2 text-center">subtotal</div>
                   </div>
                   <div
                     className="row pb-3 fs-5 fw-bold text-uppercase border-bottom d-md-none"
@@ -44,9 +48,9 @@ class ShoppingCart extends Component {
                   >
                     <div className="col-6">product</div>
                     <div className="col-3 col-xl-2 text-center">qty</div>
-                    <div className="col-3 col-xl-2 text-center">sub</div>
+                    <div className="col-3 col-xl-2 text-end">sub</div>
                   </div>
-                  {cartItems.map((item) => (
+                  {sortedCart.map((item) => (
                     <ShoppingCartRow
                       item={item}
                       onAdd={onAdd}

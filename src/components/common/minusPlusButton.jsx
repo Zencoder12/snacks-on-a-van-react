@@ -1,7 +1,6 @@
 import React from "react";
 
 const MinusPlusButton = ({ item, onAdd, onRemove }) => {
-  console.log("minus plus button", item);
   return (
     <React.Fragment>
       <div className="minus-plus-container">
