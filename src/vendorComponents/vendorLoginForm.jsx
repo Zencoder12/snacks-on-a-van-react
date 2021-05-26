@@ -1,9 +1,9 @@
 import React from "react";
 import Joi from "joi-browser";
-import Form from "../customerComponents/common/form";
+import VendorForm from "./common/vendorForm";
 import auth from "../services/authService";
 
-class VendorLoginForm extends Form {
+class VendorLoginForm extends VendorForm {
   state = {
     data: { email: "", password: "" },
     errors: {},
@@ -31,12 +31,7 @@ class VendorLoginForm extends Form {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        {this.renderInput(
-          "email",
-          "Email address:",
-          "text",
-          "name@example.com"
-        )}
+        {this.renderInput("email", "Email:", "text", "name@example.com")}
         {this.renderInput(
           "password",
           "Password:",
