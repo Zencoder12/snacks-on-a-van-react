@@ -18,6 +18,8 @@ import ActiveOrdersPage from "./customerComponents/activeOrdersPage";
 import TrackOrderPage from "./customerComponents/trackOrderPage";
 import ProfilePage from "./customerComponents/profilePage";
 import SelectVendorPage from "./customerComponents/selectVendorPage";
+import VendorLoginPage from "./vendorComponents/vendorLoginPage";
+import VendorRegisterPage from "./vendorComponents/vendorRegisterPage";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -206,6 +208,8 @@ class App extends Component {
               <TrackOrderPage user={this.state.user} {...props} />
             )}
           />
+          <Route path="/vendor/login" component={VendorLoginPage} />
+          <Route path="/vendor/register" component={VendorRegisterPage} />
           <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={Index} />
           <Redirect to="/not-found" />

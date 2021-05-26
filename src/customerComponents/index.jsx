@@ -36,7 +36,7 @@ const Index = () => {
               <div className="card card-bg h-100 border-0 rounded text-center py-5 px-3">
                 <h1 className="text-uppercase fw-bold mb-5 mt-3">vendor</h1>
                 <Link
-                  to="#"
+                  to="/vendor/login"
                   className="btn btn-primary mx-3 mb-3 text-uppercase fw-bold"
                 >
                   login / register
