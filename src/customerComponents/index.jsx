@@ -18,7 +18,7 @@ const Index = () => {
               <div className="card card-bg h-100 border-0 rounded text-center py-5 px-3">
                 <h1 className="text-uppercase fw-bold mb-5 mt-3">customer</h1>
                 <Link
-                  to="#location"
+                  to="/customer/select-vendor"
                   className="btn btn-primary mx-3 mb-3 text-uppercase fw-bold"
                 >
                   LOCATE THE NEAREST STORE

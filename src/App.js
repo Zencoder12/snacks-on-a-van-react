@@ -1,21 +1,23 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import Menu from "./components/menu";
-import ProtectedRoute from "./components/protectedRoute";
-import LoginPage from "./components/loginPage";
-import RegisterPage from "./components/registerPage";
-import NotFound from "./components/notFound";
-import Logout from "./components/logout";
-import ErrorPage from "./components/errorPage";
-import OrderConfirmationPage from "./components/orderConfirmationPage";
-import Index from "./components/index";
-import ShoppingCart from "./components/shoppingCart";
+import Menu from "./customerComponents/menu";
+import ProtectedRoute from "./customerComponents/protectedRoute";
+import LoginPage from "./customerComponents/loginPage";
+import RegisterPage from "./customerComponents/registerPage";
+import NotFound from "./customerComponents/notFound";
+import Logout from "./customerComponents/logout";
+import ErrorPage from "./customerComponents/errorPage";
+import OrderConfirmationPage from "./customerComponents/orderConfirmationPage";
+import Index from "./customerComponents/index";
+import ShoppingCart from "./customerComponents/shoppingCart";
 import auth from "./services/authService";
 import { getProducts } from "./services/productService";
-import PreviousOrdersPage from "./components/previousOrdersPage";
-import ActiveOrdersPage from "./components/activeOrdersPage";
-import TrackOrderPage from "./components/trackOrderPage";
+import PreviousOrdersPage from "./customerComponents/previousOrdersPage";
+import ActiveOrdersPage from "./customerComponents/activeOrdersPage";
+import TrackOrderPage from "./customerComponents/trackOrderPage";
+import ProfilePage from "./customerComponents/profilePage";
+import SelectVendorPage from "./customerComponents/selectVendorPage";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -173,8 +175,15 @@ class App extends Component {
               <RegisterPage user={this.state.user} {...props} />
             )}
           />
+          <Route path="/customer/select-vendor" component={SelectVendorPage} />
           <Route path="/customer/logout" component={Logout} />
           <Route path="/error" component={ErrorPage} />
+          <ProtectedRoute
+            path="/customer/profile"
+            render={(props) => (
+              <ProfilePage user={this.state.user} {...props} />
+            )}
+          />
           <Route
             path="/customer/order-confirmation"
             component={OrderConfirmationPage}

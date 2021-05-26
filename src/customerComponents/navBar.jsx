@@ -21,16 +21,13 @@ const NavBar = ({ user }) => {
           </Link>
         </li>
         <li className="nav-item">
-          <Link
-            to="/customer/shopping-cart-mobile"
-            className="nav-link px-4 fs-5"
-          >
+          <Link to="/customer/checkout" className="nav-link px-4 fs-5">
             Cart
           </Link>
         </li>
         <li className="nav-item dropdown">
           <Link
-            to="/customer/orders"
+            to="/customer/checkout"
             className="nav-link dropdown-toggle px-4 fs-5"
             role="button"
             data-bs-toggle="dropdown"
@@ -81,12 +78,12 @@ const NavBar = ({ user }) => {
         )}
         <ul className="dropdown-menu">
           <li>
-            <Link className="dropdown-item fs-5" to="./profile.html">
+            <Link className="dropdown-item fs-5" to="/customer/profile">
               Profile
             </Link>
           </li>
           <li>
-            <Link className="dropdown-item fs-5" to="./guest menu.html">
+            <Link className="dropdown-item fs-5" to="/customer/logout">
               Logout
             </Link>
           </li>

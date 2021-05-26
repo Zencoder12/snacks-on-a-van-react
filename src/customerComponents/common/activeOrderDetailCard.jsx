@@ -6,7 +6,7 @@ import OrderDetailFooter from "./orderDetailFooter";
 
 const ActiveOrderDetailCard = ({ order }) => {
   return (
-    <div className="p-3 p-xxl-5 card shadow-sm h-100">
+    <div className="mt-3 p-3 p-xxl-5 card shadow-sm h-100">
       <OrderDetailHeader key={order._id} order={order} />
       {order.orderItems.map((item) => (
         <OrderDetailItem key={item.id} item={item} />

@@ -24,7 +24,7 @@ class ActiveOrdersPage extends Component {
           Active Orders
         </h1>
         <div className="px-2 row g-3">
-          <div className="container p-3 rounded">
+          <div className="container pb-3 px-3 rounded">
             <div className="row">
               <div className="col">
                 {orders.map((order) => (

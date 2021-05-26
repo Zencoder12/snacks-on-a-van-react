@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { createOrder } from "../services/orderService";
 import NavBar from "./navBar";
 import ShoppingCartRow from "./shoppingCartRow";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 class ShoppingCart extends Component {
   state = {};
@@ -12,7 +14,7 @@ class ShoppingCart extends Component {
       const vendorId = "607fc27e0321d9f7f3c2294f";
       const orderItems = JSON.parse(localStorage.getItem("cart"));
       await createOrder(vendorId, orderItems);
-      window.location = "/customer/order-confirmation";
+      window.location = "/customer/tracking-order";
     } catch (ex) {
       if (ex) {
         window.location = "/error";
@@ -116,8 +118,8 @@ class ShoppingCart extends Component {
                     to="/customer/menu"
                     className="text-uppercase fw-bold fs-4 text-decoration-none highlight2"
                   >
-                    <i className="fas fa-chevron-left pe-3"></i>continue
-                    shopping
+                    <FontAwesomeIcon icon={faChevronLeft} className="me-3" />
+                    continue shopping
                   </Link>
                 </div>
               </div>
