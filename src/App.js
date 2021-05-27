@@ -20,6 +20,7 @@ import ProfilePage from "./customerComponents/profilePage";
 import SelectVendorPage from "./customerComponents/selectVendorPage";
 import VendorLoginPage from "./vendorComponents/vendorLoginPage";
 import VendorRegisterPage from "./vendorComponents/vendorRegisterPage";
+import SetLocationPage from "./vendorComponents/setLocationPage";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -210,6 +211,12 @@ class App extends Component {
           />
           <Route path="/vendor/login" component={VendorLoginPage} />
           <Route path="/vendor/register" component={VendorRegisterPage} />
+          <ProtectedRoute
+            path="/vendor/set-location"
+            render={(props) => (
+              <SetLocationPage user={this.state.user} {...props} />
+            )}
+          />
           <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={Index} />
           <Redirect to="/not-found" />
