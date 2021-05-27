@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Map from "./map";
 
 class SelectVendorPage extends Component {
   state = {};
@@ -21,7 +22,7 @@ class SelectVendorPage extends Component {
               className="form-control text-uppercase mt-3 mb-4 mt-md-5 mb-md-5"
               list="datalistOptions"
               id="vendor location"
-              placeholder="select location"
+              placeholder="click on a van to select the location"
             />
             <button className="w-100 btn btn-primary btn-lg mt-3 mb-4 mt-md-4 text-uppercase fs-4 fw-bold">
               Select vendor
@@ -36,7 +37,7 @@ class SelectVendorPage extends Component {
           </div>
         </div>
         <div className="col-12 col-md-8 px-0">
-          <img src="./images/map.png" className="img-fluid" alt="map-img" />
+          <Map />
         </div>
       </main>
     );
