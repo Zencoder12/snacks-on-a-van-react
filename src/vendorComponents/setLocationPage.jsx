@@ -3,6 +3,8 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
+import auth from "../services/authService";
+import { setVendorLocation } from "../services/vendorService";
 
 const SetLocationPage = () => {
   const [address, setAddress] = React.useState("");
@@ -16,6 +18,15 @@ const SetLocationPage = () => {
     const coordinates = await getLatLng(results[0]);
     setAddress(value);
     setCoordinates(coordinates);
+  };
+
+  const setLocation = async () => {
+    try {
+      const vendor = auth.getCurrentUser();
+      await setVendorLocation(vendor.vendorName, coordinates, address);
+    } catch (ex) {
+      console.log(ex);
+    }
   };
 
   return (
@@ -50,7 +61,6 @@ const SetLocationPage = () => {
                     <div>
                       <input
                         className="form-control text-uppercase mt-4"
-                        // list="datalistOptions"
                         id="vendor location"
                         {...getInputProps({ placeholder: "Enter location" })}
                       />
@@ -75,12 +85,10 @@ const SetLocationPage = () => {
                     </div>
                   )}
                 </PlacesAutocomplete>
-                {/* <datalist id="datalistOptions">
-                  <option value="866 Koelpin Pass, New Aidenmouth" />
-                  <option value="91006 Jacobs Parkway, Monahanmouth" />
-                  <option value="9499 David Road, Greenfeldermouth" />
-                </datalist> */}
-                <button className="w-100 btn btn-primary btn-lg mt-5 mb-4 mt-md-5 text-uppercase fs-4 fw-bold">
+                <button
+                  className="w-100 btn btn-primary btn-lg mt-5 mb-4 mt-md-5 text-uppercase fs-4 fw-bold"
+                  onClick={setLocation}
+                >
                   open business here
                 </button>
               </div>
