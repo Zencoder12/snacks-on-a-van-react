@@ -1,6 +1,10 @@
 import http from "./httpService";
 import jwtDecode from "jwt-decode";
-import { customerApiUrl, localHostApi } from "../config.json";
+import {
+  customerApiUrl,
+  localHostApi,
+  vendorLocalHostApi,
+} from "../config.json";
 
 // method to send jwt to http service (axios service module)
 http.setJwt(getJwt());
@@ -19,6 +23,24 @@ export function signUp(user) {
     lastName: user.lastName,
     email: user.email,
     password: user.password,
+  });
+}
+
+export async function loginVendor(email, password) {
+  const { data: jwt } = await http.post(vendorLocalHostApi + "/auth", {
+    email,
+    password,
+  });
+  localStorage.setItem("token", jwt);
+}
+
+export function signUpVendor(user) {
+  return http.post(vendorLocalHostApi + "/auth/sign-up", {
+    vendorName: user.vendorName,
+    contactName: user.contactName,
+    email: user.email,
+    password: user.password,
+    phone: user.phone,
   });
 }
 
@@ -43,4 +65,13 @@ export function getJwt() {
   return localStorage.getItem("token");
 }
 
-export default { login, signUp, logout, getCurrentUser, getJwt, loginWithJwt };
+export default {
+  login,
+  signUp,
+  loginVendor,
+  signUpVendor,
+  logout,
+  getCurrentUser,
+  getJwt,
+  loginWithJwt,
+};

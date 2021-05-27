@@ -17,7 +17,7 @@ class VendorLoginForm extends VendorForm {
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      await auth.login(data.email, data.password);
+      await auth.loginVendor(data.email, data.password);
       window.location = "/customer/menu";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
