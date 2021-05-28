@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Map from "./map";
 
 class SelectVendorPage extends Component {
@@ -29,11 +30,11 @@ class SelectVendorPage extends Component {
             </button>
           </div>
           <div className="text-center mb-3">
-            <a href="./vendor home.html" className="text-decoration-none">
+            <Link to="/vendor/login" className="text-decoration-none">
               <span className="text-secondary ">
                 NOT CUSTOMER? VENDER LOGIN
               </span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="col-12 col-md-8 px-0">

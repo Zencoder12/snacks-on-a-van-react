@@ -12,3 +12,7 @@ export function setVendorLocation(vendorName, coordinates, address) {
     address: address,
   });
 }
+
+export function getVendorsLocations() {
+  return http.get(vendorLocalHostApi + "/vendors-locations");
+}

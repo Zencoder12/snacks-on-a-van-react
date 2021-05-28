@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaravan } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
-import ReactMapGL, { GeolocateControl, Marker } from "react-map-gl";
+import ReactMapGL, { GeolocateControl, Marker, Popup } from "react-map-gl";
+import { getVendorsLocations } from "../services/vendorService";
 
 const Map = () => {
   const [viewport, setViewport] = useState({
@@ -11,7 +12,10 @@ const Map = () => {
     height: "90vh",
     zoom: 15,
   });
-  const [selectedVan, setSelectedVan] = useState(null);
+
+  const [vendorLocations, setVendorLocations] = useState([]);
+
+  const [selectedVendor, setSelectedVendor] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -23,6 +27,12 @@ const Map = () => {
     });
   }, []);
 
+  // use effect to get the vendor locations
+  useEffect(async () => {
+    const { data: locations } = await getVendorsLocations();
+    setVendorLocations(locations);
+  }, []);
+
   return (
     <ReactMapGL
       {...viewport}
@@ -32,12 +42,45 @@ const Map = () => {
         setViewport(viewport);
       }}
     >
+      {vendorLocations.map((vendor) => (
+        <Marker
+          key={vendor.vendorName}
+          vendorName={vendor.vendorName}
+          latitude={vendor.coordinates.lat}
+          longitude={vendor.coordinates.lng}
+        >
+          <button
+            className="btn"
+            onClick={(e) => {
+              e.preventDefault();
+              setSelectedVendor(vendor);
+            }}
+          >
+            <FontAwesomeIcon icon={faCaravan} className="fa-2x" />
+          </button>
+        </Marker>
+      ))}
       <GeolocateControl
         positionOptions={{ enableHighAccuracy: true }}
         trackUserLocation={true}
         showUserLocation={true}
         auto
       />
+
+      {selectedVendor ? (
+        <Popup
+          latitude={selectedVendor.coordinates.lat}
+          longitude={selectedVendor.coordinates.lng}
+          onClose={() => {
+            setSelectedVendor(null);
+          }}
+        >
+          <div>
+            <h3> {selectedVendor.vendorName}</h3>
+            <p>{selectedVendor.address}</p>
+          </div>
+        </Popup>
+      ) : null}
     </ReactMapGL>
   );
 };
