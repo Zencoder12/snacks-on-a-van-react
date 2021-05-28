@@ -35,6 +35,11 @@
     --t2: #C19780;
 
     --bar-grey: #AAAAAA;
+    
+    /* vendor color */
+    --t3: #717272;
+    --t4: #37BF92;
+    --progress-bg: #E6A800;
 }
 
 * {font-family: 'Open Sans Condensed', sans-serif;}
@@ -110,4 +115,12 @@ min-height: 100%;
 min-height: 100vh;
 display: flex;
 align-items: center;
+}
+
+/* vendor css */
+.highlight3{color: var(--t3);}
+.highlight4{color: var(--t4);}
+#van-progress {
+    height: 25px !important;
+    background-color: var(--progress-bg) !important;
 }
