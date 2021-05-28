@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor await pickup</title>
+  <link rel="stylesheet" href="./css/customer.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+</head>
+
+<body>
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 px-md-5 fw-bold sticky-top">
+    <a class="d-flex align-items-center col-md-3 mb-md-2 mb-md-0 text-decoration-none text-start"
+      href="./vendor past order.html">
+      <span class="fs-5 text-uppercase">previous orders</span>
+    </a>
+    <a class="nav col-12 col-md-auto mb-md-2 justify-content-center mb-md-0 text-decoration-none current">
+      <span class="fs-5 text-uppercase">Current Orders</span>
+    </a>
+    <div class="col-md-3 text-end">
+      <a class="text-uppercase text-decoration-none dropdown-toggle fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Hi, <u>Vendor</u>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item fs-5" href="./vendor profile.html">Profile</a></li>
+        <li><a class="dropdown-item fs-5" href="./vendor home.html">Logout</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
+    <h2 class="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">Waiting for pick up</h2>
+
+    <div class="px-2 row g-3 pt-3 pt-md-0">
+      <div class="container p-3 rounded col-lg-12">
+        <div class="row row-cols-1 row-cols-lg-4 g-2">
+          <!-- customer 1 -->
+          <div class="col-lg-3">
+            <div class="card shadow-sm px-0">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between mt-2">
+                  <p class="text-uppercase fw-bold mb-1 highlight3">No.1</p>
+                  <p class="text-uppercase fw-bold mb-1 highlight3">time</p>
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="text-uppercase fw-bold d-flex justify-content-center highlight3 mt-3">customer name</p>
+                <p class="text-uppercase fw-bold d-flex justify-content-center highlight3 mt-3">number of items</p>
+                <p class="text-uppercase fw-bold d-flex justify-content-center text-warning mt-3">20% DISCOUNT APPLIED</p>
+              </div>
+              <a href="#" class="btn btn-primary mt-3 fs-5 fw-bold m-3 text-uppercase">finish</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- footer bar -->
+  <footer class="fixed-bottom p-2 px-md-5">
+    <div class="px-2 row g-3">
+      <a href="./vendor current order.html" class="col btn btn-primary me-1 text-uppercase fw-bold fs-4" type="button">
+        Active orders
+      </a>
+      <a href="./vendor await pickup.html" class="col btn btn-primary ms-1 text-uppercase fw-bold fs-4 active" type="button">
+        Await pickup
+      </a>
+    </div>
+  </footer>
+
+</body>
+
+</html>
