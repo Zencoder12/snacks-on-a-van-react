@@ -16,3 +16,17 @@ export function setVendorLocation(vendorName, coordinates, address) {
 export function getVendorsLocations() {
   return http.get(vendorLocalHostApi + "/vendors-locations");
 }
+
+export function closeLocation(vendorName) {
+  return http.delete(vendorLocalHostApi + "/close-location", {
+    data: { vendorName: vendorName },
+  });
+}
+
+export function getCurrentVendor() {
+  return JSON.parse(localStorage.getItem("vendor"));
+}
+
+export function getCurrentLocation() {
+  return JSON.parse(localStorage.getItem("location"));
+}

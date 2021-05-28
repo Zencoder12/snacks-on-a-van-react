@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { createOrder } from "../services/orderService";
+import { getCurrentVendor } from "../services/vendorService";
 import NavBar from "./navBar";
 import ShoppingCartRow from "./shoppingCartRow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +12,7 @@ class ShoppingCart extends Component {
 
   handleSubmitOrder = async () => {
     try {
-      const vendor = JSON.parse(localStorage.getItem("vendor"));
+      const vendor = getCurrentVendor();
       const orderItems = JSON.parse(localStorage.getItem("cart"));
       await createOrder(vendor.vendorName, orderItems);
       window.location = "/customer/tracking-order";
@@ -25,7 +26,7 @@ class ShoppingCart extends Component {
   render() {
     const { onAdd, onRemove, user } = this.props;
 
-    const vendor = JSON.parse(localStorage.getItem("vendor"));
+    const vendor = getCurrentVendor();
     const location = vendor.address;
 
     const cartItems = JSON.parse(localStorage.getItem("cart"));

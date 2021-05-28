@@ -8,7 +8,6 @@ import RegisterPage from "./customerComponents/registerPage";
 import NotFound from "./customerComponents/notFound";
 import Logout from "./customerComponents/logout";
 import ErrorPage from "./customerComponents/errorPage";
-import OrderConfirmationPage from "./customerComponents/orderConfirmationPage";
 import Index from "./customerComponents/index";
 import ShoppingCart from "./customerComponents/shoppingCart";
 import auth from "./services/authService";
@@ -21,6 +20,7 @@ import SelectVendorPage from "./customerComponents/selectVendorPage";
 import VendorLoginPage from "./vendorComponents/vendorLoginPage";
 import VendorRegisterPage from "./vendorComponents/vendorRegisterPage";
 import SetLocationPage from "./vendorComponents/setLocationPage";
+import VendorProfilePage from "./vendorComponents/vendorProfilePage";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -178,7 +178,12 @@ class App extends Component {
               <RegisterPage user={this.state.user} {...props} />
             )}
           />
-          <Route path="/customer/select-vendor" component={SelectVendorPage} />
+          <ProtectedRoute
+            path="/customer/select-vendor"
+            render={(props) => (
+              <SelectVendorPage user={this.state.user} {...props} />
+            )}
+          />
           <Route path="/customer/logout" component={Logout} />
           <Route path="/error" component={ErrorPage} />
           <ProtectedRoute
@@ -187,9 +192,11 @@ class App extends Component {
               <ProfilePage user={this.state.user} {...props} />
             )}
           />
-          <Route
-            path="/customer/order-confirmation"
-            component={OrderConfirmationPage}
+          <ProtectedRoute
+            path="/vendor/profile"
+            render={(props) => (
+              <VendorProfilePage user={this.state.user} {...props} />
+            )}
           />
           <ProtectedRoute
             path="/customer/previous-orders"
