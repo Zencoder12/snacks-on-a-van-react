@@ -2,15 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = ({ user }) => {
+  const vendor = JSON.parse(localStorage.getItem("vendor"));
+  const location = vendor.address;
+
   return (
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 px-md-5 fw-bold sticky-top">
       <Link
-        to="./location.html"
+        to="/customer/select-vendor"
         className="d-flex align-items-center col-md-3 mb-md-2 mb-md-0 text-decoration-none text-start"
       >
         <span className="fs-5">
-          Location:{" "}
-          <u className="fw-normal">866 Koelpin Pass, New Aidenmouth</u>
+          Location: <u className="fw-normal">{location}</u>
         </span>
       </Link>
 

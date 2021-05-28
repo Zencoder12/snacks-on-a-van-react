@@ -18,7 +18,7 @@ class VendorLoginForm extends VendorForm {
     try {
       const { data } = this.state;
       await auth.loginVendor(data.email, data.password);
-      window.location = "/customer/menu";
+      window.location = "/vendor/set-location";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

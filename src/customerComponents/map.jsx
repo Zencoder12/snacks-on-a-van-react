@@ -3,14 +3,15 @@ import { faCaravan } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import ReactMapGL, { GeolocateControl, Marker, Popup } from "react-map-gl";
 import { getVendorsLocations } from "../services/vendorService";
+import { toast } from "react-toastify";
 
 const Map = ({ onSelect, onClosePopUp, selectedVendor }) => {
   const [viewport, setViewport] = useState({
     latitude: -37.796368,
     longitude: 144.961166,
-    width: "90vw",
-    height: "90vh",
-    zoom: 15,
+    width: "100vw",
+    height: "100vh",
+    zoom: 10,
   });
 
   const [vendorLocations, setVendorLocations] = useState([]);
@@ -30,6 +31,12 @@ const Map = ({ onSelect, onClosePopUp, selectedVendor }) => {
   // use effect to get the vendor locations
   useEffect(async () => {
     const { data: locations } = await getVendorsLocations();
+
+    if (!locations.length)
+      return toast.warning(
+        "Sorry. Current there are no vendors available. Please try again later."
+      );
+
     setVendorLocations(locations);
   }, []);
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import Map from "./map";
 
 class SelectVendorPage extends Component {
@@ -11,6 +12,15 @@ class SelectVendorPage extends Component {
 
   handleClosePopUp = () => {
     this.setState({ selectedVendor: "" });
+  };
+
+  handleSelectVendor = () => {
+    if (this.state.selectedVendor.length === 0)
+      return toast.warning("Please select a vendor in the map.");
+
+    localStorage.setItem("vendor", JSON.stringify(this.state.selectedVendor));
+
+    this.props.history.push("/customer/menu");
   };
 
   render() {
@@ -35,14 +45,17 @@ class SelectVendorPage extends Component {
               placeholder="click on a van to select the location"
               value={this.state.selectedVendor.address}
             />
-            <button className="w-100 btn btn-primary btn-lg mt-3 mb-4 mt-md-4 text-uppercase fs-4 fw-bold">
+            <button
+              className="w-100 btn btn-primary btn-lg mt-3 mb-4 mt-md-4 text-uppercase fs-4 fw-bold"
+              onClick={this.handleSelectVendor}
+            >
               Select vendor
             </button>
           </div>
           <div className="text-center mb-3">
             <Link to="/vendor/login" className="text-decoration-none">
               <span className="text-secondary ">
-                NOT CUSTOMER? VENDER LOGIN
+                NOT CUSTOMER? VENDOR LOGIN
               </span>
             </Link>
           </div>

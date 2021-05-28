@@ -7,8 +7,8 @@ import RegisterForm from "./registerForm";
 const LoginPage = ({ user }) => {
   return (
     <React.Fragment>
+      <NavBar user={user} />
       <main className="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
-        <NavBar user={user} />
         <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
           Login/register
         </h1>

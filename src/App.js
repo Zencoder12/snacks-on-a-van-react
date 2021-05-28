@@ -141,7 +141,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <ToastContainer autoClose={2000} />
+        <ToastContainer autoClose={3000} />
         <Switch>
           <Route
             path="/customer/menu"
