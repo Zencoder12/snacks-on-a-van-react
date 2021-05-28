@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import ReactMapGL, { GeolocateControl, Marker, Popup } from "react-map-gl";
 import { getVendorsLocations } from "../services/vendorService";
 
-const Map = () => {
+const Map = ({ onSelect, onClosePopUp, selectedVendor }) => {
   const [viewport, setViewport] = useState({
     latitude: -37.796368,
     longitude: 144.961166,
@@ -15,7 +15,7 @@ const Map = () => {
 
   const [vendorLocations, setVendorLocations] = useState([]);
 
-  const [selectedVendor, setSelectedVendor] = useState(null);
+  //   const [selectedVendor, setSelectedVendor] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {
@@ -53,7 +53,7 @@ const Map = () => {
             className="btn"
             onClick={(e) => {
               e.preventDefault();
-              setSelectedVendor(vendor);
+              onSelect(vendor);
             }}
           >
             <FontAwesomeIcon icon={faCaravan} className="fa-2x" />
@@ -72,7 +72,7 @@ const Map = () => {
           latitude={selectedVendor.coordinates.lat}
           longitude={selectedVendor.coordinates.lng}
           onClose={() => {
-            setSelectedVendor(null);
+            onClosePopUp();
           }}
         >
           <div>
