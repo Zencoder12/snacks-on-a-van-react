@@ -9,7 +9,7 @@ const VendorNavBar = () => {
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 px-md-5 fw-bold sticky-top">
       <Link
         className="py-1 col-6 col-md-3 text-center text-md-start text-decoration-none current"
-        to="/vendor/previous-orders"
+        to="/vendor/active-orders"
       >
         <span className="fs-5 text-uppercase">Current Orders</span>
       </Link>

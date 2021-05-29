@@ -1,100 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import VendorNavBar from "./vendorNavBar";
+import ActiveOrdersCard from "./common/activeOrdersCard";
+import { getVendorActiveOrders } from "../services/orderService";
 
 const VendorActiveOrdersPage = () => {
+  const [activeOrders, setActiveOrders] = useState([]);
+
+  useEffect(async () => {
+    try {
+      const { data: activeOrders } = await getVendorActiveOrders();
+      setActiveOrders(activeOrders);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }, []);
+
   return (
     <React.Fragment>
       <VendorNavBar />
-      <main classname="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
-        <h2 classname="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
-          Active orders
-        </h2>
+      <main className="mb-5 px-2 px-md-5 row g-3">
+        <div className="col-md-7 col-lg-8">
+          <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-md-block">
+            Active orders
+          </h1>
+          <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center d-md-none">
+            Active orders
+          </h1>
+          <div className="container p-3 rounded col-lg-12">
+            <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-3">
+              {activeOrders.map((order) => (
+                <ActiveOrdersCard key={order._id} order={order} />
+              ))}
+            </div>
+          </div>
+        </div>
 
-        <div classname="px-2 row g-3 pt-3 pt-md-0">
-          <div classname="container p-3 rounded col-lg-12">
-            <div classname="row row-cols-1 row-cols-lg-3 g-2">
-              <div classname="col-lg-4">
-                <div classname="card h-100 shadow-sm px-0">
-                  <div classname="card-header border-0">
-                    <div classname="d-flex justify-content-between mt-2">
-                      <p classname="text-uppercase fw-bold mb-1 highlight3">
-                        No.1
-                      </p>
-                      <p classname="text-uppercase fw-bold mb-1 highlight3">
-                        customer name
-                      </p>
-                    </div>
+        <div className="col-md-5 col-lg-4 d-none d-md-block">
+          <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center">
+            AWAITING PICK UP
+          </h1>
+          <div className="container pt-3 rounded">
+            <div className="row">
+              <div className="col">
+                <div className="mb-3 card shadow-sm">
+                  <div className="card-header border-0 d-flex justify-content-between text-uppercase fw-bold text-secondary py-3">
+                    <p className="mb-0">No.1</p>
+                    <p className="mb-0">Time</p>
                   </div>
-                  <div classname="card-body p-0">
-                    <table classname="table table-borderless m-2">
-                      <tbody>
-                        <tr>
-                          <td
-                            scope="row"
-                            classname="highlight1 text-uppercase fw-bold"
-                          >
-                            s
-                          </td>
-                          <td classname="highlight3 text-uppercase">
-                            Hot chocolate
-                          </td>
-                          <td classname="highlight4 text-uppercase fw-bold">
-                            1
-                          </td>
-                        </tr>
-                        <tr>
-                          <td
-                            scope="row"
-                            classname="highlight1 text-uppercase fw-bold"
-                          >
-                            L
-                          </td>
-                          <td classname="highlight3 text-uppercase">
-                            Long black
-                          </td>
-                          <td classname="highlight4 text-uppercase fw-bold">
-                            1
-                          </td>
-                        </tr>
-                        <tr>
-                          <td scope="row"></td>
-                          <td classname="highlight3 text-uppercase">
-                            berry cheesecake
-                          </td>
-                          <td classname="highlight4 text-uppercase fw-bold">
-                            2
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div className="card-body text-secondary text-uppercase text-center">
+                    <h5 className="fw-bold py-1">3 Items</h5>
+                    <h5 className="fw-bold">customer name</h5>
+                    <a href="#" className="w-100 btn btn-primary fs-5 fw-bold">
+                      Finished
+                    </a>
                   </div>
-                  <button classname="btn btn-primary mt-3 fs-5 fw-bold m-3 text-uppercase">
-                    Ready for pickup
-                  </button>
-                  <div classname="row mt-0 align-bottom">
-                    <div classname="col">
-                      <div
-                        classname="progress position-relative"
-                        id="van-progress"
-                      >
-                        <div
-                          classname="progress-bar"
-                          role="progressbar"
-                          style={{ width: "25%" }}
-                          aria-valuenow="25"
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        >
-                          <p
-                            classname="mb-0 position-absolute top-25 w-100 text-center fw-bold"
-                            id="prg-time"
-                          >
-                            14:59
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="card-footer border-0">
+                    <h5 className="py-2 m-0 text-uppercase text-center text-danger fw-bold">
+                      20% discount applied
+                    </h5>
                   </div>
                 </div>
               </div>
@@ -102,23 +66,22 @@ const VendorActiveOrdersPage = () => {
           </div>
         </div>
       </main>
-
-      <footer classname="fixed-bottom p-2 px-md-5">
-        <div classname="px-2 row g-3">
-          <Link
-            to="./vendor current order.html"
-            classname="col btn btn-primary me-1 text-uppercase fw-bold fs-4 active"
+      <footer className="fixed-bottom p-2 d-md-none">
+        <div className="px-2 row">
+          <a
+            href="#"
+            className="col btn btn-primary me-1 text-uppercase fw-bold fs-4"
             type="button"
           >
-            Active orders
-          </Link>
-          <Link
-            to="./vendor await pickup.html"
-            classname="col btn btn-primary ms-1 text-uppercase fw-bold fs-4"
+            Active Orders
+          </a>
+          <a
+            href="#"
+            className="col btn btn-primary ms-1 text-uppercase fw-bold fs-4 active"
             type="button"
           >
-            Await pickup
-          </Link>
+            Await Pickup
+          </a>
         </div>
       </footer>
     </React.Fragment>

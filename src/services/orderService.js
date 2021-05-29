@@ -20,3 +20,7 @@ export function getActiveOrders() {
 export function getVendorPastOrders() {
   return http.get(vendorLocalHostApi + "/past-orders");
 }
+
+export function getVendorActiveOrders() {
+  return http.get(vendorLocalHostApi + "/active-orders/");
+}
