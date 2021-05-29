@@ -21,7 +21,8 @@ import VendorLoginPage from "./vendorComponents/vendorLoginPage";
 import VendorRegisterPage from "./vendorComponents/vendorRegisterPage";
 import SetLocationPage from "./vendorComponents/setLocationPage";
 import PickUpOrdersPage from "./vendorComponents/pickUpOrdersPage";
-import VendorActiveOrdersPage from "./vendorComponents/vendorActiveOrdersPage";
+import VendorActOrdersPage from "./vendorComponents/vendorActOrdersPage";
+import VendorAwtOrdersPage from "./vendorComponents/vendorAwtOrdersPage";
 import VendorLogout from "./vendorComponents/vendorLogout";
 import VendorProfilePage from "./vendorComponents/vendorProfilePage";
 import VendorPreviousOrdersPage from "./vendorComponents/vendorPreviousOrdersPage";
@@ -238,7 +239,13 @@ class App extends Component {
           <ProtectedRoute
             path="/vendor/active-orders"
             render={(props) => (
-              <VendorActiveOrdersPage user={this.state.user} {...props} />
+              <VendorActOrdersPage user={this.state.user} {...props} />
+            )}
+          />
+          <ProtectedRoute
+            path="/vendor/await-orders"
+            render={(props) => (
+              <VendorAwtOrdersPage user={this.state.user} {...props} />
             )}
           />
           <ProtectedRoute

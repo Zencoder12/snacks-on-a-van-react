@@ -9,7 +9,7 @@ import {
 } from "../services/orderService";
 import { setOrderReady } from "../services/vendorService";
 
-const VendorActiveOrdersPage = () => {
+const VendorAwtOrdersPage = () => {
   const [activeOrders, setActiveOrders] = useState([]);
   const [pickUpOrders, setPickUpOrders] = useState([]);
 
@@ -53,7 +53,7 @@ const VendorActiveOrdersPage = () => {
     <React.Fragment>
       <VendorNavBar />
       <main className="mb-5 px-2 px-md-5 row g-3">
-        <div className="col-md-7 col-lg-8">
+        <div className="col-md-7 col-lg-8 d-none d-md-block">
           <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-md-block">
             Active orders
           </h1>
@@ -73,7 +73,7 @@ const VendorActiveOrdersPage = () => {
           </div>
         </div>
 
-        <div className="col-md-5 col-lg-4 d-none d-md-block">
+        <div className="col-md-5 col-lg-4">
           <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center">
             AWAITING PICK UP
           </h1>
@@ -89,24 +89,24 @@ const VendorActiveOrdersPage = () => {
 
       <footer className="fixed-bottom p-2 d-md-none">
         <div className="px-2 row">
-          <a
-            href="#"
-            className="col btn btn-primary me-1 text-uppercase fw-bold fs-4"
+          <Link
+            to="/vendor/active-orders"
+            className="col btn btn-primary me-1 text-uppercase fw-bold fs-4 active"
             type="button"
           >
             Active Orders
-          </a>
-          <a
-            href="#"
-            className="col btn btn-primary ms-1 text-uppercase fw-bold fs-4 active"
+          </Link>
+          <Link
+            to="#"
+            className="col btn btn-primary ms-1 text-uppercase fw-bold fs-4"
             type="button"
           >
             Await Pickup
-          </a>
+          </Link>
         </div>
       </footer>
     </React.Fragment>
   );
 };
 
-export default VendorActiveOrdersPage;
+export default VendorAwtOrdersPage;
