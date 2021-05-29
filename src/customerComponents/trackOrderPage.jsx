@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./navBar";
+import Countdown from "./common/countdown";
 
 const TrackOrderPage = ({ user }) => {
   return (
@@ -18,7 +19,7 @@ const TrackOrderPage = ({ user }) => {
               <div class="col">
                 <div class="p-3 p-lg-5 card shadow-sm text-center">
                   <h3 class="fw-bold text-secondary d-none d-lg-block text-uppercase">
-                    Change your mind? You can change or cancel your order
+                    Changed your mind? You can change or cancel your order
                     within:
                   </h3>
                   <div class="text-secondary d-none d-md-block d-lg-none">
@@ -32,7 +33,7 @@ const TrackOrderPage = ({ user }) => {
                     <h5 class="fw-bold">Change or cancel your order within:</h5>
                   </div>
                   <h1 class="py-3 py-lg-5 fw-bold display-1" id="count-down">
-                    09:59
+                    <Countdown />
                   </h1>
                   <div class="mt-3 d-grid gap-3 d-lg-flex justify-content-lg-center">
                     <button
@@ -98,7 +99,7 @@ const TrackOrderPage = ({ user }) => {
                       class="mb-0 position-absolute top-25 w-100 text-center fw-bold"
                       id="prg-time"
                     >
-                      14:59
+                      <Countdown />
                     </h2>
                   </div>
                 </div>

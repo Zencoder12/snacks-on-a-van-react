@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getCurrentLocation } from "../services/vendorService";
+import auth from "../services/authService";
 
 const VendorNavBar = () => {
-  const vendorLocation = getCurrentLocation();
+  const vendor = auth.getCurrentUser();
 
   return (
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 px-md-5 fw-bold sticky-top">
@@ -21,17 +21,17 @@ const VendorNavBar = () => {
       </Link>
 
       <div className="col-md-3 text-end">
-        {vendorLocation && (
+        {vendor && (
           <Link
             className="text-uppercase text-decoration-none dropdown-toggle fs-5"
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Hi, <u>{vendorLocation.vendorName}</u>
+            Hi, <u>{vendor.vendorName}</u>
           </Link>
         )}
-        {!vendorLocation && (
+        {!vendor && (
           <Link
             className="text-uppercase text-decoration-none dropdown-toggle fs-5"
             role="button"

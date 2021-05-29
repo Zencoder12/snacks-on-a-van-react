@@ -3,6 +3,7 @@ import RadioGroup from "./common/radioGroup";
 import LoginBanner from "./loginBanner";
 import NavBar from "./navBar";
 import SideCart from "./sideCart";
+import auth from "../services/authService";
 
 class Menu extends Component {
   state = {
@@ -16,6 +17,7 @@ class Menu extends Component {
   render() {
     const { products, user, onAdd, cartItems } = this.props;
     const { selectedPrice } = this.state;
+    const isCustomer = auth.isValidCustomer();
 
     return (
       <React.Fragment>
@@ -131,8 +133,8 @@ class Menu extends Component {
               </div>
             </div>
           </div>
-          {!user && <LoginBanner />}
-          {user && <SideCart cartItems={cartItems} />}
+          {!isCustomer && <LoginBanner />}
+          {isCustomer && <SideCart cartItems={cartItems} />}
         </main>
       </React.Fragment>
     );

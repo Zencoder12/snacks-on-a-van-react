@@ -20,8 +20,13 @@ const VendorPreviousOrdersPage = () => {
 
   const handleSearch = () => {
     const searchOrder = previousOrders.filter((order) => order._id === value);
-    console.log(searchOrder);
     setPreviousOrders(searchOrder);
+  };
+
+  const handleClear = async () => {
+    setValue("");
+    const { data } = await getVendorPastOrders();
+    setPreviousOrders(data);
   };
 
   return (
@@ -39,6 +44,7 @@ const VendorPreviousOrdersPage = () => {
             <div className="row">
               <div className="col">
                 <SearchBar
+                  onClear={handleClear}
                   onChange={handleChange}
                   onSearch={handleSearch}
                   value={value}

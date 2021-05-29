@@ -61,6 +61,24 @@ export function getCurrentUser() {
   }
 }
 
+export function isValidCustomer() {
+  try {
+    const jwt = localStorage.getItem("token");
+    return jwtDecode(jwt).isCustomer;
+  } catch (ex) {
+    return null;
+  }
+}
+
+export function isValidVendor() {
+  try {
+    const jwt = localStorage.getItem("token");
+    return jwtDecode(jwt).isVendor;
+  } catch (ex) {
+    return null;
+  }
+}
+
 export function getJwt() {
   return localStorage.getItem("token");
 }
@@ -73,5 +91,7 @@ export default {
   logout,
   getCurrentUser,
   getJwt,
+  isValidCustomer,
+  isValidVendor,
   loginWithJwt,
 };
