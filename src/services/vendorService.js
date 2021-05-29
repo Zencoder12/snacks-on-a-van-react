@@ -30,6 +30,13 @@ export function setOrderReady(orderId) {
   });
 }
 
+export function setOrderFulfill(orderId) {
+  return http.patch(vendorLocalHostApi + "/set-fulfill", {
+    orderId: orderId,
+    isFulfilled: true,
+  });
+}
+
 export function getCurrentVendor() {
   return JSON.parse(localStorage.getItem("vendor"));
 }

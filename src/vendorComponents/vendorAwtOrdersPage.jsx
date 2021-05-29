@@ -7,7 +7,7 @@ import {
   getVendorActiveOrders,
   getReadyOrders,
 } from "../services/orderService";
-import { setOrderReady } from "../services/vendorService";
+import { setOrderFulfill, setOrderReady } from "../services/vendorService";
 
 const VendorAwtOrdersPage = () => {
   const [activeOrders, setActiveOrders] = useState([]);
@@ -49,6 +49,20 @@ const VendorAwtOrdersPage = () => {
     }
   };
 
+  const handleFinishOrder = async (finishedOrder) => {
+    try {
+      // update active orders state
+      const updatedPickUpOrders = pickUpOrders.filter(
+        (order) => order._id !== finishedOrder._id
+      );
+      setPickUpOrders(updatedPickUpOrders);
+
+      await setOrderFulfill(finishedOrder._id);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
   return (
     <React.Fragment>
       <VendorNavBar />
@@ -80,7 +94,11 @@ const VendorAwtOrdersPage = () => {
           <div className="container pt-3 rounded">
             <div className="row">
               {pickUpOrders.map((order) => (
-                <PickUpOrdersCard key={order._id} order={order} />
+                <PickUpOrdersCard
+                  key={order._id}
+                  order={order}
+                  onFinishOrder={handleFinishOrder}
+                />
               ))}
             </div>
           </div>

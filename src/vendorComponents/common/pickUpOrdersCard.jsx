@@ -1,6 +1,6 @@
 import React from "react";
 
-const PickUpOrdersCard = ({ order }) => {
+const PickUpOrdersCard = ({ onFinishOrder, order }) => {
   const totalQty = order.orderItems.reduce((a, item) => a + item.qty, 0);
   return (
     <div className="col">
@@ -12,7 +12,10 @@ const PickUpOrdersCard = ({ order }) => {
         <div className="card-body text-secondary text-uppercase text-center">
           <h5 className="fw-bold py-1">{totalQty} Items</h5>
           <h5 className="fw-bold">Customer: {order.customerName}</h5>
-          <button className="w-100 btn btn-primary fs-5 fw-bold">
+          <button
+            className="w-100 btn btn-primary fs-5 fw-bold"
+            onClick={() => onFinishOrder(order)}
+          >
             Finished
           </button>
         </div>
