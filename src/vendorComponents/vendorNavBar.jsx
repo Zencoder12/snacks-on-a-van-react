@@ -8,17 +8,16 @@ const VendorNavBar = () => {
   return (
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 px-md-5 fw-bold sticky-top">
       <Link
-        className="d-flex align-items-center col-md-3 mb-md-2 mb-md-0 text-decoration-none text-start current"
-        href="./vendor past order.html"
-      >
-        <span className="fs-5 text-uppercase">previous orders</span>
-      </Link>
-
-      <Link
-        className="nav col-12 col-md-auto mb-md-2 justify-content-center mb-md-0 text-decoration-none"
-        href="./vendor current order.html"
+        className="py-1 col-6 col-md-3 text-center text-md-start text-decoration-none current"
+        to="/vendor/previous-orders"
       >
         <span className="fs-5 text-uppercase">Current Orders</span>
+      </Link>
+      <Link
+        className="py-1 col-6 col-md-auto text-center text-md-start text-decoration-none"
+        to="/vendor/previous-orders"
+      >
+        <span className="fs-5 text-uppercase">Previous Orders</span>
       </Link>
 
       <div className="col-md-3 text-end">
@@ -49,7 +48,7 @@ const VendorNavBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="dropdown-item fs-5" href="./vendor home.html">
+            <Link className="dropdown-item fs-5" to="/vendor/logout">
               Logout
             </Link>
           </li>

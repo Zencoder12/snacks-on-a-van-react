@@ -13,7 +13,6 @@ class ActiveOrdersPage extends Component {
 
   render() {
     const { orders } = this.state;
-    console.log(this.state.orders);
     return (
       <React.Fragment>
         <NavBar user={this.props.user} />

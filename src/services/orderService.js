@@ -1,5 +1,9 @@
 import http from "./httpService";
-import { customerApiUrl, localHostApi } from "../config.json";
+import {
+  customerApiUrl,
+  localHostApi,
+  vendorLocalHostApi,
+} from "../config.json";
 
 export function createOrder(vendorName, orderItems) {
   return http.post(localHostApi + "/new-order/", { vendorName, orderItems });
@@ -11,4 +15,8 @@ export function getPastOrders() {
 
 export function getActiveOrders() {
   return http.get(localHostApi + "/active-orders/");
+}
+
+export function getVendorPastOrders() {
+  return http.get(vendorLocalHostApi + "/past-orders");
 }
