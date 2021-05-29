@@ -1,7 +1,8 @@
 import React from "react";
+
 import ActiveOrdersCardItem from "./activeOrdersCardItem";
 
-const ActiveOrdersCard = ({ order }) => {
+const ActiveOrdersCard = ({ onOrderReady, order }) => {
   return (
     <div className="col">
       <div className="card h-100 shadow-sm">
@@ -16,7 +17,10 @@ const ActiveOrdersCard = ({ order }) => {
         </div>
         <div className="card-footer p-0 border-0" id="card">
           <div className="mx-3 mb-3">
-            <button className="w-100 btn btn-primary fs-5 fw-bold">
+            <button
+              className="w-100 btn btn-primary fs-5 fw-bold"
+              onClick={() => onOrderReady(order)}
+            >
               READY FOR PICK UP
             </button>
           </div>

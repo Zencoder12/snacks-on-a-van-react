@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import VendorNavBar from "./vendorNavBar";
 import ActiveOrdersCard from "./common/activeOrdersCard";
-import { getVendorActiveOrders } from "../services/orderService";
+import PickUpOrdersCard from "./common/pickUpOrdersCard";
+import VendorNavBar from "./vendorNavBar";
+import {
+  getVendorActiveOrders,
+  getReadyOrders,
+} from "../services/orderService";
+import { setOrderReady } from "../services/vendorService";
 
 const VendorActiveOrdersPage = () => {
   const [activeOrders, setActiveOrders] = useState([]);
+  const [pickUpOrders, setPickUpOrders] = useState([]);
 
   useEffect(async () => {
     try {
@@ -15,6 +21,33 @@ const VendorActiveOrdersPage = () => {
       console.log(ex);
     }
   }, []);
+
+  useEffect(async () => {
+    try {
+      const { data: pickUpOrders } = await getReadyOrders();
+      setPickUpOrders(pickUpOrders);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }, []);
+
+  const handleOrderReady = async (readyOrder) => {
+    try {
+      // update active orders state
+      const updatedActiveOrders = activeOrders.filter(
+        (order) => order._id !== readyOrder._id
+      );
+      setActiveOrders(updatedActiveOrders);
+
+      // update awaiting orders state
+      const updatedPickUpOrders = [...pickUpOrders, { ...readyOrder }];
+      setPickUpOrders(updatedPickUpOrders);
+
+      await setOrderReady(readyOrder._id);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -30,7 +63,11 @@ const VendorActiveOrdersPage = () => {
           <div className="container p-3 rounded col-lg-12">
             <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-3">
               {activeOrders.map((order) => (
-                <ActiveOrdersCard key={order._id} order={order} />
+                <ActiveOrdersCard
+                  key={order._id}
+                  order={order}
+                  onOrderReady={handleOrderReady}
+                />
               ))}
             </div>
           </div>
@@ -42,30 +79,14 @@ const VendorActiveOrdersPage = () => {
           </h1>
           <div className="container pt-3 rounded">
             <div className="row">
-              <div className="col">
-                <div className="mb-3 card shadow-sm">
-                  <div className="card-header border-0 d-flex justify-content-between text-uppercase fw-bold text-secondary py-3">
-                    <p className="mb-0">No.1</p>
-                    <p className="mb-0">Time</p>
-                  </div>
-                  <div className="card-body text-secondary text-uppercase text-center">
-                    <h5 className="fw-bold py-1">3 Items</h5>
-                    <h5 className="fw-bold">customer name</h5>
-                    <a href="#" className="w-100 btn btn-primary fs-5 fw-bold">
-                      Finished
-                    </a>
-                  </div>
-                  <div className="card-footer border-0">
-                    <h5 className="py-2 m-0 text-uppercase text-center text-danger fw-bold">
-                      20% discount applied
-                    </h5>
-                  </div>
-                </div>
-              </div>
+              {pickUpOrders.map((order) => (
+                <PickUpOrdersCard key={order._id} order={order} />
+              ))}
             </div>
           </div>
         </div>
       </main>
+
       <footer className="fixed-bottom p-2 d-md-none">
         <div className="px-2 row">
           <a

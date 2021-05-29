@@ -24,3 +24,7 @@ export function getVendorPastOrders() {
 export function getVendorActiveOrders() {
   return http.get(vendorLocalHostApi + "/active-orders/");
 }
+
+export function getReadyOrders() {
+  return http.get(vendorLocalHostApi + "/ready-orders");
+}

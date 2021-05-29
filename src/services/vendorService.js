@@ -23,6 +23,13 @@ export function closeLocation(vendorName) {
   });
 }
 
+export function setOrderReady(orderId) {
+  return http.patch(vendorLocalHostApi + "/set-ready", {
+    orderId: orderId,
+    isReady: true,
+  });
+}
+
 export function getCurrentVendor() {
   return JSON.parse(localStorage.getItem("vendor"));
 }
