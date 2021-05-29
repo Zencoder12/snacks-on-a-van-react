@@ -6,11 +6,23 @@ import VendorNavBar from "./vendorNavBar";
 
 const VendorPreviousOrdersPage = () => {
   const [previousOrders, setPreviousOrders] = useState([]);
+  const [value, setValue] = useState("");
 
   useEffect(async () => {
     const { data } = await getVendorPastOrders();
     setPreviousOrders(data);
   }, []);
+
+  const handleChange = (e) => {
+    const input = e.currentTarget.value;
+    setValue(input);
+  };
+
+  const handleSearch = () => {
+    const searchOrder = previousOrders.filter((order) => order._id === value);
+    console.log(searchOrder);
+    setPreviousOrders(searchOrder);
+  };
 
   return (
     <React.Fragment>
@@ -26,7 +38,11 @@ const VendorPreviousOrdersPage = () => {
           <div className="container p-3 rounded">
             <div className="row">
               <div className="col">
-                <SearchBar />
+                <SearchBar
+                  onChange={handleChange}
+                  onSearch={handleSearch}
+                  value={value}
+                />
                 {previousOrders.map((order) => (
                   <div className="row p-3">
                     <PreviousOrdersDetailCard key={order._id} order={order} />
