@@ -20,7 +20,10 @@ import SelectVendorPage from "./customerComponents/selectVendorPage";
 import VendorLoginPage from "./vendorComponents/vendorLoginPage";
 import VendorRegisterPage from "./vendorComponents/vendorRegisterPage";
 import SetLocationPage from "./vendorComponents/setLocationPage";
+import PickUpOrdersPage from "./vendorComponents/pickUpOrdersPage";
+import VendorActiveOrdersPage from "./vendorComponents/vendorActiveOrdersPage";
 import VendorProfilePage from "./vendorComponents/vendorProfilePage";
+import VendorPastOrdersPage from "./vendorComponents/vendorPastOrdersPage";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -219,9 +222,27 @@ class App extends Component {
           <Route path="/vendor/login" component={VendorLoginPage} />
           <Route path="/vendor/register" component={VendorRegisterPage} />
           <ProtectedRoute
+            path="/vendor/await-pickup"
+            render={(props) => (
+              <PickUpOrdersPage user={this.state.user} {...props} />
+            )}
+          />
+          <ProtectedRoute
             path="/vendor/set-location"
             render={(props) => (
               <SetLocationPage user={this.state.user} {...props} />
+            )}
+          />
+          <ProtectedRoute
+            path="/vendor/active-orders"
+            render={(props) => (
+              <VendorActiveOrdersPage user={this.state.user} {...props} />
+            )}
+          />
+          <ProtectedRoute
+            path="/vendor/past-orders"
+            render={(props) => (
+              <VendorPastOrdersPage user={this.state.user} {...props} />
             )}
           />
           <Route path="/not-found" component={NotFound} />

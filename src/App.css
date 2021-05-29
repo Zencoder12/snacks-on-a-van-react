@@ -160,6 +160,18 @@ input[type="radio"]:focus,
   align-items: center;
 }
 
+/* vendor css */
+.highlight3 {
+  color: var(--t3);
+}
+.highlight4 {
+  color: var(--t4);
+}
+#van-progress {
+  height: 25px !important;
+  background-color: var(--progress-bg) !important;
+}
+
 /* minus plus button */
 .count__label {
   border: 1px solid var(--gray-4);

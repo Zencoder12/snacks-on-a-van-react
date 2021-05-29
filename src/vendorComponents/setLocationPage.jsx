@@ -8,7 +8,7 @@ import { setVendorLocation } from "../services/vendorService";
 import { toast } from "react-toastify";
 import VendorNavBar from "./vendorNavBar";
 
-const SetLocationPage = () => {
+const SetLocationPage = (props) => {
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     let: null,
@@ -31,6 +31,7 @@ const SetLocationPage = () => {
         address
       );
       localStorage.setItem("location", JSON.stringify(location));
+      props.history.push("/vendor/active-orders");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         toast.warning(
