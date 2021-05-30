@@ -14,7 +14,7 @@ export function getVendorsLocations() {
 }
 
 export function closeLocation(vendorName) {
-  return http.delete(vendorApiUrl + "/close-location", {
+  return http.delete(vendorLocalHostApi + "/close-location", {
     data: { vendorName: vendorName },
   });
 }

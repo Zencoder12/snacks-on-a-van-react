@@ -5,19 +5,19 @@ import auth from "../services/authService";
 
 class VendorLoginForm extends VendorForm {
   state = {
-    data: { email: "", password: "" },
+    data: { vendorName: "", password: "" },
     errors: {},
   };
 
   schema = {
-    email: Joi.string().email().min(5).max(255).required().label("Email"),
+    vendorName: Joi.string().min(5).max(255).required().label("Van Name"),
     password: Joi.string().min(5).max(255).required().label("Password"),
   };
 
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      await auth.loginVendor(data.email, data.password);
+      await auth.loginVendor(data.vendorName, data.password);
       window.location = "/vendor/set-location";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -31,7 +31,7 @@ class VendorLoginForm extends VendorForm {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        {this.renderInput("email", "Email:", "text", "name@example.com")}
+        {this.renderInput("vendorName", "Van Name:", "text", "van name")}
         {this.renderInput(
           "password",
           "Password:",

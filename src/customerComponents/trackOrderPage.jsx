@@ -170,7 +170,7 @@ const TrackOrderPage = (props) => {
               </h4>
               <h5 class="d-md-none">
                 Note: If order is not ready within 15 mins, you will receive a
-                20% discount for the next order.
+                20% discount for this order.
               </h5>
             </div>
           </div>

@@ -34,7 +34,7 @@ const ActiveOrdersCard = ({ onOrderReady, order }) => {
               aria-valuemax="100"
             >
               <h5
-                className="mb-0 position-absolute top-25 w-100 text-center fw-bold"
+                className="mb-0 position-absolute top-25 w-100 text-center text-warning fw-bold"
                 id="prg-time"
               >
                 <Countdown orderTime={order.orderTime} />

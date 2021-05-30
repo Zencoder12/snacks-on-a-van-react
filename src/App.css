@@ -167,8 +167,13 @@ input[type="radio"]:focus,
 .highlight4 {
   color: var(--t4);
 }
+
+.card-footer {
+  background-color: #fff !important;
+}
+
 #van-progress {
-  height: 25px !important;
+  height: 35px !important;
   background-color: var(--progress-bg) !important;
 }
 
@@ -189,4 +194,16 @@ input[type="radio"]:focus,
 .minus-plus-container .btn-left {
   font-weight: 600;
   padding: 4 !important;
+}
+
+/* vendor css */
+.highlight3 {
+  color: var(--t3);
+}
+.highlight4 {
+  color: var(--t4);
+}
+#van-progress {
+  height: 25px !important;
+  background-color: var(--progress-bg) !important;
 }
