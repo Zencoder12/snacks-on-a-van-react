@@ -1,6 +1,11 @@
 import http from "./httpService";
 import jwtDecode from "jwt-decode";
-import { customerApiUrl, vendorApiUrl } from "../config.json";
+import {
+  localHostApi,
+  customerApiUrl,
+  vendorLocalHostApi,
+  vendorApiUrl,
+} from "../config.json";
 
 // method to send jwt to http service (axios service module)
 http.setJwt(getJwt());

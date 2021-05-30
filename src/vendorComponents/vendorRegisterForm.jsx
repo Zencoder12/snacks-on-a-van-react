@@ -28,7 +28,7 @@ class VendorRegisterForm extends VendorForm {
       const { data } = this.state;
       const response = await auth.signUpVendor(data);
       auth.loginWithJwt(response.headers["x-auth-token"]);
-      window.location = "/vendor/select-vendor";
+      window.location = "/vendor/set-location";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
