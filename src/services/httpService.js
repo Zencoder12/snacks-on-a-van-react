@@ -7,8 +7,7 @@ axios.interceptors.response.use(null, (error) => {
     error.response.status < 500;
 
   if (!expectedError) {
-    console.log(error);
-    console.error("An unexpected error occurred.");
+    window.location = "/400";
   }
 
   return Promise.reject(error);

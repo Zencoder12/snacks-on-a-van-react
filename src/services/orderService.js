@@ -1,50 +1,51 @@
 import http from "./httpService";
 import {
   customerApiUrl,
+  vendorApiUrl,
   localHostApi,
   vendorLocalHostApi,
 } from "../config.json";
 
 export function createOrder(vendorName, orderItems) {
-  return http.post(localHostApi + "/new-order/", { vendorName, orderItems });
+  return http.post(customerApiUrl + "/new-order/", { vendorName, orderItems });
 }
 
 export function getPastOrders() {
-  return http.get(localHostApi + "/past-orders/");
+  return http.get(customerApiUrl + "/past-orders/");
 }
 
 export function getActiveOrders() {
-  return http.get(localHostApi + "/active-orders/");
+  return http.get(customerApiUrl + "/active-orders/");
 }
 
 export function getOneOrder(orderId) {
-  return http.post(localHostApi + "/get-order", {
+  return http.post(customerApiUrl + "/get-order", {
     orderId: orderId,
   });
 }
 
 export function changeOrder(orderId, orderItems) {
-  return http.patch(localHostApi + "/update-order", {
+  return http.patch(customerApiUrl + "/update-order", {
     orderId: orderId,
     orderItems: orderItems,
   });
 }
 
 export function cancelOrder(orderId) {
-  return http.patch(localHostApi + "/cancel-order/", {
+  return http.patch(customerApiUrl + "/cancel-order/", {
     orderId: orderId,
     isCancelled: true,
   });
 }
 
 export function getVendorPastOrders() {
-  return http.get(vendorLocalHostApi + "/past-orders");
+  return http.get(vendorApiUrl + "/past-orders");
 }
 
 export function getVendorActiveOrders() {
-  return http.get(vendorLocalHostApi + "/active-orders/");
+  return http.get(vendorApiUrl + "/active-orders/");
 }
 
 export function getReadyOrders() {
-  return http.get(vendorLocalHostApi + "/ready-orders");
+  return http.get(vendorApiUrl + "/ready-orders");
 }

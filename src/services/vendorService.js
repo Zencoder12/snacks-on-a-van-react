@@ -1,12 +1,8 @@
 import http from "./httpService";
-import {
-  customerApiUrl,
-  localHostApi,
-  vendorLocalHostApi,
-} from "../config.json";
+import { vendorApiUrl, vendorLocalHostApi } from "../config.json";
 
 export function setVendorLocation(vendorName, coordinates, address) {
-  return http.post(vendorLocalHostApi + "/set-location", {
+  return http.post(vendorApiUrl + "/set-location", {
     vendorName: vendorName,
     coordinates: coordinates,
     address: address,
@@ -14,17 +10,17 @@ export function setVendorLocation(vendorName, coordinates, address) {
 }
 
 export function getVendorsLocations() {
-  return http.get(vendorLocalHostApi + "/vendors-locations");
+  return http.get(vendorApiUrl + "/vendors-locations");
 }
 
 export function closeLocation(vendorName) {
-  return http.delete(vendorLocalHostApi + "/close-location", {
+  return http.delete(vendorApiUrl + "/close-location", {
     data: { vendorName: vendorName },
   });
 }
 
 export function setOrderReady(orderId, isDiscounted) {
-  return http.patch(vendorLocalHostApi + "/set-ready", {
+  return http.patch(vendorApiUrl + "/set-ready", {
     orderId: orderId,
     isDiscounted: isDiscounted,
     isReady: true,
@@ -32,7 +28,7 @@ export function setOrderReady(orderId, isDiscounted) {
 }
 
 export function setOrderFulfill(orderId) {
-  return http.patch(vendorLocalHostApi + "/set-fulfill", {
+  return http.patch(vendorApiUrl + "/set-fulfill", {
     orderId: orderId,
     isFulfilled: true,
   });

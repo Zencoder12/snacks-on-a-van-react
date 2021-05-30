@@ -1,5 +1,6 @@
 {
   "customerApiUrl": "https://the-bald-figthers.herokuapp.com/customers",
+  "vendorApiUrl" : "https://the-bald-figthers.herokuapp.com/vendors",
   "localHostApi" : "http://localhost:3000/customers",
   "vendorLocalHostApi" : "http://localhost:3000/vendors"
 }

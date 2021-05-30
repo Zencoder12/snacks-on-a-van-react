@@ -2,6 +2,7 @@ import http from "./httpService";
 import jwtDecode from "jwt-decode";
 import {
   customerApiUrl,
+  vendorApiUrl,
   localHostApi,
   vendorLocalHostApi,
 } from "../config.json";
@@ -10,7 +11,7 @@ import {
 http.setJwt(getJwt());
 
 export async function login(email, password) {
-  const { data: jwt } = await http.post(localHostApi + "/auth", {
+  const { data: jwt } = await http.post(customerApiUrl + "/auth", {
     email,
     password,
   });
@@ -18,7 +19,7 @@ export async function login(email, password) {
 }
 
 export function signUp(user) {
-  return http.post(localHostApi + "/auth/sign-up", {
+  return http.post(customerApiUrl + "/auth/sign-up", {
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,
@@ -27,7 +28,7 @@ export function signUp(user) {
 }
 
 export async function loginVendor(email, password) {
-  const { data: jwt } = await http.post(vendorLocalHostApi + "/auth", {
+  const { data: jwt } = await http.post(vendorApiUrl + "/auth", {
     email,
     password,
   });
@@ -35,7 +36,7 @@ export async function loginVendor(email, password) {
 }
 
 export function signUpVendor(user) {
-  return http.post(vendorLocalHostApi + "/auth/sign-up", {
+  return http.post(vendorApiUrl + "/auth/sign-up", {
     vendorName: user.vendorName,
     contactName: user.contactName,
     email: user.email,
