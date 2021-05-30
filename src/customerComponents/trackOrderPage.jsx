@@ -1,11 +1,66 @@
 import React from "react";
 import NavBar from "./navBar";
 import Countdown from "./common/countdown";
+import { cancelOrder, getOneOrder } from "../services/orderService";
+import { toast } from "react-toastify";
 
-const TrackOrderPage = ({ user }) => {
+const TrackOrderPage = (props) => {
+  const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
+
+  const handleChangeOrder = async () => {
+    try {
+      const { data: order } = await getOneOrder(currentOrder.orderId);
+      // check whether the order is ready
+      if (order.isReady)
+        return toast.warning(
+          "The order is already ready for pick-up, cannot change the order."
+        );
+
+      // check whether within 10 minutes
+      if (!isWithinTimeLimit(new Date(currentOrder.time), new Date()))
+        return toast.warning(
+          "It has already been already more than 10 minutes, cannot change the order. "
+        );
+
+      props.history.push("/customer/menu");
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
+  const handleCancelOrder = async () => {
+    try {
+      const { data: order } = await getOneOrder(currentOrder.orderId);
+      // check whether the order is ready
+      if (order.isReady)
+        return toast.warning(
+          "The order is already ready for pick-up, cannot change the order."
+        );
+
+      // check whether within 10 minutes
+      if (!isWithinTimeLimit(new Date(currentOrder.time), new Date()))
+        return toast.warning(
+          "It has already been already more than 10 minutes, cannot change the order. "
+        );
+
+      await cancelOrder(currentOrder.orderId);
+
+      localStorage.removeItem("currentOrder");
+      props.history.push("/customer/menu");
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
+  const isWithinTimeLimit = (orderTime, currentTime) => {
+    console.log(orderTime);
+    console.log(currentTime);
+    return currentTime - orderTime < 600000;
+  };
+
   return (
     <React.Fragment>
-      <NavBar user={user} />
+      <NavBar />
       <main class="mb-5 px-2 px-md-5 pb-lg-0">
         <h1 class="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
           Track your order
@@ -33,18 +88,20 @@ const TrackOrderPage = ({ user }) => {
                     <h5 class="fw-bold">Change or cancel your order within:</h5>
                   </div>
                   <h1 class="py-3 py-lg-5 fw-bold display-1" id="count-down">
-                    <Countdown />
+                    <Countdown orderTime={currentOrder.time} />
                   </h1>
                   <div class="mt-3 d-grid gap-3 d-lg-flex justify-content-lg-center">
                     <button
                       class="btn btn-lg btn-primary px-lg-5 fs-3 fw-bold"
                       type="button"
+                      onClick={handleChangeOrder}
                     >
                       CHANGE ORDER
                     </button>
                     <button
                       class="btn btn-lg btn-primary px-lg-5 fs-3 fw-bold"
                       type="button"
+                      onClick={handleCancelOrder}
                     >
                       CANCEL ORDER
                     </button>
@@ -99,7 +156,7 @@ const TrackOrderPage = ({ user }) => {
                       class="mb-0 position-absolute top-25 w-100 text-center fw-bold"
                       id="prg-time"
                     >
-                      <Countdown />
+                      <Countdown orderTime={currentOrder.time} />
                     </h2>
                   </div>
                 </div>

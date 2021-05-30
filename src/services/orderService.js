@@ -17,6 +17,19 @@ export function getActiveOrders() {
   return http.get(localHostApi + "/active-orders/");
 }
 
+export function getOneOrder(orderId) {
+  return http.post(localHostApi + "/get-order", {
+    orderId: orderId,
+  });
+}
+
+export function cancelOrder(orderId) {
+  return http.patch(localHostApi + "/cancel-order/", {
+    orderId: orderId,
+    isCancelled: true,
+  });
+}
+
 export function getVendorPastOrders() {
   return http.get(vendorLocalHostApi + "/past-orders");
 }

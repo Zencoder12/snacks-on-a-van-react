@@ -1,5 +1,5 @@
 import React from "react";
-
+import Countdown from "../../customerComponents/common/countdown";
 import ActiveOrdersCardItem from "./activeOrdersCardItem";
 
 const ActiveOrdersCard = ({ onOrderReady, order }) => {
@@ -37,7 +37,7 @@ const ActiveOrdersCard = ({ onOrderReady, order }) => {
                 className="mb-0 position-absolute top-25 w-100 text-center fw-bold"
                 id="prg-time"
               >
-                14:59
+                <Countdown />
               </h5>
             </div>
           </div>

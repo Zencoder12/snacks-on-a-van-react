@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const Countdown = () => {
+const Countdown = ({ orderTime }) => {
   const intervalRef = useRef(null);
   const [timer, setTimer] = useState("00:00");
 
@@ -23,7 +23,7 @@ const Countdown = () => {
   }
 
   function clearTimer(endtime) {
-    setTimer("15:00");
+    setTimer("10:00");
 
     if (intervalRef.current) clearInterval(intervalRef);
     const id = setInterval(() => {
@@ -33,8 +33,8 @@ const Countdown = () => {
   }
 
   function getDeadlineTime() {
-    let deadline = new Date();
-    deadline.setMinutes(deadline.getMinutes() + 15);
+    let deadline = new Date(orderTime);
+    deadline.setMinutes(deadline.getMinutes() + 10);
     return deadline;
   }
 

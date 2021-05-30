@@ -14,7 +14,8 @@ class ShoppingCart extends Component {
     try {
       const vendor = getCurrentVendor();
       const orderItems = JSON.parse(localStorage.getItem("cart"));
-      await createOrder(vendor.vendorName, orderItems);
+      const { data: order } = await createOrder(vendor.vendorName, orderItems);
+      localStorage.setItem("currentOrder", JSON.stringify(order));
       window.location = "/customer/tracking-order";
     } catch (ex) {
       if (ex) {
