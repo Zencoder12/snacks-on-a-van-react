@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { getCurrentVendor } from "../services/vendorService";
+import auth from "../services/authService";
 
-const NavBar = ({ user }) => {
+const NavBar = () => {
   const vendor = getCurrentVendor();
-  const location = vendor.address;
+  const user = auth.getCurrentUser();
 
   return (
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 px-md-5 fw-bold sticky-top">
@@ -12,9 +13,16 @@ const NavBar = ({ user }) => {
         to="/customer/select-vendor"
         className="d-flex align-items-center col-md-3 mb-md-2 mb-md-0 text-decoration-none text-start"
       >
-        <span className="fs-5">
-          Location: <u className="fw-normal">{location}</u>
-        </span>
+        {vendor && (
+          <span className="fs-5">
+            Location: <u className="fw-normal">{vendor.address}</u>
+          </span>
+        )}
+        {!vendor && (
+          <span className="fs-5">
+            Location: <u className="fw-normal"></u>
+          </span>
+        )}
       </Link>
 
       <ul className="nav col-12 col-md-auto mb-md-2 justify-content-center mb-md-0">

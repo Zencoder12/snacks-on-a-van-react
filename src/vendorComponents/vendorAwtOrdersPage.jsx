@@ -18,7 +18,7 @@ const VendorAwtOrdersPage = () => {
       const { data: activeOrders } = await getVendorActiveOrders();
       setActiveOrders(activeOrders);
     } catch (ex) {
-      console.log(ex);
+      window.location = "/400";
     }
   }, []);
 
@@ -27,7 +27,7 @@ const VendorAwtOrdersPage = () => {
       const { data: pickUpOrders } = await getReadyOrders();
       setPickUpOrders(pickUpOrders);
     } catch (ex) {
-      console.log(ex);
+      window.location = "/400";
     }
   }, []);
 
@@ -43,9 +43,13 @@ const VendorAwtOrdersPage = () => {
       const updatedPickUpOrders = [...pickUpOrders, { ...readyOrder }];
       setPickUpOrders(updatedPickUpOrders);
 
-      await setOrderReady(readyOrder._id);
+      // check whether the order is discounted or not
+      const isDiscounted = calcTime(new Date(readyOrder.orderTime), new Date());
+      console.log("calc", isDiscounted);
+
+      await setOrderReady(readyOrder._id, isDiscounted);
     } catch (ex) {
-      console.log(ex);
+      window.location = "/400";
     }
   };
 
@@ -59,8 +63,12 @@ const VendorAwtOrdersPage = () => {
 
       await setOrderFulfill(finishedOrder._id);
     } catch (ex) {
-      console.log(ex);
+      window.location = "/400";
     }
+  };
+
+  const calcTime = (orderTime, currentTime) => {
+    return currentTime - orderTime > 900000;
   };
 
   return (

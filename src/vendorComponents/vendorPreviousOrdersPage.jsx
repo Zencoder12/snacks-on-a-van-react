@@ -9,8 +9,12 @@ const VendorPreviousOrdersPage = () => {
   const [value, setValue] = useState("");
 
   useEffect(async () => {
-    const { data } = await getVendorPastOrders();
-    setPreviousOrders(data);
+    try {
+      const { data } = await getVendorPastOrders();
+      setPreviousOrders(data);
+    } catch (ex) {
+      window.location = "/400";
+    }
   }, []);
 
   const handleChange = (e) => {
@@ -24,9 +28,13 @@ const VendorPreviousOrdersPage = () => {
   };
 
   const handleClear = async () => {
-    setValue("");
-    const { data } = await getVendorPastOrders();
-    setPreviousOrders(data);
+    try {
+      setValue("");
+      const { data } = await getVendorPastOrders();
+      setPreviousOrders(data);
+    } catch (ex) {
+      window.location = "/400";
+    }
   };
 
   return (

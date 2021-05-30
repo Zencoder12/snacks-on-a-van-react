@@ -21,7 +21,7 @@ class RegisterForm extends Form {
       const { data } = this.state;
       const response = await auth.signUp(data);
       auth.loginWithJwt(response.headers["x-auth-token"]);
-      window.location = "/customer/menu";
+      window.location = "/customer/select-vendor";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

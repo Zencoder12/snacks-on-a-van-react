@@ -15,21 +15,21 @@ class Menu extends Component {
   };
 
   render() {
-    const { products, user, onAdd, cartItems } = this.props;
+    const { products, onAdd, cartItems } = this.props;
     const { selectedPrice } = this.state;
     const isCustomer = auth.isValidCustomer();
 
-    let cartItemsClone = [...cartItems];
+    // let cartItemsClone = [...cartItems];
 
-    const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
-    if (currentOrder)
-      cartItemsClone = [...cartItemsClone, ...currentOrder.orderItems];
+    // const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
+    // if (currentOrder)
+    //   cartItemsClone = [...cartItemsClone, ...currentOrder.orderItems];
 
-    console.log("clone", cartItemsClone);
+    // console.log("clone", cartItemsClone);
 
     return (
       <React.Fragment>
-        <NavBar user={user} />
+        <NavBar />
         <main className="mb-5 px-2 px-md-5 row g-3">
           <div className="col-lg-8">
             <div className="col-lg-12">
@@ -61,7 +61,7 @@ class Menu extends Component {
                               selectedPrice={this.state.selectedPrice}
                               onChange={this.handleChange}
                             />
-                            {!user && (
+                            {!isCustomer && (
                               <button
                                 className="w-100 btn btn-secondary mt-3 fs-5 fw-bold disabled"
                                 aria-disabled="true"
@@ -69,7 +69,7 @@ class Menu extends Component {
                                 ADD TO CART
                               </button>
                             )}
-                            {user && (
+                            {isCustomer && (
                               <button
                                 className="w-100 btn btn-primary mt-3 fs-5 fw-bold"
                                 onClick={() =>
@@ -115,7 +115,7 @@ class Menu extends Component {
                               selectedPrice={this.state.selectedPrice}
                               onChange={this.handleChange}
                             />
-                            {!user && (
+                            {!isCustomer && (
                               <button
                                 className="w-100 btn btn-secondary mt-3 fs-5 fw-bold disabled"
                                 aria-disabled="true"
@@ -123,7 +123,7 @@ class Menu extends Component {
                                 ADD TO CART
                               </button>
                             )}
-                            {user && (
+                            {isCustomer && (
                               <button
                                 className="w-100 btn btn-primary mt-3 fs-5 fw-bold"
                                 onClick={() =>
@@ -142,7 +142,7 @@ class Menu extends Component {
             </div>
           </div>
           {!isCustomer && <LoginBanner />}
-          {isCustomer && <SideCart cartItems={cartItemsClone} />}
+          {isCustomer && <SideCart cartItems={cartItems} />}
         </main>
       </React.Fragment>
     );

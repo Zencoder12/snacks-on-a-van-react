@@ -11,7 +11,6 @@ import Logout from "./customerComponents/logout";
 import customerErrorPage from "./customerComponents/customerErrorPage";
 import Index from "./customerComponents/index";
 import ShoppingCart from "./customerComponents/shoppingCart";
-import auth from "./services/authService";
 import { getProducts } from "./services/productService";
 import PreviousOrdersPage from "./customerComponents/previousOrdersPage";
 import ActiveOrdersPage from "./customerComponents/activeOrdersPage";
@@ -21,13 +20,13 @@ import SelectVendorPage from "./customerComponents/selectVendorPage";
 import VendorLoginPage from "./vendorComponents/vendorLoginPage";
 import VendorRegisterPage from "./vendorComponents/vendorRegisterPage";
 import SetLocationPage from "./vendorComponents/setLocationPage";
-import PickUpOrdersPage from "./vendorComponents/pickUpOrdersPage";
 import VendorActOrdersPage from "./vendorComponents/vendorActOrdersPage";
 import VendorAwtOrdersPage from "./vendorComponents/vendorAwtOrdersPage";
 import VendorLogout from "./vendorComponents/vendorLogout";
 import VendorProfilePage from "./vendorComponents/vendorProfilePage";
 import VendorPreviousOrdersPage from "./vendorComponents/vendorPreviousOrdersPage";
 import vendorErrorPage from "./vendorComponents/vendorErrorPage";
+import BadRequest from "./customerComponents/badRequest";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -38,10 +37,6 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    /* get user from jwt stored in the local storage */
-    const user = auth.getCurrentUser();
-    this.setState({ user });
-
     const { data } = await getProducts();
     this.setState({ allProducts: data });
   }
@@ -127,17 +122,6 @@ class App extends Component {
     return Object.keys(prices).find((key) => prices[key] == price);
   };
 
-  handleCheckOut = (history) => {
-    if (!this.state.user) alert("You are not logged in.");
-    this.syncCart();
-    console.log(history);
-    // go to checkout page
-  };
-
-  handleReset = () => {
-    this.setState({ cartItems: [] });
-  };
-
   syncCart = () => {
     localStorage.setItem("cart", JSON.stringify(this.state.cartItems));
   };
@@ -155,11 +139,8 @@ class App extends Component {
             render={(props) => (
               <Menu
                 onAdd={this.handleAdd}
-                onCheckOut={this.handleCheckOut}
-                onReset={this.handleReset}
                 cartItems={cartItems}
                 products={allProducts}
-                user={this.state.user}
                 {...props}
               />
             )}
@@ -170,87 +151,61 @@ class App extends Component {
               <ShoppingCart
                 onAdd={this.handleAdd}
                 onRemove={this.handleRemove}
-                user={this.state.user}
                 {...props}
               />
             )}
           />
           <Route
             path="/customer/login"
-            render={(props) => <LoginPage user={this.state.user} {...props} />}
+            render={(props) => <LoginPage {...props} />}
           />
           <Route
             path="/customer/register"
-            render={(props) => (
-              <RegisterPage user={this.state.user} {...props} />
-            )}
+            render={(props) => <RegisterPage {...props} />}
           />
           <Route path="/customer/select-vendor" component={SelectVendorPage} />
           <Route path="/customer/logout" component={Logout} />
           <Route path="/vendor/logout" component={VendorLogout} />
+          <Route path="/400" component={BadRequest} />
           <Route path="/error-customer" component={customerErrorPage} />
           <Route path="/error-vendor" component={vendorErrorPage} />
           <CProtectedRoute
             path="/customer/profile"
-            render={(props) => (
-              <ProfilePage user={this.state.user} {...props} />
-            )}
+            render={(props) => <ProfilePage {...props} />}
           />
           <VProtectedRoute
             path="/vendor/profile"
-            render={(props) => (
-              <VendorProfilePage user={this.state.user} {...props} />
-            )}
+            render={(props) => <VendorProfilePage {...props} />}
           />
           <CProtectedRoute
             path="/customer/previous-orders"
-            render={(props) => (
-              <PreviousOrdersPage user={this.state.user} {...props} />
-            )}
+            render={(props) => <PreviousOrdersPage {...props} />}
           />
           <CProtectedRoute
             path="/customer/active-orders"
-            render={(props) => (
-              <ActiveOrdersPage user={this.state.user} {...props} />
-            )}
+            render={(props) => <ActiveOrdersPage {...props} />}
           />
           <CProtectedRoute
             path="/customer/tracking-order"
-            render={(props) => (
-              <TrackOrderPage user={this.state.user} {...props} />
-            )}
+            render={(props) => <TrackOrderPage {...props} />}
           />
           <Route path="/vendor/login" component={VendorLoginPage} />
           <Route path="/vendor/register" component={VendorRegisterPage} />
           <VProtectedRoute
-            path="/vendor/await-pickup"
-            render={(props) => (
-              <PickUpOrdersPage user={this.state.user} {...props} />
-            )}
-          />
-          <VProtectedRoute
             path="/vendor/set-location"
-            render={(props) => (
-              <SetLocationPage user={this.state.user} {...props} />
-            )}
+            render={(props) => <SetLocationPage {...props} />}
           />
           <VProtectedRoute
             path="/vendor/active-orders"
-            render={(props) => (
-              <VendorActOrdersPage user={this.state.user} {...props} />
-            )}
+            render={(props) => <VendorActOrdersPage {...props} />}
           />
           <VProtectedRoute
             path="/vendor/await-orders"
-            render={(props) => (
-              <VendorAwtOrdersPage user={this.state.user} {...props} />
-            )}
+            render={(props) => <VendorAwtOrdersPage {...props} />}
           />
           <VProtectedRoute
             path="/vendor/previous-orders"
-            render={(props) => (
-              <VendorPreviousOrdersPage user={this.state.user} {...props} />
-            )}
+            render={(props) => <VendorPreviousOrdersPage {...props} />}
           />
           <Route path="/not-found" component={NotFound} />
           <Route path="/" exact component={Index} />

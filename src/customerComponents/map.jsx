@@ -30,14 +30,18 @@ const Map = ({ onSelect, onClosePopUp, selectedVendor }) => {
 
   // use effect to get the vendor locations
   useEffect(async () => {
-    const { data: locations } = await getVendorsLocations();
+    try {
+      const { data: locations } = await getVendorsLocations();
 
-    if (!locations.length)
-      return toast.warning(
-        "Sorry. Current there are no vendors available. Please try again later."
-      );
+      if (!locations.length)
+        return toast.warning(
+          "Sorry. Current there are no vendors available. Please try again later."
+        );
 
-    setVendorLocations(locations);
+      setVendorLocations(locations);
+    } catch (ex) {
+      window.location = "/400";
+    }
   }, []);
 
   return (

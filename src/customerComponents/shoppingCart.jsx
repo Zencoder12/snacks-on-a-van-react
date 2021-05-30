@@ -17,16 +17,14 @@ class ShoppingCart extends Component {
 
       // first check if there is already a order in the local storage
       if (currentOrder) {
-        console.log(currentOrder._id);
         const { data: updatedOrder } = await changeOrder(
           currentOrder._id,
           orderItems
         );
-        console.log("updated order is", updatedOrder);
+
         localStorage.setItem("currentOrder", JSON.stringify(updatedOrder));
         // if there isn't a current order create a new one
       } else {
-        console.log("new order has been created.");
         const vendor = getCurrentVendor();
         const { data: order } = await createOrder(
           vendor.vendorName,
@@ -37,13 +35,13 @@ class ShoppingCart extends Component {
       window.location = "/customer/tracking-order";
     } catch (ex) {
       if (ex) {
-        window.location = "/error";
+        window.location = "/400";
       }
     }
   };
 
   render() {
-    const { onAdd, onRemove, user } = this.props;
+    const { onAdd, onRemove } = this.props;
 
     const vendor = getCurrentVendor();
     const location = vendor.address;
@@ -58,7 +56,7 @@ class ShoppingCart extends Component {
 
     return (
       <React.Fragment>
-        <NavBar user={user} />
+        <NavBar />
         <main className="px-2 px-md-5 pb-5 pb-lg-0">
           <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
             Shopping Cart
@@ -115,7 +113,7 @@ class ShoppingCart extends Component {
                       <div className="text-uppercase text-secondary fs-4">
                         Total
                       </div>
-                      <div className="fs-4 highlight1">{total}</div>
+                      <div className="fs-4 highlight1">${total}</div>
                     </div>
                     <h4 className="pt-3 fw-bold text-secondary text-uppercase">
                       Pickup Location:

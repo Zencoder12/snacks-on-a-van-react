@@ -37,7 +37,7 @@ const ActiveOrdersCard = ({ onOrderReady, order }) => {
                 className="mb-0 position-absolute top-25 w-100 text-center fw-bold"
                 id="prg-time"
               >
-                <Countdown />
+                <Countdown orderTime={order.orderTime} />
               </h5>
             </div>
           </div>

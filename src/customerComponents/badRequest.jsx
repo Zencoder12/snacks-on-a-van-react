@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./navBar";
 
-const NotFound = () => {
+const BadRequest = () => {
   return (
     <React.Fragment>
       <NavBar />
@@ -21,10 +21,7 @@ const NotFound = () => {
             <h1 class="display-1 text-uppercase fw-bold">
               Oops! Something went wrong :(
             </h1>
-            <h2>
-              Error 404. The requested URL was not found on this server. Please
-              go back to the home page.
-            </h2>
+            <h2>Please go back to the home page, login and try again.</h2>
             <Link to="/" class="btn btn-primary mt-3 fs-5 fw-bold">
               Back to home
             </Link>
@@ -36,4 +33,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default BadRequest;

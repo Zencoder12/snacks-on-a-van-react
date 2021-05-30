@@ -22,9 +22,12 @@ const TrackOrderPage = (props) => {
           "It has already been already more than 10 minutes, cannot change the order. "
         );
 
+      alert(
+        "You will be redirected to the menu page. Please restart your order."
+      );
       props.history.push("/customer/menu");
     } catch (ex) {
-      console.log(ex);
+      window.location = "/400";
     }
   };
 
@@ -48,7 +51,7 @@ const TrackOrderPage = (props) => {
       localStorage.removeItem("currentOrder");
       props.history.push("/customer/menu");
     } catch (ex) {
-      console.log(ex);
+      window.location = "/400";
     }
   };
 

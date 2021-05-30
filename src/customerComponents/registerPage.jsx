@@ -4,10 +4,10 @@ import LoginForm from "./loginForm";
 import NavBar from "./navBar";
 import RegisterForm from "./registerForm";
 
-const RegisterPage = ({ user }) => {
+const RegisterPage = () => {
   return (
     <React.Fragment>
-      <NavBar user={user} />
+      <NavBar />
       <main className="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
         <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
           Login/register

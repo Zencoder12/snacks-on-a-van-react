@@ -18,7 +18,7 @@ class LoginForm extends Form {
     try {
       const { data } = this.state;
       await auth.login(data.email, data.password);
-      window.location = "/customer/menu";
+      window.location = "/customer/select-vendor";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

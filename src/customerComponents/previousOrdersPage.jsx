@@ -7,16 +7,20 @@ class PreviousOrdersPage extends Component {
   state = { orders: [] };
 
   async componentDidMount() {
-    const { data } = await getPastOrders();
-    console.log(data);
-    this.setState({ orders: data });
+    try {
+      const { data } = await getPastOrders();
+      console.log(data);
+      this.setState({ orders: data });
+    } catch (ex) {
+      window.location = "/400";
+    }
   }
 
   render() {
     const { orders } = this.state;
     return (
       <React.Fragment>
-        <NavBar user={this.props.user} />
+        <NavBar />
         <main className="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
           <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
             Previous Orders

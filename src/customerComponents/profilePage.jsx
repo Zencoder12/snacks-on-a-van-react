@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "./navBar";
 
-const ProfilePage = ({ user }) => {
+const ProfilePage = () => {
   return (
     <React.Fragment>
-      <NavBar user={user} />
+      <NavBar />
       <main className="px-2 px-md-5 pb-5 pb-lg-0">
         <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
           My Profile

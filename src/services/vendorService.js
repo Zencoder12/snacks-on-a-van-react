@@ -23,9 +23,10 @@ export function closeLocation(vendorName) {
   });
 }
 
-export function setOrderReady(orderId) {
+export function setOrderReady(orderId, isDiscounted) {
   return http.patch(vendorLocalHostApi + "/set-ready", {
     orderId: orderId,
+    isDiscounted: isDiscounted,
     isReady: true,
   });
 }

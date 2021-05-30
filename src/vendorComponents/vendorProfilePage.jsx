@@ -2,6 +2,7 @@ import React from "react";
 import VendorNavBar from "./vendorNavBar";
 import { getCurrentLocation, closeLocation } from "../services/vendorService";
 import auth from "../services/authService";
+import { toast } from "react-toastify";
 
 const VendorProfilePage = () => {
   const vendor = auth.getCurrentUser();
@@ -11,8 +12,11 @@ const VendorProfilePage = () => {
     try {
       await closeLocation(vendorLocation.vendorName);
       localStorage.removeItem("location");
+      toast.warning(
+        "Your location has been removed. To set it again please login and set a new address."
+      );
     } catch (ex) {
-      console.log(ex);
+      window.location = "/400";
     }
   };
 
