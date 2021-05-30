@@ -10,28 +10,90 @@
     <link rel="stylesheet" href="./css/customer.css">
 </head>
 <body>
-    <main class="row mx-0 vertical-center">
-        <div class="col-12 col-md-4 px-0 mx-0 row justify-content-center">
-            <div class="col-8 col-md-6 mt-3 mt-md-0">
-                <img src="./images/logo.svg" class="img-fluid" alt="brand-logo">
-            </div>
-            <div class="p-4 px-xxl-5">
-                <h2 class="py-3 text-uppercase fw-bold text-center">nearest locations</h2>
-                <input class="form-control text-uppercase mt-3 mb-4 mt-md-5 mb-md-5" list="datalistOptions" id="vendor location" placeholder="select location">
-                <a href="#" class="w-100 btn btn-primary btn-lg mt-3 mb-4 mt-md-4 text-uppercase fs-4 fw-bold">
-                    Select vendor
-                </a>
-            </div>
-            <div class="text-center mb-3">
-                <a href="./vendor home.html" class="text-decoration-none">
-                    <span class="text-secondary ">NOT CUSTOMER? VENDER LOGIN</span>
-                </a>
-            </div>
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 px-md-5 fw-bold sticky-top">
+        <a href="./location.html" class="d-flex align-items-center col-md-3 mb-md-2 mb-md-0 text-decoration-none text-start">
+          <span class="fs-5">Location: <u class="fw-normal">866 Koelpin Pass, New Aidenmouth</u></span>
+        </a>
+    
+        <ul class="nav col-12 col-md-auto mb-md-2 justify-content-center mb-md-0">
+          <li class="nav-item"><a href="./guest menu.html" class="nav-link px-4 fs-5 current">Menu</a></li>
+          <li class="nav-item"><a href="#cart" class="nav-link px-4 fs-5">Cart</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle px-4 fs-5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Orders
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item fs-5" href="#c-orders">Upcoming Orders</a></li>
+              <li><a class="dropdown-item fs-5" href="#p-orders">Previous Orders</a></li>
+            </ul>
+          </li>
+        </ul>
+    
+        <div class="col-md-3 text-end">
+          <a href="./login.html" class="nav-item text-uppercase text-decoration-none fs-5">Login / Register</a>
         </div>
-        <div class="col-12 col-md-8 px-0">
-            <img src="./images/map.png" class="img-fluid" alt="map-img">
-        </div>
+    </header>
+    <main>
+        <div class="py-3">
+            <div class="row justify-content-center align-items-center px-3 px-md-5">
+                <div class="col d-lg-none">
+                    <div class="card shadow-sm">
+                      <img src="./images/map.jpg" class="card-img-top" alt="map" id="map">
+                      <div class="card-body text-center px-md-5">
+                        <h2 class="pt-3 pb-2 card-title text-uppercase fw-bold text-center">nearest locations</h2>
+                        <input class="form-control form-control-lg my-3" list="datalistOptions" id="vendor location" placeholder="Enter Location">
+                        <datalist id="datalistOptions">
+                            <option value="866 Koelpin Pass, New Aidenmouth">
+                            <option value="91006 Jacobs Parkway, Monahanmouth">
+                            <option value="9499 David Road, Greenfeldermouth">
+                        </datalist>
+                        <a href="./vendor current order.html" class="w-100 btn btn-primary btn-lg mb-3 text-uppercase fs-4 fw-bold">
+                            Select vendor
+                        </a>
+                        <div class="mt-2 mb-3">
+                            <a href="./vendor home.html" class="text-decoration-none">
+                                <u class="text-secondary fs-6">NOT CUSTOMER? VENDER LOGIN</u>
+                            </a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
 
-    </main> 
+                <div class="col py-3 d-none d-lg-block">
+                    <div class="card shadow-sm mb-3 p-0">
+                        <div class="row g-0">
+                            <div class="col-8">
+                                <img src="./images/map.jpg" class="card-img" alt="map" id="map">
+                            </div>
+                            <div class="col-4">
+                                <div class="card-body px-xl-5">
+                                    <img src="./images/logo.svg" class="img-fluid px-5 pt-5 pt-xl-3" alt="brand-logo">
+                                    <h2 class="pt-4 pb-3 card-title text-uppercase fw-bold text-center">nearest locations</h2>
+                                    <input class="form-control form-control-lg my-3" list="datalistOptions" id="vendor location" placeholder="Enter Location">
+                                    <datalist id="datalistOptions">
+                                        <option value="866 Koelpin Pass, New Aidenmouth">
+                                        <option value="91006 Jacobs Parkway, Monahanmouth">
+                                        <option value="9499 David Road, Greenfeldermouth">
+                                    </datalist>
+                                    <a href="./vendor current order.html" class="w-100 btn btn-primary btn-lg my-3 text-uppercase fs-4 fw-bold">
+                                        Select vendor
+                                    </a>
+                                    <div class="text-center my-3">
+                                        <a href="./vendor home.html" class="text-decoration-none d-none d-xl-block">
+                                            <u class="text-secondary fs-5">NOT CUSTOMER? VENDER LOGIN</u>
+                                        </a>
+                                        <a href="./vendor home.html" class="text-decoration-none d-xl-none">
+                                            <u class="text-secondary fs-6">NOT CUSTOMER? VENDER LOGIN</u>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
