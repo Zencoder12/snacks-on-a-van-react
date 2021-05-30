@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const SideCart = ({ cartItems }) => {
   const total = cartItems.reduce((a, item) => a + item.price * item.qty, 0);
 
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+
   return (
     <div className="col-md-4 d-none d-lg-block">
       <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center">

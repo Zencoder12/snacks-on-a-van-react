@@ -23,6 +23,13 @@ export function getOneOrder(orderId) {
   });
 }
 
+export function changeOrder(orderId, orderItems) {
+  return http.patch(localHostApi + "/update-order", {
+    orderId: orderId,
+    orderItems: orderItems,
+  });
+}
+
 export function cancelOrder(orderId) {
   return http.patch(localHostApi + "/cancel-order/", {
     orderId: orderId,

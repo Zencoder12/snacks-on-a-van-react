@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { createOrder } from "../services/orderService";
+import { createOrder, changeOrder } from "../services/orderService";
 import { getCurrentVendor } from "../services/vendorService";
 import NavBar from "./navBar";
 import ShoppingCartRow from "./shoppingCartRow";
@@ -12,10 +12,28 @@ class ShoppingCart extends Component {
 
   handleSubmitOrder = async () => {
     try {
-      const vendor = getCurrentVendor();
       const orderItems = JSON.parse(localStorage.getItem("cart"));
-      const { data: order } = await createOrder(vendor.vendorName, orderItems);
-      localStorage.setItem("currentOrder", JSON.stringify(order));
+      const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
+
+      // first check if there is already a order in the local storage
+      if (currentOrder) {
+        console.log(currentOrder._id);
+        const { data: updatedOrder } = await changeOrder(
+          currentOrder._id,
+          orderItems
+        );
+        console.log("updated order is", updatedOrder);
+        localStorage.setItem("currentOrder", JSON.stringify(updatedOrder));
+        // if there isn't a current order create a new one
+      } else {
+        console.log("new order has been created.");
+        const vendor = getCurrentVendor();
+        const { data: order } = await createOrder(
+          vendor.vendorName,
+          orderItems
+        );
+        localStorage.setItem("currentOrder", JSON.stringify(order));
+      }
       window.location = "/customer/tracking-order";
     } catch (ex) {
       if (ex) {

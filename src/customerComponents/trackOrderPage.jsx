@@ -9,7 +9,7 @@ const TrackOrderPage = (props) => {
 
   const handleChangeOrder = async () => {
     try {
-      const { data: order } = await getOneOrder(currentOrder.orderId);
+      const { data: order } = await getOneOrder(currentOrder._id);
       // check whether the order is ready
       if (order.isReady)
         return toast.warning(
@@ -17,7 +17,7 @@ const TrackOrderPage = (props) => {
         );
 
       // check whether within 10 minutes
-      if (!isWithinTimeLimit(new Date(currentOrder.time), new Date()))
+      if (!isWithinTimeLimit(new Date(currentOrder.orderTime), new Date()))
         return toast.warning(
           "It has already been already more than 10 minutes, cannot change the order. "
         );
@@ -30,7 +30,7 @@ const TrackOrderPage = (props) => {
 
   const handleCancelOrder = async () => {
     try {
-      const { data: order } = await getOneOrder(currentOrder.orderId);
+      const { data: order } = await getOneOrder(currentOrder._id);
       // check whether the order is ready
       if (order.isReady)
         return toast.warning(
@@ -38,12 +38,12 @@ const TrackOrderPage = (props) => {
         );
 
       // check whether within 10 minutes
-      if (!isWithinTimeLimit(new Date(currentOrder.time), new Date()))
+      if (!isWithinTimeLimit(new Date(currentOrder.orderTime), new Date()))
         return toast.warning(
           "It has already been already more than 10 minutes, cannot change the order. "
         );
 
-      await cancelOrder(currentOrder.orderId);
+      await cancelOrder(currentOrder._id);
 
       localStorage.removeItem("currentOrder");
       props.history.push("/customer/menu");
@@ -53,8 +53,6 @@ const TrackOrderPage = (props) => {
   };
 
   const isWithinTimeLimit = (orderTime, currentTime) => {
-    console.log(orderTime);
-    console.log(currentTime);
     return currentTime - orderTime < 600000;
   };
 
@@ -88,7 +86,7 @@ const TrackOrderPage = (props) => {
                     <h5 class="fw-bold">Change or cancel your order within:</h5>
                   </div>
                   <h1 class="py-3 py-lg-5 fw-bold display-1" id="count-down">
-                    <Countdown orderTime={currentOrder.time} />
+                    <Countdown orderTime={currentOrder.orderTime} />
                   </h1>
                   <div class="mt-3 d-grid gap-3 d-lg-flex justify-content-lg-center">
                     <button
@@ -156,7 +154,7 @@ const TrackOrderPage = (props) => {
                       class="mb-0 position-absolute top-25 w-100 text-center fw-bold"
                       id="prg-time"
                     >
-                      <Countdown orderTime={currentOrder.time} />
+                      <Countdown orderTime={currentOrder.orderTime} />
                     </h2>
                   </div>
                 </div>

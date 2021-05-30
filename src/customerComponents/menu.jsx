@@ -19,6 +19,14 @@ class Menu extends Component {
     const { selectedPrice } = this.state;
     const isCustomer = auth.isValidCustomer();
 
+    let cartItemsClone = [...cartItems];
+
+    const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
+    if (currentOrder)
+      cartItemsClone = [...cartItemsClone, ...currentOrder.orderItems];
+
+    console.log("clone", cartItemsClone);
+
     return (
       <React.Fragment>
         <NavBar user={user} />
@@ -134,7 +142,7 @@ class Menu extends Component {
             </div>
           </div>
           {!isCustomer && <LoginBanner />}
-          {isCustomer && <SideCart cartItems={cartItems} />}
+          {isCustomer && <SideCart cartItems={cartItemsClone} />}
         </main>
       </React.Fragment>
     );
