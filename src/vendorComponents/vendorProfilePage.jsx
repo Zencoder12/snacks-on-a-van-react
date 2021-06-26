@@ -1,12 +1,23 @@
-import React from "react";
-import VendorNavBar from "./vendorNavBar";
+import React, { useState, useEffect } from "react";
 import { getCurrentLocation, closeLocation } from "../services/vendorService";
-import auth from "../services/authService";
 import { toast } from "react-toastify";
+import auth from "../services/authService";
+import VendorNavBar from "./vendorNavBar";
 
 const VendorProfilePage = () => {
-  const vendor = auth.getCurrentUser();
-  const vendorLocation = getCurrentLocation();
+  const [vendor, setVendor] = useState("");
+  const [vendorLocation, setVendorLocation] = useState("");
+
+  useEffect(() => {
+    setVendor(auth.getCurrentUser);
+
+    const fetchLocation = async () => {
+      const { data } = await getCurrentLocation();
+      setVendorLocation(data.address);
+    };
+
+    fetchLocation();
+  }, []);
 
   const handleCloseLocation = async () => {
     try {
@@ -53,7 +64,7 @@ const VendorProfilePage = () => {
                     </h3>
                     {vendorLocation && (
                       <h4 className="col-12 col-md-9 col-xl-9 highlight2">
-                        {vendorLocation.address}
+                        {vendorLocation}
                       </h4>
                     )}
                     {!vendorLocation && (

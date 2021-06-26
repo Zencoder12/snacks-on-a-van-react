@@ -3,10 +3,10 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
-import auth from "../services/authService";
-import { setVendorLocation } from "../services/vendorService";
 import { toast } from "react-toastify";
-import VendorNavBar from "./vendorNavBar";
+import auth from "../../services/authService";
+import { setVendorLocation } from "../../services/vendorService";
+import VendorNavBar from "../vendorNavBar";
 
 const SetLocationPage = (props) => {
   const [address, setAddress] = React.useState("");
@@ -24,6 +24,9 @@ const SetLocationPage = (props) => {
 
   const setLocation = async () => {
     try {
+      if (!address || !coordinates)
+        return toast.warning("Location cannot be empty.");
+
       const vendor = auth.getCurrentUser();
       const { data: location } = await setVendorLocation(
         vendor.vendorName,

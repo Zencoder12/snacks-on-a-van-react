@@ -13,6 +13,7 @@ const BadRequest = () => {
             src="https://i.ibb.co/PWWPVSn/log.png"
             class="img-fluid my-auto"
             id="error-logo"
+            alt="bad request image"
           />
         </div>
         <div class="col d-lg-none d-xl-block"></div>

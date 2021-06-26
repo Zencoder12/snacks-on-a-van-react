@@ -1,7 +1,7 @@
 import React from "react";
 import Joi from "joi-browser";
-import VendorForm from "./common/vendorForm";
 import auth from "../services/authService";
+import VendorForm from "./formComponents/vendorForm";
 
 class VendorLoginForm extends VendorForm {
   state = {
@@ -22,7 +22,7 @@ class VendorLoginForm extends VendorForm {
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.email = ex.response.data;
+        errors.vendorName = ex.response.data;
         this.setState({ errors });
       }
     }
