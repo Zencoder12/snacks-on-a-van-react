@@ -23,7 +23,7 @@ import SetLocationPage from "./vendorComponents/page/setLocationPage";
 import VendorActOrdersPage from "./vendorComponents/vendorActOrdersPage";
 import VendorAwtOrdersPage from "./vendorComponents/vendorAwtOrdersPage";
 import VendorLogout from "./vendorComponents/vendorLogout";
-import VendorProfilePage from "./vendorComponents/vendorProfilePage";
+import VendorProfilePage from "./vendorComponents/page/vendorProfilePage";
 import VendorPreviousOrdersPage from "./vendorComponents/vendorPreviousOrdersPage";
 import vendorErrorPage from "./vendorComponents/vendorErrorPage";
 import BadRequest from "./customerComponents/badRequest";

@@ -33,7 +33,6 @@ const SetLocationPage = (props) => {
         coordinates,
         address
       );
-      localStorage.setItem("location", JSON.stringify(location));
       props.history.push("/vendor/active-orders");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
