@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import auth from "../../services/authService";
 import UpdateForm from "../formComponents/updateForm";
-import NavBar from "../navBar";
+import NavBar from "../common/navBar";
 
 class ProfilePage extends Component {
   state = {

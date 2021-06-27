@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import Menu from "./customerComponents/menu";
-import CProtectedRoute from "./customerComponents/cProtectedRoute";
+import MenuPage from "./customerComponents/page/menuPage";
+import CProtectedRoute from "./customerComponents/common/cProtectedRoute";
 import VProtectedRoute from "./vendorComponents/common/vProtectedRoute";
 import LoginPage from "./customerComponents/page/loginPage";
 import RegisterPage from "./customerComponents/page/registerPage";
-import NotFound from "./customerComponents/notFound";
-import Logout from "./customerComponents/logout";
+import NotFound from "./generalComponents/notFound";
+import Logout from "./customerComponents/common/logout";
 import customerErrorPage from "./customerComponents/page/customerErrorPage";
 import Index from "./generalComponents/index";
-import ShoppingCart from "./customerComponents/shoppingCart";
+import ShoppingCartPage from "./customerComponents/page/shoppingCartPage";
 import { getProducts } from "./services/productService";
-import PreviousOrdersPage from "./customerComponents/previousOrdersPage";
-import ActiveOrdersPage from "./customerComponents/activeOrdersPage";
-import TrackOrderPage from "./customerComponents/trackOrderPage";
+import PreviousOrdersPage from "./customerComponents/page/previousOrdersPage";
+import ActiveOrdersPage from "./customerComponents/page/activeOrdersPage";
+import TrackOrderPage from "./customerComponents/page/trackOrderPage";
 import ProfilePage from "./customerComponents/page/profilePage";
-import SelectVendorPage from "./customerComponents/selectVendorPage";
+import SelectVendorPage from "./customerComponents/page/selectVendorPage";
 import VendorLoginPage from "./vendorComponents/page/vendorLoginPage";
 import VendorRegisterPage from "./vendorComponents/page/vendorRegisterPage";
 import SetLocationPage from "./vendorComponents/page/setLocationPage";
@@ -137,7 +137,7 @@ class App extends Component {
           <Route
             path="/customer/menu"
             render={(props) => (
-              <Menu
+              <MenuPage
                 onAdd={this.handleAdd}
                 cartItems={cartItems}
                 products={allProducts}
@@ -148,7 +148,7 @@ class App extends Component {
           <CProtectedRoute
             path="/customer/checkout"
             render={(props) => (
-              <ShoppingCart
+              <ShoppingCartPage
                 onAdd={this.handleAdd}
                 onRemove={this.handleRemove}
                 {...props}

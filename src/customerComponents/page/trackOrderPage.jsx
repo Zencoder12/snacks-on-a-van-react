@@ -1,8 +1,8 @@
 import React from "react";
-import NavBar from "./navBar";
-import Countdown from "./common/countdown";
-import { cancelOrder, getOneOrder } from "../services/orderService";
+import Countdown from "../common/countdown";
+import { cancelOrder, getOneOrder } from "../../services/orderService";
 import { toast } from "react-toastify";
+import NavBar from "../common/navBar";
 
 const TrackOrderPage = (props) => {
   const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));

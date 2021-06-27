@@ -1,6 +1,6 @@
 import React from "react";
 
-const OrderDetailItem = ({ item }) => {
+const OrderItemDetails = ({ item }) => {
   return (
     <div className="row py-3 fs-4 cart-prd border-bottom">
       <div className="col-6 col-lg-5 d-flex flex-row justify-content-start">
@@ -23,6 +23,7 @@ const OrderDetailItem = ({ item }) => {
           <h5 className="text-capitalize fst-italic">{item.size}</h5>
         </div>
       </div>
+      {/* price displayed only for screen sizes > 920px */}
       <div className="col-3 d-none d-lg-block text-center">${item.price}</div>
       <div className="col-3 col-lg-2 text-center">{item.qty}</div>
       <div className="col-3 col-lg-2 text-end">${item.price * item.qty}</div>
@@ -30,4 +31,4 @@ const OrderDetailItem = ({ item }) => {
   );
 };
 
-export default OrderDetailItem;
+export default OrderItemDetails;

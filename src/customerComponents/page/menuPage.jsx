@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import RadioGroup from "./common/radioGroup";
-import LoginBanner from "./loginBanner";
-import NavBar from "./navBar";
-import SideCart from "./sideCart";
-import auth from "../services/authService";
+import auth from "../../services/authService";
+import RadioGroup from "../menuComponents/radioGroup";
+import LoginBanner from "../menuComponents/loginBanner";
+import SideCart from "../menuComponents/sideCart";
+import NavBar from "../common/navBar";
 
-class Menu extends Component {
+class MenuPage extends Component {
   state = {
     selectedPrice: 0,
   };
@@ -31,15 +31,20 @@ class Menu extends Component {
       <React.Fragment>
         <NavBar />
         <main className="mb-5 px-2 px-md-5 row g-3">
+          {/* products list container. stacked until screen < 960 px. Then become 8 cols grid */}
           <div className="col-lg-8">
+            {/* coffee category + product cards wrapper container */}
             <div className="col-lg-12">
+              {/* heading for screens > 960px (left-aligned) */}
               <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
                 Coffee
               </h1>
+              {/* heading for screens < 960px (centered) */}
               <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center d-lg-none">
                 Coffee
               </h1>
               <div className="container p-3 rounded">
+                {/* products inner-container. stacked for screens < 768px, 2 cols screen < 920px, 4 cols larger screens */}
                 <div className="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-3">
                   {products
                     .filter((product) => product.category === "coffee")
@@ -86,14 +91,18 @@ class Menu extends Component {
                 </div>
               </div>
             </div>
+            {/* dessert category + product cards wrapper container */}
             <div className="col-lg-12">
+              {/* heading for screens > 960px (left-aligned) */}
               <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
                 dessert
               </h1>
+              {/* heading for screens < 960px (centered) */}
               <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center d-lg-none">
                 dessert
               </h1>
               <div className="container py-3 rounded">
+                {/* products inner-container. stacked for screens < 768px, 2 cols screen < 920px, 4 cols larger screens */}
                 <div className="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-3">
                   {products
                     .filter((product) => product.category === "dessert")
@@ -141,6 +150,7 @@ class Menu extends Component {
               </div>
             </div>
           </div>
+          {/* side banners. stacked below products on small devices. Takes reamaining space on screens > 920px */}
           {!isCustomer && <LoginBanner />}
           {isCustomer && <SideCart cartItems={cartItems} />}
         </main>
@@ -149,4 +159,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default MenuPage;

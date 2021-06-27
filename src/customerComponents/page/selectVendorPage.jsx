@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Map from "./map";
+import Map from "../common/map";
 
 class SelectVendorPage extends Component {
   state = { selectedVendor: "" };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LoginForm from "../formComponents/loginForm";
-import NavBar from "../navBar";
+import NavBar from "../common/navBar";
 import RegisterForm from "../formComponents/registerForm";
 
 const RegisterPage = () => {

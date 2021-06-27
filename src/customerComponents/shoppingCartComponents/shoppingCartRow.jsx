@@ -1,5 +1,5 @@
 import React from "react";
-import MinusPlusButton from "./common/minusPlusButton";
+import MinusPlusButton from "./minusPlusButton";
 
 const ShoppingCartRow = ({ item, onAdd, onRemove }) => {
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import LoginForm from "../formComponents/loginForm";
 import RegisterForm from "../formComponents/registerForm";
-import NavBar from "../navBar";
+import NavBar from "../common/navBar";
 
 const LoginPage = () => {
   return (

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaravan } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import ReactMapGL, { GeolocateControl, Marker, Popup } from "react-map-gl";
-import { getVendorsLocations } from "../services/vendorService";
+import { getVendorsLocations } from "../../services/vendorService";
 import { toast } from "react-toastify";
 
 const Map = ({ onSelect, onClosePopUp, selectedVendor }) => {

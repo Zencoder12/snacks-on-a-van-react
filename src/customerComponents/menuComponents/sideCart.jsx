@@ -1,6 +1,6 @@
 import React from "react";
-import SideCartRow from "./sideCartRow";
 import { Link } from "react-router-dom";
+import SideCartRow from "./sideCartRow";
 
 const SideCart = ({ cartItems }) => {
   const total = cartItems.reduce((a, item) => a + item.price * item.qty, 0);

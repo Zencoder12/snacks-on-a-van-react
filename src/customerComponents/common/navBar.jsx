@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getCurrentVendor } from "../services/vendorService";
-import auth from "../services/authService";
+import auth from "../../services/authService";
+import { getCurrentVendor } from "../../services/vendorService";
 
 const NavBar = () => {
   const vendor = getCurrentVendor();
