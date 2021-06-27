@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import VendorNavBar from "./vendorNavBar";
+import VendorNavBar from "../common/vendorNavBar";
 
 const vendorErrorPage = () => {
   return (

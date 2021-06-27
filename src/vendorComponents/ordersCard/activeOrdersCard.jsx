@@ -1,6 +1,6 @@
 import React from "react";
-import Countdown from "../../customerComponents/common/countdown";
 import ActiveOrdersCardItem from "./activeOrdersCardItem";
+import Countdown from "../../customerComponents/common/countdown";
 
 const ActiveOrdersCard = ({ onOrderReady, order }) => {
   return (

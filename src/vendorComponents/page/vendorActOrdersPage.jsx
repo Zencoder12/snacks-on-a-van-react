@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ActiveOrdersCard from "./common/activeOrdersCard";
-import PickUpOrdersCard from "./common/pickUpOrdersCard";
-import VendorNavBar from "./vendorNavBar";
+import ActiveOrdersCard from "../ordersCard/activeOrdersCard";
+import PickUpOrdersCard from "../ordersCard/pickUpOrdersCard";
+import VendorNavBar from "../common/vendorNavBar";
 import {
   getVendorActiveOrders,
   getReadyOrders,
-} from "../services/orderService";
-import { setOrderFulfill, setOrderReady } from "../services/vendorService";
+} from "../../services/orderService";
+import { setOrderFulfill, setOrderReady } from "../../services/vendorService";
 
 const VendorActOrdersPage = () => {
   const [activeOrders, setActiveOrders] = useState([]);
@@ -94,7 +94,7 @@ const VendorActOrdersPage = () => {
             </div>
           </div>
         </div>
-
+        {/* Hide await pick-up for small devices */}
         <div className="col-md-5 col-lg-4 d-none d-md-block">
           <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center">
             AWAITING PICK UP
@@ -112,7 +112,7 @@ const VendorActOrdersPage = () => {
           </div>
         </div>
       </main>
-
+      {/* Show footer only for small devices */}
       <footer className="fixed-bottom p-2 d-md-none">
         <div className="px-2 row">
           <Link

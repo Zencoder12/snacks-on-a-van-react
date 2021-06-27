@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import VendorLoginForm from "../vendorLoginForm";
+import VendorLoginForm from "../formComponents/vendorLoginForm";
 
 const VendorLoginPage = () => {
   return (

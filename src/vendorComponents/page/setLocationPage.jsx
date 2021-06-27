@@ -6,7 +6,7 @@ import PlacesAutocomplete, {
 import { toast } from "react-toastify";
 import auth from "../../services/authService";
 import { setVendorLocation } from "../../services/vendorService";
-import VendorNavBar from "../vendorNavBar";
+import VendorNavBar from "../common/vendorNavBar";
 
 const SetLocationPage = (props) => {
   const [address, setAddress] = React.useState("");

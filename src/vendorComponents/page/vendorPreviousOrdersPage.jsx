@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getVendorPastOrders } from "../services/orderService";
-import PreviousOrdersDetailCard from "./common/previousOrdersDetailCard";
-import SearchBar from "./common/searchBar";
-import VendorNavBar from "./vendorNavBar";
+import { getVendorPastOrders } from "../../services/orderService";
+import PreviousOrdersDetailCard from "../previousOrdersComponents/previousOrdersDetailCard";
+import SearchBar from "../previousOrdersComponents/searchBar";
+import VendorNavBar from "../common/vendorNavBar";
 
 const VendorPreviousOrdersPage = () => {
   const [previousOrders, setPreviousOrders] = useState([]);
@@ -41,9 +41,11 @@ const VendorPreviousOrdersPage = () => {
     <React.Fragment>
       <VendorNavBar />
       <main className="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
+        {/* heading for bigger than lg devices (aligned left) */}
         <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
           Previous Orders
         </h1>
+        {/* heading for > lg devices */}
         <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center d-lg-none">
           Previous Orders
         </h1>

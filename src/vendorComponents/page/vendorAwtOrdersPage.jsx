@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ActiveOrdersCard from "./common/activeOrdersCard";
-import PickUpOrdersCard from "./common/pickUpOrdersCard";
-import VendorNavBar from "./vendorNavBar";
+import ActiveOrdersCard from "../ordersCard/activeOrdersCard";
+import PickUpOrdersCard from "../ordersCard/pickUpOrdersCard";
+import VendorNavBar from "../common/vendorNavBar";
 import {
   getVendorActiveOrders,
   getReadyOrders,
-} from "../services/orderService";
-import { setOrderFulfill, setOrderReady } from "../services/vendorService";
+} from "../../services/orderService";
+import { setOrderFulfill, setOrderReady } from "../../services/vendorService";
 
 const VendorAwtOrdersPage = () => {
   const [activeOrders, setActiveOrders] = useState([]);

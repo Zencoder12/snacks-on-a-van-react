@@ -6,7 +6,7 @@ import {
   closeLocation,
 } from "../../services/vendorService";
 import auth from "../../services/authService";
-import VendorNavBar from "../vendorNavBar";
+import VendorNavBar from "../common/vendorNavBar";
 
 const VendorProfilePage = (props) => {
   const [vendor, setVendor] = useState("");

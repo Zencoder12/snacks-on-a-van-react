@@ -1,6 +1,9 @@
 import { Component } from "react";
-import auth from "../services/authService";
-import { closeLocation, getCurrentLocation } from "../services/vendorService";
+import auth from "../../services/authService";
+import {
+  closeLocation,
+  getCurrentLocation,
+} from "../../services/vendorService";
 
 class Logout extends Component {
   async componentDidMount() {

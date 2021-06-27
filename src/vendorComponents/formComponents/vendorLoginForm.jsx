@@ -1,7 +1,7 @@
 import React from "react";
 import Joi from "joi-browser";
-import auth from "../services/authService";
-import VendorForm from "./formComponents/vendorForm";
+import auth from "../../services/authService";
+import VendorForm from "./vendorForm";
 
 class VendorLoginForm extends VendorForm {
   state = {
