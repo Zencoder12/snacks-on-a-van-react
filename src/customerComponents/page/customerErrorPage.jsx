@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavBar from "./navBar";
+import NavBar from "../navBar";
 
-const BadRequest = () => {
+const customerErrorPage = () => {
   return (
     <React.Fragment>
       <NavBar />
@@ -13,7 +13,6 @@ const BadRequest = () => {
             src="https://i.ibb.co/PWWPVSn/log.png"
             class="img-fluid my-auto"
             id="error-logo"
-            alt="bad request image"
           />
         </div>
         <div class="col d-lg-none d-xl-block"></div>
@@ -22,7 +21,10 @@ const BadRequest = () => {
             <h1 class="display-1 text-uppercase fw-bold">
               Oops! Something went wrong :(
             </h1>
-            <h2>Please go back to the home page, login and try again.</h2>
+            <h2>
+              Looks like your are not logged in as a customer. Please go to the
+              homepage locate your vendor and select login on the menu page.
+            </h2>
             <Link to="/" class="btn btn-primary mt-3 fs-5 fw-bold">
               Back to home
             </Link>
@@ -34,4 +36,4 @@ const BadRequest = () => {
   );
 };
 
-export default BadRequest;
+export default customerErrorPage;

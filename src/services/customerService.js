@@ -1,10 +1,10 @@
 import http from "./httpService";
 import { customerApiUrl, localHostApi } from "../config.json";
 
-export async function updateProfile(firstName, lastName, password) {
+export async function updateProfile(user) {
   return http.patch(localHostApi + "/update-profile", {
-    firstName: firstName,
-    lastName: lastName,
-    password: password,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    password: user.password,
   });
 }

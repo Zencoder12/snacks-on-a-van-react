@@ -1,31 +1,31 @@
 import React from "react";
 import Joi from "joi-browser";
-import Form from "./common/form";
-import auth from "../services/authService";
+import Form from "./form";
+import auth from "../../services/authService";
+import { updateProfile } from "../../services/customerService";
 
-class RegisterForm extends Form {
+class UpdateForm extends Form {
   state = {
-    data: { email: "", password: "", firstName: "", lastName: "" },
+    data: { firstName: "", lastName: "", password: "" },
     errors: {},
   };
 
   schema = {
     firstName: Joi.string().min(3).max(50).required(),
     lastName: Joi.string().min(3).max(50).required(),
-    email: Joi.string().min(5).max(255).required().email(),
     password: Joi.string().min(5).max(1024).required(),
   };
 
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      const response = await auth.signUp(data);
+      const response = await updateProfile(data);
       auth.loginWithJwt(response.headers["x-auth-token"]);
       window.location = "/customer/select-vendor";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.email = ex.response.data;
+        errors.firstName = ex.response.data;
         this.setState({ errors });
       }
     }
@@ -37,21 +37,15 @@ class RegisterForm extends Form {
         {this.renderInput("firstName", "First Name:", "text", "first name")}
         {this.renderInput("lastName", "Last Name:", "text", "last name")}
         {this.renderInput(
-          "email",
-          "Email address:",
-          "text",
-          "name@example.com"
-        )}
-        {this.renderInput(
           "password",
           "Password:",
           "password",
           "enter password"
         )}
-        {this.renderButton("Register")}
+        {this.renderButton("Update Information")}
       </form>
     );
   }
 }
 
-export default RegisterForm;
+export default UpdateForm;

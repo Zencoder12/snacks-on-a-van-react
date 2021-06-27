@@ -1,23 +1,26 @@
 import React from "react";
 import Joi from "joi-browser";
-import Form from "./common/form";
-import auth from "../services/authService";
+import Form from "./form";
+import auth from "../../services/authService";
 
-class LoginForm extends Form {
+class RegisterForm extends Form {
   state = {
-    data: { email: "", password: "" },
+    data: { email: "", password: "", firstName: "", lastName: "" },
     errors: {},
   };
 
   schema = {
-    email: Joi.string().email().min(5).max(255).required().label("Email"),
-    password: Joi.string().min(5).max(255).required().label("Password"),
+    firstName: Joi.string().min(3).max(50).required(),
+    lastName: Joi.string().min(3).max(50).required(),
+    email: Joi.string().min(5).max(255).required().email(),
+    password: Joi.string().min(5).max(1024).required(),
   };
 
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      await auth.login(data.email, data.password);
+      const response = await auth.signUp(data);
+      auth.loginWithJwt(response.headers["x-auth-token"]);
       window.location = "/customer/select-vendor";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -31,6 +34,8 @@ class LoginForm extends Form {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {this.renderInput("firstName", "First Name:", "text", "first name")}
+        {this.renderInput("lastName", "Last Name:", "text", "last name")}
         {this.renderInput(
           "email",
           "Email address:",
@@ -43,10 +48,10 @@ class LoginForm extends Form {
           "password",
           "enter password"
         )}
-        {this.renderButton("Login")}
+        {this.renderButton("Register")}
       </form>
     );
   }
 }
 
-export default LoginForm;
+export default RegisterForm;

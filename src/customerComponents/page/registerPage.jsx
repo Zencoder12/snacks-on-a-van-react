@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LoginForm from "./loginForm";
-import NavBar from "./navBar";
-import RegisterForm from "./registerForm";
+import LoginForm from "../formComponents/loginForm";
+import NavBar from "../navBar";
+import RegisterForm from "../formComponents/registerForm";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <React.Fragment>
       <NavBar />
@@ -13,26 +13,27 @@ const LoginPage = () => {
           Login/register
         </h1>
         <h1 className="pt-3 pb-1 text-uppercase fw-bold text-center d-lg-none">
-          login
+          register
         </h1>
         <div className="px-2 row g-3">
           <div className="container p-3 rounded">
             <div className="row row-cols-1 row-cols-lg-2 g-3">
-              <div className="col-lg-4">
+              {/* login card -> visible only for screens > 960px */}
+              <div className="col-lg-4 d-none d-lg-block">
                 <div className="p-3 px-xxl-5 card shadow-sm h-100">
                   <h2 className="py-3 text-center text-uppercase fw-bold">
                     existing customer
                   </h2>
+                  {/* visible only for screens > 960px */}
                   <h2 className="pb-5 text-center text-uppercase fw-bold d-none d-lg-block">
                     login
                   </h2>
                   <LoginForm />
+
+                  {/* -- REGISTER FORM -- */}
                 </div>
               </div>
-
-              {/* -- REGISTER FORM -- */}
-
-              <div className="col-lg-8 d-none d-lg-block">
+              <div className="col-lg-8">
                 <div className="p-3 px-xxl-5 card shadow-sm">
                   <h2 className="py-3 text-center text-uppercase fw-bold">
                     new customer
@@ -47,18 +48,20 @@ const LoginPage = () => {
           </div>
         </div>
       </main>
+
+      {/* footer for screen devices < 960px */}
       <footer className="fixed-bottom p-2 px-md-5 d-lg-none">
         <div className="px-2 row g-3">
           <Link
-            to="#"
-            className="col btn btn-primary me-1 text-uppercase fw-bold fs-4 active"
+            to="/customer/login"
+            className="col btn btn-primary me-1 text-uppercase fw-bold fs-4"
             type="button"
           >
             Login
           </Link>
           <Link
-            to="/customer/register"
-            className="col btn btn-primary ms-1 text-uppercase fw-bold fs-4"
+            to="#"
+            className="col btn btn-primary ms-1 text-uppercase fw-bold fs-4 active"
             type="button"
           >
             Register
@@ -69,4 +72,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
