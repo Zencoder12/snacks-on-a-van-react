@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import auth from "../../services/authService";
 import { getCurrentVendor } from "../../services/vendorService";
 
-const NavBar = () => {
+{
+  /* not clickable props allows to set the navbar as inactive */
+}
+const NavBar = ({ notClickable }) => {
   const vendor = getCurrentVendor();
   const user = auth.getCurrentUser();
 
@@ -24,46 +27,63 @@ const NavBar = () => {
           </span>
         )}
       </Link>
+      {notClickable && (
+        <ul className="nav col-12 col-md-auto mb-md-2 justify-content-center mb-md-0">
+          <li className="nav-item mt-2">
+            <span className="px-4 fs-5 current">Menu</span>
+          </li>
+          <li className="nav-item mt-2">
+            <span className="px-4 fs-5 current">Cart</span>
+          </li>
+          <li className="nav-item mt-2">
+            <span className="px-4 fs-5 current">Orders</span>
+          </li>
+        </ul>
+      )}
 
-      <ul className="nav col-12 col-md-auto mb-md-2 justify-content-center mb-md-0">
-        <li className="nav-item">
-          <Link to="/customer/menu" className="nav-link px-4 fs-5 current">
-            Menu
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/customer/checkout" className="nav-link px-4 fs-5">
-            Cart
-          </Link>
-        </li>
-        <li className="nav-item dropdown">
-          <Link
-            to="/customer/checkout"
-            className="nav-link dropdown-toggle px-4 fs-5"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Orders
-          </Link>
-          <ul className="dropdown-menu">
-            <li>
-              <Link className="dropdown-item fs-5" to="/customer/active-orders">
-                Active Orders
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="dropdown-item fs-5"
-                to="/customer/previous-orders"
-              >
-                Previous Orders
-              </Link>
-            </li>
-          </ul>
-        </li>
-      </ul>
-
+      {!notClickable && (
+        <ul className="nav col-12 col-md-auto mb-md-2 justify-content-center mb-md-0">
+          <li className="nav-item">
+            <Link to="/customer/menu" className="nav-link px-4 fs-5 current">
+              Menu
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/customer/checkout" className="nav-link px-4 fs-5">
+              Cart
+            </Link>
+          </li>
+          <li className="nav-item dropdown">
+            <Link
+              to="/customer/checkout"
+              className="nav-link dropdown-toggle px-4 fs-5"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Orders
+            </Link>
+            <ul className="dropdown-menu">
+              <li>
+                <Link
+                  className="dropdown-item fs-5"
+                  to="/customer/active-orders"
+                >
+                  Active Orders
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="dropdown-item fs-5"
+                  to="/customer/previous-orders"
+                >
+                  Previous Orders
+                </Link>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      )}
       <div className="col-md-3 text-end">
         {!user && (
           <Link

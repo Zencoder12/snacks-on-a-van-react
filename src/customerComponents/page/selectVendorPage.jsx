@@ -25,7 +25,7 @@ class SelectVendorPage extends Component {
 
   render() {
     return (
-      <main className="row mx-0 vertical-center">
+      <main className="row mx-0 vertical-center justify-content-center">
         <div className="col-12 col-md-4 px-0 mx-0 row justify-content-center">
           <div className="col-8 col-md-6 mt-3 mt-md-0">
             <img

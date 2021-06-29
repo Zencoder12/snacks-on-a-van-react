@@ -32,7 +32,8 @@ class ShoppingCartPage extends Component {
         );
         localStorage.setItem("currentOrder", JSON.stringify(order));
       }
-      window.location = "/customer/tracking-order";
+
+      this.props.history.push("/customer/tracking-order");
     } catch (ex) {
       if (ex) {
         window.location = "/400";

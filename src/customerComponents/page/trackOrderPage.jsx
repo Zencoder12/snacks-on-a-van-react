@@ -1,10 +1,14 @@
-import React from "react";
-import Countdown from "../common/countdown";
-import { cancelOrder, getOneOrder } from "../../services/orderService";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { cancelOrder, getOneOrder } from "../../services/orderService";
+import Countdown from "../common/countdown";
 import NavBar from "../common/navBar";
 
 const TrackOrderPage = (props) => {
+  // const [currentOrder, setCurrentOrder] = useState({});
+  const notClickable = true;
+
   const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
 
   const handleChangeOrder = async () => {
@@ -22,9 +26,6 @@ const TrackOrderPage = (props) => {
           "It has already been already more than 10 minutes, cannot change the order. "
         );
 
-      alert(
-        "You will be redirected to the menu page. Please restart your order."
-      );
       props.history.push("/customer/menu");
     } catch (ex) {
       window.location = "/400";
@@ -49,7 +50,8 @@ const TrackOrderPage = (props) => {
       await cancelOrder(currentOrder._id);
 
       localStorage.removeItem("currentOrder");
-      props.history.push("/customer/menu");
+      localStorage.removeItem("cart");
+      window.location = "/customer/menu";
     } catch (ex) {
       window.location = "/400";
     }
@@ -61,7 +63,7 @@ const TrackOrderPage = (props) => {
 
   return (
     <React.Fragment>
-      <NavBar />
+      <NavBar notClickable={notClickable} />
       <main class="mb-5 px-2 px-md-5 pb-lg-0">
         <h1 class="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
           Track your order
@@ -99,13 +101,15 @@ const TrackOrderPage = (props) => {
                     >
                       CHANGE ORDER
                     </button>
-                    <button
-                      class="btn btn-lg btn-primary px-lg-5 fs-3 fw-bold"
-                      type="button"
-                      onClick={handleCancelOrder}
-                    >
-                      CANCEL ORDER
-                    </button>
+                    <Link to="/customer/menu">
+                      <button
+                        class="btn btn-lg btn-primary px-lg-5 fs-3 fw-bold"
+                        type="button"
+                        onClick={handleCancelOrder}
+                      >
+                        CANCEL ORDER
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { getProducts } from "./services/productService";
 import MenuPage from "./customerComponents/page/menuPage";
 import CProtectedRoute from "./customerComponents/common/cProtectedRoute";
 import VProtectedRoute from "./vendorComponents/common/vProtectedRoute";
@@ -11,7 +12,6 @@ import Logout from "./customerComponents/common/logout";
 import customerErrorPage from "./customerComponents/page/customerErrorPage";
 import Index from "./generalComponents/index";
 import ShoppingCartPage from "./customerComponents/page/shoppingCartPage";
-import { getProducts } from "./services/productService";
 import PreviousOrdersPage from "./customerComponents/page/previousOrdersPage";
 import ActiveOrdersPage from "./customerComponents/page/activeOrdersPage";
 import TrackOrderPage from "./customerComponents/page/trackOrderPage";
@@ -42,6 +42,9 @@ class App extends Component {
   }
 
   handleAdd = (productName, price) => {
+    console.log(
+      `On add button clicked. product name = ${productName}, price = ${price}.`
+    );
     if (price === 0) return toast.warning("Please select a product.");
 
     const product = this.state.allProducts.filter(
@@ -54,9 +57,13 @@ class App extends Component {
 
     const exist = this.state.cartItems.find((x) => x.id === orderItemId);
     if (exist) {
+      {
+        /* getting all items in shopping cart except for the current selected item */
+      }
       const updatedCartItems = this.state.cartItems.filter(
         (x) => x.id !== orderItemId
       );
+      /* set the cart state with all items plus selected item with updated quantity */
       this.setState({
         cartItems: [...updatedCartItems, { ...exist, qty: exist.qty + 1 }],
       });
@@ -127,6 +134,9 @@ class App extends Component {
   };
 
   render() {
+    {
+      /* syncCart will be called every time state changes (i.e add or remove items). */
+    }
     this.syncCart();
     const { allProducts, cartItems } = this.state;
 
