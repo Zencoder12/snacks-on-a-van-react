@@ -130,13 +130,13 @@ input[type="radio"]:focus,
 #unfinish {
   background-color: var(--body-bg2);
 }
-.progress {
+/* .progress {
   height: 50px !important;
   background-color: var(--btn-bg) !important;
 }
 .progress-bar {
   background-color: var(--bar-grey) !important;
-}
+} */
 #prg-time {
   color: var(--btn-t);
 }
@@ -206,4 +206,29 @@ input[type="radio"]:focus,
 #van-progress {
   height: 25px !important;
   background-color: var(--progress-bg) !important;
+}
+
+/* progress bar */
+.prog-bar {
+  background-color: var(--btn-bg);
+  border-radius: 6px;
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.prog-bar__fill {
+  background-color: var(--heading);
+  height: 100%;
+}
+
+.prog-bar__text {
+  color: var(--menu-bar-text);
+  font-size: 2rem;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

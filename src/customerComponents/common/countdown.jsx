@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 
-const Countdown = ({ orderTime }) => {
+const Countdown = ({ orderTime, minutes }) => {
   const intervalRef = useRef(null);
   const [timer, setTimer] = useState("00:00");
 
+  {
+    /* subtract orderTime + added minutes - current time. Operation done in miliseconds */
+  }
   function getRemainingTime(endTime) {
     const totalTime = Date.parse(endTime) - Date.parse(new Date());
     const seconds = Math.floor((totalTime / 1000) % 60);
@@ -23,7 +26,7 @@ const Countdown = ({ orderTime }) => {
   }
 
   function clearTimer(endtime) {
-    setTimer("10:00");
+    setTimer(minutes.toString() + ":00");
 
     if (intervalRef.current) clearInterval(intervalRef);
     const id = setInterval(() => {
@@ -32,9 +35,12 @@ const Countdown = ({ orderTime }) => {
     intervalRef.current = id;
   }
 
+  {
+    /* calculates the deadline using the ordertime passed by props */
+  }
   function getDeadlineTime() {
     let deadline = new Date(orderTime);
-    deadline.setMinutes(deadline.getMinutes() + 10);
+    deadline.setMinutes(deadline.getMinutes() + minutes);
     return deadline;
   }
 

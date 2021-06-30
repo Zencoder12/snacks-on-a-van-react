@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { cancelOrder, getOneOrder } from "../../services/orderService";
 import Countdown from "../common/countdown";
+import ProgressBar from "../common/progressBar";
 import NavBar from "../common/navBar";
 
 const TrackOrderPage = (props) => {
@@ -91,7 +92,10 @@ const TrackOrderPage = (props) => {
                     <h5 class="fw-bold">Change or cancel your order within:</h5>
                   </div>
                   <h1 class="py-3 py-lg-5 fw-bold display-1" id="count-down">
-                    <Countdown orderTime={currentOrder.orderTime} />
+                    <Countdown
+                      orderTime={currentOrder.orderTime}
+                      minutes={10}
+                    />
                   </h1>
                   <div class="mt-3 d-grid gap-3 d-lg-flex justify-content-lg-center">
                     <button
@@ -146,13 +150,13 @@ const TrackOrderPage = (props) => {
                 </div>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col">
-                <div class="progress position-relative">
+
+            <ProgressBar orderTime={currentOrder.orderTime} />
+            {/* <div class="progress position-relative">
                   <div
                     class="progress-bar"
                     role="progressbar"
-                    style={{ width: "25%" }}
+                    style={{ width: "50%" }}
                     aria-valuenow="25"
                     aria-valuemin="0"
                     aria-valuemax="100"
@@ -164,9 +168,7 @@ const TrackOrderPage = (props) => {
                       <Countdown orderTime={currentOrder.orderTime} />
                     </h2>
                   </div>
-                </div>
-              </div>
-            </div>
+                </div> */}
             <div class="row mt-3 text-center text-secondary">
               <h4 class="d-none d-md-block">
                 Note: If order is not ready within 15 mins, you will receive a
