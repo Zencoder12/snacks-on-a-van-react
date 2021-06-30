@@ -152,7 +152,7 @@ class MenuPage extends Component {
           </div>
           {/* side banners. stacked below products on small devices. Takes reamaining space on screens > 920px */}
           {!isCustomer && <LoginBanner />}
-          {isCustomer && <SideCart cartItems={cartItems} />}
+          {isCustomer && <SideCart cartItems={cartItems} props={this.props} />}
         </main>
       </React.Fragment>
     );

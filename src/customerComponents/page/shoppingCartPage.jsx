@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { createOrder, changeOrder } from "../../services/orderService";
 import { getCurrentVendor } from "../../services/vendorService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,8 +16,8 @@ class ShoppingCartPage extends Component {
       const orderItems = JSON.parse(localStorage.getItem("cart"));
       const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
 
-      // first check if there is already a order in the local storage
       if (currentOrder) {
+        // first check if there is already a order in the local storage
         const { data: updatedOrder } = await changeOrder(
           currentOrder._id,
           orderItems

@@ -9,7 +9,7 @@ const ProgressBar = ({ orderTime }) => {
   const intervalRef = useRef(null);
 
   function getTimeVariables(orderTime) {
-    const endTime = addMinutes(new Date(orderTime), 1);
+    const endTime = addMinutes(new Date(orderTime), 15);
     const distance = endTime - new Date(orderTime);
     const d = new Date();
     const current = new Date(d.getTime());

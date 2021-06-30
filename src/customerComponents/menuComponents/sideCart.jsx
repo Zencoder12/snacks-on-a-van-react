@@ -1,11 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import SideCartRow from "./sideCartRow";
 
-const SideCart = ({ cartItems }) => {
+const SideCart = ({ cartItems, props }) => {
   const total = cartItems.reduce((a, item) => a + item.price * item.qty, 0);
 
   localStorage.setItem("cart", JSON.stringify(cartItems));
+
+  const handleCheckout = () => {
+    const orderItems = JSON.parse(localStorage.getItem("cart"));
+
+    if (!orderItems || orderItems.length == 0) {
+      return toast.warning(
+        "Please add at least 1 item before proceeding to checkout."
+      );
+    } else {
+      props.history.push("/customer/checkout");
+    }
+  };
 
   return (
     <div className="col-md-4 d-none d-lg-block">
@@ -40,12 +52,12 @@ const SideCart = ({ cartItems }) => {
             </th>
           </tfoot>
         </table>
-        <Link
-          to="/customer/checkout"
+        <button
           className="w-100 btn btn-primary my-3 text-uppercase fs-5 fw-bold"
+          onClick={handleCheckout}
         >
           view order details
-        </Link>
+        </button>
       </div>
     </div>
   );
