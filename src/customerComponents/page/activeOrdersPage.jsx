@@ -17,9 +17,10 @@ class ActiveOrdersPage extends Component {
 
   render() {
     const { orders } = this.state;
+    const activeOrdersLink = true;
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBar activeOrdersLink={activeOrdersLink} />
         <main className="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
           {/* heading for size screen > 920px (align-left) */}
           <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">

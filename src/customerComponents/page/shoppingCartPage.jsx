@@ -16,6 +16,11 @@ class ShoppingCartPage extends Component {
       const orderItems = JSON.parse(localStorage.getItem("cart"));
       const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
 
+      if (!orderItems || orderItems.length == 0)
+        return toast.warning(
+          "Please go back to menu and add at least 1 item to the order."
+        );
+
       if (currentOrder) {
         // first check if there is already a order in the local storage
         const { data: updatedOrder } = await changeOrder(
@@ -45,8 +50,9 @@ class ShoppingCartPage extends Component {
   render() {
     const { onAdd, onRemove } = this.props;
 
-    const vendor = getCurrentVendor();
+    const activeCartLink = true;
 
+    const vendor = getCurrentVendor();
     const location = vendor.address;
 
     const cartItems = JSON.parse(localStorage.getItem("cart"));
@@ -59,7 +65,7 @@ class ShoppingCartPage extends Component {
 
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBar activeCartLink={activeCartLink} />
         <main className="px-2 px-md-5 pb-5 pb-lg-0">
           {/* heading for screens sizes > 920px (aligned-left) */}
           <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">
