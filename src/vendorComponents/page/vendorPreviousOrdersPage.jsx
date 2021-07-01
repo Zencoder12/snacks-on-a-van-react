@@ -7,6 +7,7 @@ import VendorNavBar from "../common/vendorNavBar";
 const VendorPreviousOrdersPage = () => {
   const [previousOrders, setPreviousOrders] = useState([]);
   const [value, setValue] = useState("");
+  const activePreviousOrdersLink = true;
 
   useEffect(async () => {
     try {
@@ -39,7 +40,7 @@ const VendorPreviousOrdersPage = () => {
 
   return (
     <React.Fragment>
-      <VendorNavBar />
+      <VendorNavBar activePreviousOrdersLink={activePreviousOrdersLink} />
       <main className="mb-5 px-2 px-md-5 pb-5 pb-lg-0">
         {/* heading for bigger than lg devices (aligned left) */}
         <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-lg-block">

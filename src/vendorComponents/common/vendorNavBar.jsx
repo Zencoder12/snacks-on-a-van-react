@@ -1,24 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import auth from "../../services/authService";
+import MenuLinks from "../vendorNavBarComponents/menuLinks";
 
-const VendorNavBar = () => {
+const VendorNavBar = ({
+  activeCurrentOrdersLink,
+  activePreviousOrdersLink,
+}) => {
   const vendor = auth.getCurrentUser();
 
   return (
     <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 px-md-5 fw-bold sticky-top">
-      <Link
-        className="py-1 col-6 col-md-3 text-center text-md-start text-decoration-none current"
-        to="/vendor/active-orders"
-      >
-        <span className="fs-5 text-uppercase">Current Orders</span>
-      </Link>
-      <Link
-        className="py-1 col-6 col-md-auto text-center text-md-start text-decoration-none"
-        to="/vendor/previous-orders"
-      >
-        <span className="fs-5 text-uppercase">Previous Orders</span>
-      </Link>
+      <MenuLinks
+        activeCurrentOrdersLink={activeCurrentOrdersLink}
+        activePreviousOrdersLink={activePreviousOrdersLink}
+      />
 
       <div className="col-md-3 text-end">
         {vendor && (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import ActiveOrdersCard from "../ordersCard/activeOrdersCard";
 import PickUpOrdersCard from "../ordersCard/pickUpOrdersCard";
 import VendorNavBar from "../common/vendorNavBar";
@@ -12,6 +13,7 @@ import { setOrderFulfill, setOrderReady } from "../../services/vendorService";
 const VendorActOrdersPage = () => {
   const [activeOrders, setActiveOrders] = useState([]);
   const [pickUpOrders, setPickUpOrders] = useState([]);
+  const activeCurrentOrdersLink = true;
 
   useEffect(async () => {
     try {
@@ -33,7 +35,16 @@ const VendorActOrdersPage = () => {
 
   const handleOrderReady = async (readyOrder) => {
     try {
-      console.log(readyOrder);
+      /* make a safe copy in to revert to the original state
+      in case an error occurs while contacting the server */
+      var activeOrdersCopy = activeOrders;
+      var pickUpOrdersCopy = pickUpOrders;
+
+      // check whether the order is discounted or not
+      const isDiscounted = calcTime(new Date(readyOrder.orderTime), new Date());
+
+      await setOrderReady(readyOrder._id, isDiscounted);
+
       // update active orders state
       const updatedActiveOrders = activeOrders.filter(
         (order) => order._id !== readyOrder._id
@@ -43,18 +54,17 @@ const VendorActOrdersPage = () => {
       // update awaiting orders state
       const updatedPickUpOrders = [...pickUpOrders, { ...readyOrder }];
       setPickUpOrders(updatedPickUpOrders);
-
-      // check whether the order is discounted or not
-      const isDiscounted = calcTime(new Date(readyOrder.orderTime), new Date());
-
-      await setOrderReady(readyOrder._id, isDiscounted);
     } catch (ex) {
-      window.location = "/400";
+      toast.warning("The operation failed. Please try again.");
+      setActiveOrders(activeOrdersCopy);
+      setPickUpOrders(pickUpOrdersCopy);
     }
   };
 
   const handleFinishOrder = async (finishedOrder) => {
     try {
+      var pickUpOrdersCopy2 = pickUpOrders;
+
       // update active orders state
       const updatedPickUpOrders = pickUpOrders.filter(
         (order) => order._id !== finishedOrder._id
@@ -63,7 +73,8 @@ const VendorActOrdersPage = () => {
 
       await setOrderFulfill(finishedOrder._id);
     } catch (ex) {
-      window.location = "/400";
+      toast.warning("The operation failed. Please try again.");
+      setPickUpOrders(pickUpOrdersCopy2);
     }
   };
 
@@ -73,7 +84,7 @@ const VendorActOrdersPage = () => {
 
   return (
     <React.Fragment>
-      <VendorNavBar />
+      <VendorNavBar activeCurrentOrdersLink={activeCurrentOrdersLink} />
       <main className="mb-5 px-2 px-md-5 row g-3">
         <div className="col-md-7 col-lg-8">
           <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-md-block">

@@ -12,6 +12,7 @@ import { setOrderFulfill, setOrderReady } from "../../services/vendorService";
 const VendorAwtOrdersPage = () => {
   const [activeOrders, setActiveOrders] = useState([]);
   const [pickUpOrders, setPickUpOrders] = useState([]);
+  const activeCurrentOrdersLink = true;
 
   useEffect(async () => {
     try {
@@ -73,7 +74,7 @@ const VendorAwtOrdersPage = () => {
 
   return (
     <React.Fragment>
-      <VendorNavBar />
+      <VendorNavBar activeCurrentOrdersLink={activeCurrentOrdersLink} />
       <main className="mb-5 px-2 px-md-5 row g-3">
         <div className="col-md-7 col-lg-8 d-none d-md-block">
           <h1 className="pt-3 pb-1 text-uppercase fw-bold d-none d-md-block">

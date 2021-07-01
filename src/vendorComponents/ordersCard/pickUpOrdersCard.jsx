@@ -2,6 +2,7 @@ import React from "react";
 
 const PickUpOrdersCard = ({ onFinishOrder, order }) => {
   const totalQty = order.orderItems.reduce((a, item) => a + item.qty, 0);
+  console.log(order);
   return (
     <div className="col">
       <div className="mb-3 card shadow-sm">
@@ -19,11 +20,13 @@ const PickUpOrdersCard = ({ onFinishOrder, order }) => {
             Finished
           </button>
         </div>
-        <div className="card-footer border-0">
-          <h5 className="py-2 m-0 text-uppercase text-center text-danger fw-bold">
-            20% discount applied
-          </h5>
-        </div>
+        {order.isDiscounted && (
+          <div className="card-footer border-0">
+            <h5 className="py-2 m-0 text-uppercase text-center text-danger fw-bold">
+              20% discount applied
+            </h5>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import ActiveOrdersCardItem from "./activeOrdersCardItem";
 import Countdown from "../../customerComponents/common/countdown";
+import ProgressBar from "../../customerComponents/common/progressBar";
 
 const ActiveOrdersCard = ({ onOrderReady, order }) => {
   return (
@@ -24,23 +25,7 @@ const ActiveOrdersCard = ({ onOrderReady, order }) => {
               READY FOR PICK UP
             </button>
           </div>
-          <div className="progress position-relative" id="van-progress">
-            <div
-              className="progress-bar"
-              role="progressbar"
-              style={{ width: "25%" }}
-              aria-valuenow="25"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              <h5
-                className="mb-0 position-absolute top-25 w-100 text-center text-warning fw-bold"
-                id="prg-time"
-              >
-                <Countdown orderTime={order.orderTime} />
-              </h5>
-            </div>
-          </div>
+          <ProgressBar orderTime={order.orderTime} />
         </div>
       </div>
     </div>

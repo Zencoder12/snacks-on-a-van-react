@@ -1,11 +1,12 @@
 import React from "react";
 
 const PreviousOrdersDetailHeader = ({ order }) => {
+  const date = new Date(order.orderTime).toDateString();
   return (
     <React.Fragment>
       <div className="pb-xl-3 d-flex justify-content-between" id="cart-heading">
         <h4 className="fw-bold">Order ID: {order._id}</h4>
-        <h4 className="fw-bold">{order.orderTime}</h4>
+        <h4 className="fw-bold">{date}</h4>
       </div>
       <div
         className="row pb-3 fs-4 fw-bold text-uppercase border-bottom d-none d-md-flex"
