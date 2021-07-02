@@ -232,3 +232,32 @@ input[type="radio"]:focus,
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+.prog-bar--small {
+  background-color: var(--gray-4);
+  border-radius: 4px;
+  box-sizing: content-box;
+  height: 20px;
+  margin: auto;
+  margin-bottom: 16px;
+  padding: 0.3rem 0 0.3rem 0;
+  width: 89%;
+}
+
+.prog-bar--small .prog-bar__fill {
+  background-color: #ebb434;
+  bottom: 0.1px;
+  height: 100%;
+  padding: 1rem 0 1rem 0;
+  position: absolute;
+}
+
+.prog-bar--small .prog-bar__text {
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 375px) {
+  .prog-bar--small {
+    width: 91%;
+  }
+}

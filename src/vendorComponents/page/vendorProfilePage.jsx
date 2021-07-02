@@ -38,6 +38,13 @@ const VendorProfilePage = (props) => {
     }
   };
 
+  const handleRedirectSetLocation = () => {
+    if (vendorLocation)
+      return toast.warning("Please cancel the current location first.");
+
+    props.history.push("/vendor/set-location");
+  };
+
   return (
     <React.Fragment>
       <VendorNavBar />
@@ -90,7 +97,7 @@ const VendorProfilePage = (props) => {
                   </button>
                   <Link
                     className="pt-3 text-center text-decoration-none"
-                    to="/vendor/set-location"
+                    onClick={handleRedirectSetLocation}
                   >
                     <span className="text-secondary">
                       Want to set a location? Click here!

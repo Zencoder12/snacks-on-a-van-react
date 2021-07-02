@@ -1,9 +1,9 @@
 import React from "react";
 import ActiveOrdersCardItem from "./activeOrdersCardItem";
-import Countdown from "../../customerComponents/common/countdown";
 import ProgressBar from "../../customerComponents/common/progressBar";
 
 const ActiveOrdersCard = ({ onOrderReady, order }) => {
+  const progressBarSmall = true;
   return (
     <div className="col">
       <div className="card h-100 shadow-sm">
@@ -25,7 +25,10 @@ const ActiveOrdersCard = ({ onOrderReady, order }) => {
               READY FOR PICK UP
             </button>
           </div>
-          <ProgressBar orderTime={order.orderTime} />
+          <ProgressBar
+            orderTime={order.orderTime}
+            progressBarSmall={progressBarSmall}
+          />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Countdown from "./countdown";
 
-const ProgressBar = ({ orderTime }) => {
+const ProgressBar = ({ orderTime, progressBarSmall }) => {
   const [width, setWidth] = useState("");
   {
     /* getting a intervalRef in order to be able to clear the progress bar interval  when it reaches 0% */
@@ -51,12 +51,24 @@ const ProgressBar = ({ orderTime }) => {
   }, []);
 
   return (
-    <div className="prog-bar">
-      <div className="prog-bar__fill" style={{ width: width }}></div>
-      <span className="prog-bar__text">
-        <Countdown orderTime={orderTime} minutes={15} />
-      </span>
-    </div>
+    <React.Fragment>
+      {progressBarSmall && (
+        <div className="prog-bar prog-bar--small">
+          <div className="prog-bar__fill" style={{ width: width }}></div>
+          <span className="prog-bar__text">
+            <Countdown orderTime={orderTime} minutes={15} />
+          </span>
+        </div>
+      )}
+      {!progressBarSmall && (
+        <div className="prog-bar">
+          <div className="prog-bar__fill" style={{ width: width }}></div>
+          <span className="prog-bar__text">
+            <Countdown orderTime={orderTime} minutes={15} />
+          </span>
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 
