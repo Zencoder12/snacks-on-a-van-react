@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import ActiveOrdersCard from "../ordersCard/activeOrdersCard";
 import PickUpOrdersCard from "../ordersCard/pickUpOrdersCard";
 import VendorNavBar from "../common/vendorNavBar";
@@ -34,6 +35,16 @@ const VendorAwtOrdersPage = () => {
 
   const handleOrderReady = async (readyOrder) => {
     try {
+      /* make a safe copy in to revert to the original state
+      in case an error occurs while contacting the server */
+      var activeOrdersCopy = activeOrders;
+      var pickUpOrdersCopy = pickUpOrders;
+
+      // check whether the order is discounted or not
+      const isDiscounted = calcTime(new Date(readyOrder.orderTime), new Date());
+
+      await setOrderReady(readyOrder._id, isDiscounted);
+
       // update active orders state
       const updatedActiveOrders = activeOrders.filter(
         (order) => order._id !== readyOrder._id
@@ -43,14 +54,10 @@ const VendorAwtOrdersPage = () => {
       // update awaiting orders state
       const updatedPickUpOrders = [...pickUpOrders, { ...readyOrder }];
       setPickUpOrders(updatedPickUpOrders);
-
-      // check whether the order is discounted or not
-      const isDiscounted = calcTime(new Date(readyOrder.orderTime), new Date());
-      console.log("calc", isDiscounted);
-
-      await setOrderReady(readyOrder._id, isDiscounted);
     } catch (ex) {
-      window.location = "/400";
+      toast.warning("The operation failed. Please try again.");
+      setActiveOrders(activeOrdersCopy);
+      setPickUpOrders(pickUpOrdersCopy);
     }
   };
 

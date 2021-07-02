@@ -54,10 +54,16 @@ const TrackOrderPage = (props) => {
 
       localStorage.removeItem("currentOrder");
       localStorage.removeItem("cart");
-      props.history.push("/customer/menu");
+      window.location = "/customer/menu";
     } catch (ex) {
       window.location = "/400";
     }
+  };
+
+  const handleConfirmOrder = () => {
+    localStorage.removeItem("currentOrder");
+    localStorage.removeItem("cart");
+    props.history.push("/customer/menu");
   };
 
   const isWithinTimeLimit = (orderTime, currentTime) => {
@@ -78,58 +84,91 @@ const TrackOrderPage = (props) => {
           <div className="container p-3 rounded">
             <div className="row">
               <div className="col">
-                <div className="p-3 p-lg-5 card shadow-sm text-center">
-                  <h3 className="fw-bold text-secondary d-none d-lg-block text-uppercase">
-                    Changed your mind? You can change or cancel your order
-                    within:
-                  </h3>
-                  <div className="text-secondary d-none d-md-block d-lg-none">
-                    <h4 className="fw-bold pe-2">Change your mind?</h4>
-                    <h4 className="fw-bold">
-                      You can change or cancel your order within:
-                    </h4>
-                  </div>
-                  <div className="text-secondary d-md-none">
-                    <h5 className="fw-bold pe-2">Change your mind?</h5>
-                    <h5 className="fw-bold">
-                      Change or cancel your order within:
-                    </h5>
-                  </div>
-                  <h1
-                    className="py-3 py-lg-5 fw-bold display-1"
-                    id="count-down"
-                  >
-                    <Countdown
-                      orderTime={currentOrder.orderTime}
-                      minutes={10}
-                    />
-                  </h1>
-                  <div className="mt-3 d-grid gap-3 d-lg-flex justify-content-lg-center">
-                    <button
-                      className="btn btn-lg btn-primary px-lg-5 fs-3 fw-bold"
-                      type="button"
-                      onClick={handleChangeOrder}
+                {!isReady && (
+                  <div className="p-3 p-lg-5 card shadow-sm text-center">
+                    <h3 className="fw-bold text-secondary d-none d-lg-block text-uppercase">
+                      Changed your mind? You can change or cancel your order
+                      within:
+                    </h3>
+                    <div className="text-secondary d-none d-md-block d-lg-none">
+                      <h4 className="fw-bold pe-2">Change your mind?</h4>
+                      <h4 className="fw-bold">
+                        You can change or cancel your order within:
+                      </h4>
+                    </div>
+                    <div className="text-secondary d-md-none">
+                      <h5 className="fw-bold pe-2">Change your mind?</h5>
+                      <h5 className="fw-bold">
+                        Change or cancel your order within:
+                      </h5>
+                    </div>
+                    <h1
+                      className="py-3 py-lg-5 fw-bold display-1"
+                      id="count-down"
                     >
-                      CHANGE ORDER
-                    </button>
-                    <Link to="/customer/menu">
+                      <Countdown
+                        orderTime={currentOrder.orderTime}
+                        minutes={10}
+                      />
+                    </h1>
+                    <div className="mt-3 d-grid gap-3 d-lg-flex justify-content-lg-center">
                       <button
                         className="btn btn-lg btn-primary px-lg-5 fs-3 fw-bold"
                         type="button"
-                        onClick={handleCancelOrder}
+                        onClick={handleChangeOrder}
                       >
-                        CANCEL ORDER
+                        CHANGE ORDER
                       </button>
-                    </Link>
+                      <Link to="/customer/menu">
+                        <button
+                          className="btn btn-lg btn-primary px-lg-5 fs-3 fw-bold"
+                          type="button"
+                          onClick={handleCancelOrder}
+                        >
+                          CANCEL ORDER
+                        </button>
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                )}
+                {isReady && (
+                  <div className="p-3 p-lg-5 card shadow-sm text-center">
+                    <h3 className="fw-bold text-secondary d-none d-lg-block text-uppercase">
+                      Your order is ready for collection! Please
+                    </h3>
+                    <h3 className="fw-bold text-secondary d-none d-lg-block text-uppercase">
+                      pick up your order and click confirm to finalize it.
+                    </h3>
+                    <div className="text-secondary d-none d-md-block d-lg-none">
+                      <h4 className="fw-bold pe-2">
+                        Your order is ready for collection!
+                      </h4>
+                      <h4 className="fw-bold">
+                        Click confirm order to finalize.
+                      </h4>
+                    </div>
+                    <div className="text-secondary d-md-none">
+                      <h5 className="fw-bold pe-2">Your order is ready!</h5>
+                      <h5 className="fw-bold">Click confirm to finalize.</h5>
+                    </div>
+                    <div className="mt-3 d-grid gap-3 d-lg-flex justify-content-lg-center">
+                      <button
+                        className="btn btn-lg btn-primary px-lg-5 fs-3 fw-bold mt-3"
+                        type="button"
+                        onClick={handleConfirmOrder}
+                      >
+                        CONFIRM ORDER
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             <div className="row gap-lg-3 mt-3">
               <div className="col-12 col-lg">
                 <div className="pt-3 card border-0" id="finish"></div>
                 <div className="text-center">
-                  <h2 className="pt-3 text-uppercase">
+                  <h2 className="pt-3 text-uppercase text-secondary">
                     <i className="fas fa-check-double pe-3"></i>Order Placed
                   </h2>
                   <h2 className="d-lg-none">

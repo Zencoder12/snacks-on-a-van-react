@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const PickUpOrdersCard = ({ onFinishOrder, order }) => {
+  const [isDiscounted, setIsDiscounted] = useState(false);
+
+  useEffect(() => {
+    setIsDiscounted(order.isDiscounted);
+  });
+
   const totalQty = order.orderItems.reduce((a, item) => a + item.qty, 0);
-  console.log(order);
   return (
     <div className="col">
       <div className="mb-3 card shadow-sm">
@@ -20,7 +25,7 @@ const PickUpOrdersCard = ({ onFinishOrder, order }) => {
             Finished
           </button>
         </div>
-        {order.isDiscounted && (
+        {isDiscounted && (
           <div className="card-footer border-0">
             <h5 className="py-2 m-0 text-uppercase text-center text-danger fw-bold">
               20% discount applied
