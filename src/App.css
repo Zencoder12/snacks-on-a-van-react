@@ -261,3 +261,30 @@ input[type="radio"]:focus,
     width: 91%;
   }
 }
+
+/* progress bar static */
+
+.prog-bar-static {
+  background-color: var(--btn-bg);
+  border-radius: 6px;
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.prog-bar__text {
+  color: var(--menu-bar-text);
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 425px) {
+  .prog-bar-static .prog-bar__text {
+    font-size: 0.9rem;
+  }
+}

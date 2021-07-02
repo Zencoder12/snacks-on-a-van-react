@@ -6,6 +6,7 @@ import { cancelOrder, getOneOrder } from "../../services/orderService";
 import Countdown from "../common/countdown";
 import ProgressBar from "../common/progressBar";
 import NavBar from "../common/navBar";
+import ProgressBarStatic from "../common/progressBarStatic";
 
 const TrackOrderPage = (props) => {
   const [isReady, setIsReady] = useState(false);
@@ -63,7 +64,7 @@ const TrackOrderPage = (props) => {
   const handleConfirmOrder = () => {
     localStorage.removeItem("currentOrder");
     localStorage.removeItem("cart");
-    props.history.push("/customer/menu");
+    window.location = "/customer/menu";
   };
 
   const isWithinTimeLimit = (orderTime, currentTime) => {
@@ -200,7 +201,10 @@ const TrackOrderPage = (props) => {
                 </div>
               </div>
             </div>
-            <ProgressBar orderTime={currentOrder.orderTime} />
+            {!isReady && <ProgressBar orderTime={currentOrder.orderTime} />}
+            {isReady && (
+              <ProgressBarStatic orderTime={currentOrder.orderTime} />
+            )}
             <div className="row mt-3 text-center text-secondary">
               <h4 className="d-none d-md-block">
                 Note: If order is not ready within 15 mins, you will receive a
