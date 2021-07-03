@@ -35,15 +35,10 @@ const VendorAwtOrdersPage = () => {
 
   const handleOrderReady = async (readyOrder) => {
     try {
-      /* make a safe copy in to revert to the original state
+      /* make a safe copy to revert to the original state
       in case an error occurs while contacting the server */
       var activeOrdersCopy = activeOrders;
       var pickUpOrdersCopy = pickUpOrders;
-
-      // check whether the order is discounted or not
-      const isDiscounted = calcTime(new Date(readyOrder.orderTime), new Date());
-
-      await setOrderReady(readyOrder._id, isDiscounted);
 
       // update active orders state
       const updatedActiveOrders = activeOrders.filter(
@@ -51,9 +46,14 @@ const VendorAwtOrdersPage = () => {
       );
       setActiveOrders(updatedActiveOrders);
 
-      // update awaiting orders state
-      const updatedPickUpOrders = [...pickUpOrders, { ...readyOrder }];
-      setPickUpOrders(updatedPickUpOrders);
+      // check whether the order is discounted or not
+      const isDiscounted = calcTime(new Date(readyOrder.orderTime), new Date());
+
+      await setOrderReady(readyOrder._id, isDiscounted);
+
+      // fetch the ready orders again so we can get the order with the updated discounted property
+      const { data: updatePickUpOrders } = await getReadyOrders();
+      setPickUpOrders(updatePickUpOrders);
     } catch (ex) {
       toast.warning("The operation failed. Please try again.");
       setActiveOrders(activeOrdersCopy);
