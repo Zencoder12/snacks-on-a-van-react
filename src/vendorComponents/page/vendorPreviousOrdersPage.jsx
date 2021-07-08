@@ -24,7 +24,9 @@ const VendorPreviousOrdersPage = () => {
   };
 
   const handleSearch = () => {
-    const searchOrder = previousOrders.filter((order) => order._id === value);
+    const searchOrder = previousOrders.filter(
+      (order) => order.invoice === value
+    );
     setPreviousOrders(searchOrder);
   };
 

@@ -8,7 +8,7 @@ const ActiveOrdersCard = ({ onOrderReady, order }) => {
     <div className="col">
       <div className="card h-100 shadow-sm">
         <div className="card-header border-0 d-flex justify-content-between text-uppercase fw-bold text-secondary py-3">
-          <p className="mb-0">{order._id}</p>
+          <p className="mb-0">{order.invoice}</p>
           <p className="mb-0">{order.customerName}</p>
         </div>
         <div className="card-body mb-1">

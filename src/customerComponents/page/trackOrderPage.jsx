@@ -208,11 +208,13 @@ const TrackOrderPage = (props) => {
             <div className="row mt-3 text-center text-secondary">
               <h4 className="d-none d-md-block">
                 Note: If order is not ready within 15 mins, you will receive a
-                20% discount for the next order.
+                20% discount for the next order. Please don't close this tab
+                until the order is completed.
               </h4>
               <h5 className="d-md-none">
                 Note: If order is not ready within 15 mins, you will receive a
-                20% discount for this order.
+                20% discount for this order. Please don't close this tab until
+                the order is completed.
               </h5>
             </div>
           </div>

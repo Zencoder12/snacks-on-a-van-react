@@ -47,7 +47,7 @@ const MenuLinks = ({ activeCartLink, activeOrdersLink, notClickable }) => {
                   className="dropdown-item fs-5"
                   to="/customer/active-orders"
                 >
-                  Active Orders
+                  Active Order
                 </Link>
               </li>
               <li>

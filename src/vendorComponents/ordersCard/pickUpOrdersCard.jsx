@@ -3,12 +3,13 @@ import { getReadyOrders } from "../../services/orderService";
 
 const PickUpOrdersCard = ({ onFinishOrder, order }) => {
   const totalQty = order.orderItems.reduce((a, item) => a + item.qty, 0);
+  const d = new Date();
   return (
     <div className="col">
       <div className="mb-3 card shadow-sm">
         <div className="card-header border-0 d-flex justify-content-between text-uppercase fw-bold text-secondary py-3">
-          <p className="mb-0">{order._id}</p>
-          <p className="mb-0">Time</p>
+          <p className="mb-0">{order.invoice}</p>
+          <p className="mb-0">{d.getHours() + ":" + d.getMinutes()}</p>
         </div>
         <div className="card-body text-secondary text-uppercase text-center">
           <h5 className="fw-bold py-1">{totalQty} Items</h5>

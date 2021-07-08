@@ -173,7 +173,10 @@ class App extends Component {
             path="/customer/register"
             render={(props) => <RegisterPage {...props} />}
           />
-          <Route path="/customer/select-vendor" component={SelectVendorPage} />
+          <CProtectedRoute
+            path="/customer/select-vendor"
+            component={SelectVendorPage}
+          />
           <Route path="/customer/logout" component={Logout} />
           <Route path="/vendor/logout" component={VendorLogout} />
           <Route path="/400" component={BadRequest} />

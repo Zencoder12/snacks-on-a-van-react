@@ -12,12 +12,6 @@ const ActiveOrderDetailCard = ({ order }) => {
         <OrderItemDetails key={item.id} item={item} />
       ))}
       <OrderDetailFooter key={order._id} order={order} />
-      <Link
-        to="./track order.html"
-        className="w-100 btn btn-primary mt-3 fs-4 fw-bold text-uppercase"
-      >
-        view details
-      </Link>
     </div>
   );
 };

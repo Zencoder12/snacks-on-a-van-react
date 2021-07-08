@@ -5,7 +5,7 @@ const OrderDetailHeader = ({ order }) => {
   return (
     <React.Fragment>
       <div className="pb-xl-3 d-flex justify-content-between" id="cart-heading">
-        <h4 className="fw-bold">Order ID: {order._id} </h4>
+        <h4 className="fw-bold">Order ID: {order.invoice} </h4>
         <h4 className="fw-bold">{date}</h4>
       </div>
       {/* table header for screen sizes > 768px */}

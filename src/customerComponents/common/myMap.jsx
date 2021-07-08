@@ -129,9 +129,10 @@ export default function MyMap({ onSelect }) {
             onCloseClick={() => setSelected(null)}
           >
             <div>
-              <h2 className="text-uppercase">{selected.vendorName}</h2>
-              <p className="mt-3">Vendor located at:</p>
-              <p className="font-weight-bold mt-1">{selected.address}</p>
+              <h2 className="text-uppercase font-weight-bold">
+                {selected.vendorName}
+              </h2>
+              <p style={{ fontSize: "1rem" }}>{selected.address}</p>
             </div>
           </InfoWindow>
         ) : null}
