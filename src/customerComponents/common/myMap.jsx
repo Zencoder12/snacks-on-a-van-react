@@ -6,24 +6,17 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import { toast } from "react-toastify";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaravan } from "@fortawesome/free-solid-svg-icons";
 import { getVendorsLocations } from "../../services/vendorService";
 import mapStyles from "../../mapStyles";
 
 // variable is defined outside to avoid unnecessary re-renders
 const mapContainerStyle = {
-  width: "65vw",
+  width: "100vw",
   height: "100vh",
 };
 
-const defaultCenter = {
-  lat: -37.813629,
-  lng: 144.963058,
-};
-
 export default function MyMap({ onSelect }) {
-  // load google maps script
+  // google maps script loader
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   });
@@ -37,38 +30,26 @@ export default function MyMap({ onSelect }) {
 
   // on load create the map image and store on mapRef
   const onMapLoad = React.useCallback((map) => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const center = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const center = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
 
-        setCenter(center);
-      },
-      () => null
-    );
-    mapRef.current = map;
+          setCenter(center);
+        },
+        () => null
+      );
+      mapRef.current = map;
+    } else {
+      toast.warning("Browser does not support geolocation.");
+    }
   }, []);
 
   useEffect(() => {
-    // // get the user current location
-    // if (navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition(
-    //     (position) => {
-    //       const center = {
-    //         lat: position.coords.latitude,
-    //         lng: position.coords.longitude,
-    //       };
-    //       setCenter(center);
-    //     },
-    //     () => null
-    //   );
-    // } else {
-    //   setCenter(defaultCenter);
-    // }
-
-    // get vendors locations
+    // get vendors locations on mount
     try {
       async function fetchLocations() {
         const { data: locations } = await getVendorsLocations();

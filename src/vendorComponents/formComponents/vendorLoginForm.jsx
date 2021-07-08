@@ -20,7 +20,10 @@ class VendorLoginForm extends VendorForm {
       await auth.loginVendor(data.vendorName, data.password);
       window.location = "/vendor/set-location";
     } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
+      if (
+        ex.response &&
+        (ex.response.status === 400 || ex.response.status === 404)
+      ) {
         const errors = { ...this.state.errors };
         errors.vendorName = ex.response.data;
         this.setState({ errors });

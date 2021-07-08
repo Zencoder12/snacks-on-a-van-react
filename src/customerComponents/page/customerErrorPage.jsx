@@ -22,8 +22,8 @@ const customerErrorPage = () => {
               Oops! Something went wrong :(
             </h1>
             <h2>
-              Looks like your are not logged in as a customer. Please go to the
-              homepage locate your vendor and select login on the menu page.
+              Looks like your are not logged in as a customer. Please go back
+              log in and try again.
             </h2>
             <Link to="/" class="btn btn-primary mt-3 fs-5 fw-bold">
               Back to home

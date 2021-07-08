@@ -20,7 +20,7 @@ class LoginForm extends Form {
       await auth.login(data.email, data.password);
       window.location = "/customer/select-vendor";
     } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
+      if (ex.response.status === 400 || ex.response.status === 404) {
         const errors = { ...this.state.errors };
         errors.email = ex.response.data;
         this.setState({ errors });

@@ -41,6 +41,10 @@ class App extends Component {
     this.setState({ allProducts: data });
   }
 
+  componentWillUnmount() {
+    localStorage.clear();
+  }
+
   handleAdd = (productName, price) => {
     console.log(
       `On add button clicked. product name = ${productName}, price = ${price}.`
