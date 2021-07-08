@@ -59,6 +59,10 @@ const Map = ({ onSelect, onClosePopUp, selectedVendor }) => {
           vendorName={vendor.vendorName}
           latitude={vendor.coordinates.lat}
           longitude={vendor.coordinates.lng}
+          icon={{
+            origin: new window.google.maps.Point(0, 0),
+            anchor: new window.google.maps.Point(15, 15),
+          }}
         >
           <button
             className="btn"

@@ -51,7 +51,8 @@ const VendorAwtOrdersPage = () => {
 
       await setOrderReady(readyOrder._id, isDiscounted);
 
-      // fetch the ready orders again so we can get the order with the updated discounted property
+      /* fetch the ready orders again so we can get the current 
+      order with the updated discounted property */
       const { data: updatePickUpOrders } = await getReadyOrders();
       setPickUpOrders(updatePickUpOrders);
     } catch (ex) {

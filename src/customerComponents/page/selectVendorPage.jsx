@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Map from "../common/map";
+import MyMap from "../common/myMap";
 
 class SelectVendorPage extends Component {
   state = { selectedVendor: "" };
 
   handleSelect = (vendor) => {
+    console.log("vendor has been selected", vendor);
     this.setState({ selectedVendor: vendor });
   };
 
@@ -54,18 +56,12 @@ class SelectVendorPage extends Component {
           </div>
           <div className="text-center mb-3">
             <Link to="/vendor/login" className="text-decoration-none">
-              <span className="text-secondary ">
-                NOT CUSTOMER? VENDOR LOGIN
-              </span>
+              <span className="text-secondary">NOT CUSTOMER? VENDOR LOGIN</span>
             </Link>
           </div>
         </div>
         <div className="col-12 col-md-8 px-0">
-          <Map
-            selectedVendor={this.state.selectedVendor}
-            onClosePopUp={this.handleClosePopUp}
-            onSelect={this.handleSelect}
-          />
+          <MyMap onSelect={this.handleSelect} />
         </div>
       </main>
     );
