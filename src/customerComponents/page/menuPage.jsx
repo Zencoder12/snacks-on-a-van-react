@@ -21,7 +21,7 @@ class MenuPage extends Component {
 
     // let cartItemsClone = [...cartItems];
 
-    // const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
+    // const currentOrder = JSON.parse(sessionStorage.getItem("currentOrder"));
     // if (currentOrder)
     //   cartItemsClone = [...cartItemsClone, ...currentOrder.orderItems];
 

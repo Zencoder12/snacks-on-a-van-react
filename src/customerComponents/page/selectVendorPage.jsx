@@ -20,7 +20,7 @@ class SelectVendorPage extends Component {
     if (this.state.selectedVendor.length === 0)
       return toast.warning("Please select a vendor in the map.");
 
-    localStorage.setItem("vendor", JSON.stringify(this.state.selectedVendor));
+    sessionStorage.setItem("vendor", JSON.stringify(this.state.selectedVendor));
 
     this.props.history.push("/customer/menu");
   };

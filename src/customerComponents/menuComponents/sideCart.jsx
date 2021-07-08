@@ -5,10 +5,10 @@ import SideCartRow from "./sideCartRow";
 const SideCart = ({ cartItems, props }) => {
   const total = cartItems.reduce((a, item) => a + item.price * item.qty, 0);
 
-  localStorage.setItem("cart", JSON.stringify(cartItems));
+  sessionStorage.setItem("cart", JSON.stringify(cartItems));
 
   const handleCheckout = () => {
-    const orderItems = JSON.parse(localStorage.getItem("cart"));
+    const orderItems = JSON.parse(sessionStorage.getItem("cart"));
 
     if (!orderItems || orderItems.length == 0) {
       return toast.warning(

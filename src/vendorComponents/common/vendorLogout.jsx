@@ -10,7 +10,7 @@ class Logout extends Component {
     auth.logout();
     const vendorLocation = getCurrentLocation();
     if (vendorLocation) await closeLocation(vendorLocation.vendorName);
-    localStorage.clear();
+    sessionStorage.clear();
     window.location = "/";
   }
 

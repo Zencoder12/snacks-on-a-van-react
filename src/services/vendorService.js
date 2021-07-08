@@ -39,5 +39,5 @@ export function setOrderFulfill(orderId) {
 }
 
 export function getCurrentVendor() {
-  return JSON.parse(localStorage.getItem("vendor"));
+  return JSON.parse(sessionStorage.getItem("vendor"));
 }

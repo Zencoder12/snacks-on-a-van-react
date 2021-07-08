@@ -11,7 +11,7 @@ import ProgressBarStatic from "../common/progressBarStatic";
 const TrackOrderPage = (props) => {
   const [isReady, setIsReady] = useState(false);
   const notClickable = true;
-  const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
+  const currentOrder = JSON.parse(sessionStorage.getItem("currentOrder"));
 
   {
     /* check every 15 seconds whether the order is ready for pick-up */
@@ -53,8 +53,8 @@ const TrackOrderPage = (props) => {
 
       await cancelOrder(currentOrder._id);
 
-      localStorage.removeItem("currentOrder");
-      localStorage.removeItem("cart");
+      sessionStorage.removeItem("currentOrder");
+      sessionStorage.removeItem("cart");
       window.location = "/customer/menu";
     } catch (ex) {
       window.location = "/400";
@@ -62,8 +62,8 @@ const TrackOrderPage = (props) => {
   };
 
   const handleConfirmOrder = () => {
-    localStorage.removeItem("currentOrder");
-    localStorage.removeItem("cart");
+    sessionStorage.removeItem("currentOrder");
+    sessionStorage.removeItem("cart");
     window.location = "/customer/menu";
   };
 

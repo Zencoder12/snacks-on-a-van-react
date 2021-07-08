@@ -15,7 +15,7 @@ export async function login(email, password) {
     email,
     password,
   });
-  localStorage.setItem("token", jwt);
+  sessionStorage.setItem("token", jwt);
 }
 
 export function signUp(user) {
@@ -32,7 +32,7 @@ export async function loginVendor(vendorName, password) {
     vendorName,
     password,
   });
-  localStorage.setItem("token", jwt);
+  sessionStorage.setItem("token", jwt);
 }
 
 export function signUpVendor(user) {
@@ -46,16 +46,16 @@ export function signUpVendor(user) {
 }
 
 export function loginWithJwt(jwt) {
-  localStorage.setItem("token", jwt);
+  sessionStorage.setItem("token", jwt);
 }
 
 export function logout() {
-  localStorage.removeItem("token");
+  sessionStorage.removeItem("token");
 }
 
 export function getCurrentUser() {
   try {
-    const jwt = localStorage.getItem("token");
+    const jwt = sessionStorage.getItem("token");
     return jwtDecode(jwt);
   } catch (ex) {
     return null;
@@ -64,7 +64,7 @@ export function getCurrentUser() {
 
 export function isValidCustomer() {
   try {
-    const jwt = localStorage.getItem("token");
+    const jwt = sessionStorage.getItem("token");
     return jwtDecode(jwt).isCustomer;
   } catch (ex) {
     return null;
@@ -73,7 +73,7 @@ export function isValidCustomer() {
 
 export function isValidVendor() {
   try {
-    const jwt = localStorage.getItem("token");
+    const jwt = sessionStorage.getItem("token");
     return jwtDecode(jwt).isVendor;
   } catch (ex) {
     return null;
@@ -81,7 +81,7 @@ export function isValidVendor() {
 }
 
 export function getJwt() {
-  return localStorage.getItem("token");
+  return sessionStorage.getItem("token");
 }
 
 export default {

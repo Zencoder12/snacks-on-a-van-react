@@ -13,8 +13,8 @@ class ShoppingCartPage extends Component {
 
   handleSubmitOrder = async () => {
     try {
-      const orderItems = JSON.parse(localStorage.getItem("cart"));
-      const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
+      const orderItems = JSON.parse(sessionStorage.getItem("cart"));
+      const currentOrder = JSON.parse(sessionStorage.getItem("currentOrder"));
 
       if (!orderItems || orderItems.length == 0)
         return toast.warning(
@@ -28,7 +28,7 @@ class ShoppingCartPage extends Component {
           orderItems
         );
 
-        localStorage.setItem("currentOrder", JSON.stringify(updatedOrder));
+        sessionStorage.setItem("currentOrder", JSON.stringify(updatedOrder));
         // if there isn't a current order create a new one
       } else {
         const vendor = getCurrentVendor();
@@ -36,7 +36,7 @@ class ShoppingCartPage extends Component {
           vendor.vendorName,
           orderItems
         );
-        localStorage.setItem("currentOrder", JSON.stringify(order));
+        sessionStorage.setItem("currentOrder", JSON.stringify(order));
       }
 
       this.props.history.push("/customer/tracking-order");
@@ -55,7 +55,7 @@ class ShoppingCartPage extends Component {
     const vendor = getCurrentVendor();
     const location = vendor.address;
 
-    const cartItems = JSON.parse(localStorage.getItem("cart"));
+    const cartItems = JSON.parse(sessionStorage.getItem("cart"));
 
     const sortedCart = cartItems.sort((a, b) => (a.id > b.id ? 1 : -1));
 

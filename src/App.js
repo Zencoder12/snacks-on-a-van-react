@@ -41,10 +41,6 @@ class App extends Component {
     this.setState({ allProducts: data });
   }
 
-  componentWillUnmount() {
-    localStorage.clear();
-  }
-
   handleAdd = (productName, price) => {
     console.log(
       `On add button clicked. product name = ${productName}, price = ${price}.`
@@ -134,7 +130,7 @@ class App extends Component {
   };
 
   syncCart = () => {
-    localStorage.setItem("cart", JSON.stringify(this.state.cartItems));
+    sessionStorage.setItem("cart", JSON.stringify(this.state.cartItems));
   };
 
   render() {
