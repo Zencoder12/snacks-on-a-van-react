@@ -28,11 +28,7 @@ const SetLocationPage = (props) => {
         return toast.warning("Location cannot be empty.");
 
       const vendor = auth.getCurrentUser();
-      const { data: location } = await setVendorLocation(
-        vendor.vendorName,
-        coordinates,
-        address
-      );
+      await setVendorLocation(vendor.vendorName, coordinates, address);
       props.history.push("/vendor/active-orders");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {

@@ -15,19 +15,26 @@ const VendorActOrdersPage = () => {
   const [pickUpOrders, setPickUpOrders] = useState([]);
   const activeCurrentOrdersLink = true;
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const { data: activeOrders } = await getVendorActiveOrders();
-      setActiveOrders(activeOrders);
+      async function fetchActiveOrders() {
+        const { data: activeOrders } = await getVendorActiveOrders();
+        setActiveOrders(activeOrders);
+      }
+      fetchActiveOrders();
     } catch (ex) {
       window.location = "/400";
     }
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const { data: pickUpOrders } = await getReadyOrders();
-      setPickUpOrders(pickUpOrders);
+      async function fetchReadyOrders() {
+        const { data: pickUpOrders } = await getReadyOrders();
+        setPickUpOrders(pickUpOrders);
+      }
+
+      fetchReadyOrders();
     } catch (ex) {
       window.location = "/400";
     }

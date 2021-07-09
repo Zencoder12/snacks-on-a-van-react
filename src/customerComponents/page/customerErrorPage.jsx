@@ -13,6 +13,7 @@ const customerErrorPage = () => {
             src="https://i.ibb.co/PWWPVSn/log.png"
             class="img-fluid my-auto"
             id="error-logo"
+            alt="logo of a snack van"
           />
         </div>
         <div class="col d-lg-none d-xl-block"></div>

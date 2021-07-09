@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Map from "../common/map";
 import MyMap from "../common/myMap";
 
 class SelectVendorPage extends Component {

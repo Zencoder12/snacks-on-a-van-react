@@ -33,6 +33,7 @@ class ProfilePage extends Component {
                     <img
                       src={"https://i.ibb.co/kGty6MS/profile.png"}
                       className="rounded-circle mb-5 mx-md-5 mx-lg-0 mx-xl-5"
+                      alt="logo of a snack van"
                     />
                     <h3>{user.firstName}</h3>
                     <h3 className="pt-3 mb-5">{user.email}</h3>

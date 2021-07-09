@@ -64,6 +64,7 @@ const VendorProfilePage = (props) => {
                   <img
                     src="https://i.ibb.co/PWWPVSn/log.png"
                     className="rounded-circle mb-5 mx-md-5 mx-lg-0 mx-xl-5"
+                    alt="snack van logo"
                   />
                   <h3 className="text-uppercase">{vendor.vendorName}</h3>
                 </div>

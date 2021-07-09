@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { getReadyOrders } from "../../services/orderService";
+import React from "react";
 
 const PickUpOrdersCard = ({ onFinishOrder, order }) => {
   const totalQty = order.orderItems.reduce((a, item) => a + item.qty, 0);

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import OrderDetailHeader from "./OrderItemsDetailCard/orderDetailHeader";
 import OrderItemDetails from "./OrderItemsDetailCard/orderItemDetails";
 import OrderDetailFooter from "./OrderItemsDetailCard/orderDetailFooter";

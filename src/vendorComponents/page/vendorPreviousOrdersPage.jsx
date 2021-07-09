@@ -9,10 +9,13 @@ const VendorPreviousOrdersPage = () => {
   const [value, setValue] = useState("");
   const activePreviousOrdersLink = true;
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const { data } = await getVendorPastOrders();
-      setPreviousOrders(data);
+      async function fetchPastOrders() {
+        const { data } = await getVendorPastOrders();
+        setPreviousOrders(data);
+      }
+      fetchPastOrders();
     } catch (ex) {
       window.location = "/400";
     }
