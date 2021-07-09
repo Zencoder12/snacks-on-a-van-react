@@ -3,6 +3,7 @@ import Joi from "joi-browser";
 import Form from "./form";
 import auth from "../../services/authService";
 import { updateProfile } from "../../services/customerService";
+import { toast } from "react-toastify";
 
 class UpdateForm extends Form {
   state = {
@@ -20,8 +21,8 @@ class UpdateForm extends Form {
     try {
       const { data } = this.state;
       const response = await updateProfile(data);
-      auth.loginWithJwt(response.headers["x-auth-token"]);
-      window.location = "/customer/select-vendor";
+      auth.loginWithJwt(response.data.token);
+      toast.warning("The information has been sucesfully updated.");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

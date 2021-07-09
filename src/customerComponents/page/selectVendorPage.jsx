@@ -8,7 +8,6 @@ class SelectVendorPage extends Component {
   state = { selectedVendor: "" };
 
   handleSelect = (vendor) => {
-    console.log("vendor has been selected", vendor);
     this.setState({ selectedVendor: vendor });
   };
 
