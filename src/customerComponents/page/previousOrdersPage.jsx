@@ -9,7 +9,6 @@ class PreviousOrdersPage extends Component {
   async componentDidMount() {
     try {
       const { data } = await getPastOrders();
-      console.log(data);
       this.setState({ orders: data });
     } catch (ex) {
       window.location = "/400";
