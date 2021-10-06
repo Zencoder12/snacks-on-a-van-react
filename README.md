@@ -30,7 +30,7 @@ ps. when in the finalized order page, menu is disabled.
 
 1. Login with the vendor user:
 
-van name: Qbcoffehouse
+van name: Qbcoffehouse  
 password: 1234melbourne
 
 2. Set the van location
