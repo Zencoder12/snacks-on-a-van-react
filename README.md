@@ -33,9 +33,11 @@ ps. when in the finalized order page, menu is disabled.
 van name: Qbcoffehouse  
 password: 1234melbourne
 
-2. Set the van location
-ps. the search location functionality might not be retrieving the addresses if the total number of searches provided by googlemaps api exceeded the free account allowed queries.
+2. Set the van location  
+ps. the search location functionality might not be retrieving the addresses if the total number of searches provided by googlemaps api exceeded the free account allowed queries. If the geolocation functionality is not working please proceed to explore the orders functionalities by clicking one of the options in the menu bar.
 
 3. If using the customer section in a different tab you set the order to Qbcoffehouse you should see the order in "current orders" menu tab.
+ 
+4. You can simulate orders being set to pick-up and as finished. Finished orders should appear on the previous orders menu. 
 
 
